@@ -2,46 +2,70 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Infografía Interactiva</title>
-  
-  <!-- Estilos propios -->
+  <meta name="viewport" content="width=1920, initial-scale=1.0">
+  <title>Infografía Interactiva - Evolución Digital</title>
+
   <link rel="stylesheet" href="css/styles.css">
 
-  <!-- 1. GSAP + ScrollTrigger -->
+  <!-- Librerías desde CDN -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
-  <!-- 2. Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <!-- 3. Interact.js -->
   <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
 
-  <!-- Script principal propio (defer para que cargue tras el HTML) -->
   <script src="js/main.js" defer></script>
 </head>
 <body>
 
-  <header>
-    <h1>Título de la Infografía</h1>
+  <!-- Barra superior fija -->
+  <header class="top-bar">
+    <p>Infografia interactiva - Evolucion digital</p>
   </header>
 
-  <main>
-    <!-- Ejemplo para GSAP / ScrollTrigger -->
-    <section class="seccion-animada">
-      <div class="caja-animada">Animación de desplazamiento</div>
+  <!-- Contenedor general del proyecto -->
+  <main class="viewport-wrapper">
+
+    <!-- SECCIÓN HERO -->
+    <section id="hero" class="hero-section">
+      <div class="hero-container">
+        
+        <!-- Título principal -->
+        <h1 class="hero-title">
+          <span class="text-70">Cómo pasó</span>
+          <div class="logo-container">
+            <img id="google-logo" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google Logo Placeholder">
+          </div>
+          <span class="text-70">De leer</span>
+          <span class="text-128">PALABRAS</span>
+          <span class="text-70 italic">A leer</span>
+          <span class="text-128">MENTES?</span>
+        </h1>
+
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+          <span class="search-icon">🔍</span>
+          <span id="typing-text"></span><span class="cursor">|</span>
+        </div>
+
+      </div>
+
+      <!-- Elemento de la Lupa (Cursor flotante) -->
+      <div id="magnifying-glass" class="lupa-follower">
+        <!-- Reemplazar con <img src="assets/lupa.png"> cuando tengas el PNG transparente -->
+        <div class="lupa-placeholder">🔍</div>
+      </div>
     </section>
 
-    <!-- Ejemplo para Chart.js -->
-    <section class="seccion-grafico">
-      <canvas id="miGrafico"></canvas>
+    <!-- SECCIÓN 2: INTRODUCCIÓN / TRANSICIÓN -->
+    <section id="intro" class="intro-section">
+      <div class="intro-container">
+        <h2 class="intro-title">¡Iniciá la búsqueda!</h2>
+        <p class="intro-text">
+          Descubrí como la evolución de la ia reescribio la reglas de los motores de búsqueda desde los años 90 hasa la era generativa.
+        </p>
+      </div>
     </section>
 
-    <!-- Ejemplo para Interact.js -->
-    <section class="seccion-interactiva">
-      <div id="elemento-arrastrable">Arrástrame</div>
-    </section>
   </main>
 
 </body>
