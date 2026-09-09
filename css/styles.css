@@ -22,13 +22,18 @@ body {
   background-color: #c4c2bd;
   display: flex;
   align-items: center;
-  padding-left: 240px;
+  justify-content: center; /* Centra el contenedor interno */
+  z-index: 100;
+  border-bottom: 1px solid #b0ada7;
+}
+
+.top-bar-content {
+  width: 1440px; /* Alineado a la grilla principal */
   font-family: 'Times New Roman', Times, serif;
   font-style: italic;
   font-weight: bold;
   font-size: 18px;
-  z-index: 100;
-  border-bottom: 1px solid #b0ada7;
+  color: #0b115d;
 }
 
 /* --- SECCIÓN HERO (1920x1080) --- */
@@ -139,7 +144,6 @@ body {
 }
 
 /* --- SECCIÓN INTRO / TRANSICIÓN --- */
-/* --- SECCIÓN INTRO / TRANSICIÓN --- */
 .intro-section {
   width: 1920px;
   background-color: #ffffff;
@@ -172,21 +176,21 @@ body {
 }
 
 /* =========================================
-   SECCIÓN ESCRITORIO WINDOWS (1920x1080)
+   SECCIÓN ESCRITORIO Y FONDO CONTINUO
    ========================================= */
 .desktop-section {
-  /* Ancho responsive o contenido dentro de tus márgenes generales */
-  width: 100%;
-  max-width: 1920px;
-  height: 1080px;
-  background-color: #008080; /* Teal clásico */
   position: relative;
+  width: 1920px;
+  max-width: 100%;
+  height: 90vh; 
+  max-height: 850px; 
+  margin: 0 auto !important; /* Centra el contenedor de Windows */
   overflow: hidden;
   
-  /* Centrado y márgenes laterales coordinados con la maqueta */
-  margin: 0 auto;
-  box-sizing: border-box;
-  font-family: 'MS Sans Serif', Tahoma, sans-serif;
+  background-image: url('../assets/imagenes/fondo1.png'); 
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover; 
 }
 
 /* --- Barra de Tareas (Taskbar) --- */
@@ -200,9 +204,7 @@ body {
   border-top: 2px solid #ffffff;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Start a la izquierda, Reloj a la derecha */
-  
-  /* Márgenes internos respetando los bordes de la barra */
+  justify-content: space-between; 
   padding: 0 16px;
   box-sizing: border-box;
   z-index: 200;
@@ -241,7 +243,7 @@ body {
 }
 
 .clock {
-  margin-left: auto; /* Empuja el reloj siempre al extremo visible */
+  margin-left: auto; 
   height: 34px;
   padding: 0 14px;
   border-top: 2px solid #808080;
@@ -251,7 +253,7 @@ body {
   display: flex;
   align-items: center;
   font-size: 14px;
-  white-space: nowrap; /* Evita que el texto del reloj se deforme */
+  white-space: nowrap; 
 }
 
 /* =========================================
@@ -320,15 +322,15 @@ body {
 
 /* --- Estructura Ventanas de Info (Draggables) --- */
 .win-window {
-  z-index: 100; /* Fondo por defecto */
+  z-index: 100; 
   min-width: 400px;
   color: #000;
 }
 
-.win-window.dragging { z-index: 150; opacity: 0.9; } /* Encima al arrastrar */
+.win-window.dragging { z-index: 150; opacity: 0.9; } 
 
 .win-window-header {
-  background-color: #000080; /* Azul Título Activo */
+  background-color: #000080; 
   color: white;
   padding: 6px 10px;
   font-weight: bold;
@@ -362,7 +364,7 @@ body {
 
 .win-window-body {
   padding: 20px;
-  background-color: #ffffff; /* Fondo blanco para leer */
+  background-color: #ffffff; 
   border: 2px solid #808080; margin: 4px;
   font-size: 16px; line-height: 1.5;
 }
@@ -384,31 +386,20 @@ body {
 
 .win-btn-disabled { color: #808080; cursor: default; border-color: #808080; }
 
-
 /* =========================================
    VARIACIONES ESPECÍFICAS DE VENTANAS
    ========================================= */
-
-/* Compacta (Directorios Que es, Archie Que es) */
 .win-window-compact { width: 500px; left: 300px; top: 150px; }
-
-/* Notepad (Directorios Cómo/Data, Archie Cómo/Creador) */
 .win-window-notepad { width: 700px; left: 400px; top: 200px; }
 .win-window-body-notepad { font-family: monospace; font-size: 18px; }
 .notepad-list { list-style: none; padding-top: 15px; text-align: center; }
-
-/* Properties (Archie Data) */
 .win-window-properties { width: 600px; left: 500px; top: 250px; }
 .win-window-tabs { display: flex; gap: 2px; padding: 4px 4px 0; border-bottom: 2px solid #808080; }
 .win-window-tabs .tab { padding: 6px 15px; background: #c0c0c0; border: 2px solid #000; border-bottom: none; border-radius: 4px 4px 0 0; font-size: 14px; cursor: pointer; }
 .win-window-tabs .tab.active { background: #ffffff; font-weight: bold; position: relative; bottom: -2px; }
-
-/* Browser/Veia (Archie Veia, Yahoo Veia) */
 .win-window-browser { width: 800px; left: 600px; top: 100px; }
 .win-window-body-veia { height: 500px; padding: 0; }
 .win-window-status { padding: 4px 10px; font-size: 12px; border-top: 2px solid #808080; background: #c0c0c0; }
-
-/* Welcome (Yahoo Cómo/Data) */
 .win-window-welcome { width: 850px; left: 450px; top: 180px; }
 .win-window-body-welcome { background-color: #c0c0c0; border: none; padding: 10px; display: flex; gap: 10px; }
 .welcome-main { background: #ffffff; border: 2px solid #808080; flex-grow: 1; padding: 25px; }
@@ -417,8 +408,6 @@ body {
 .viewpoint-text { text-align: left; align-items: flex-start; }
 .welcome-sidebar { width: 150px; display: flex; flex-direction: column; gap: 15px; justify-content: center; }
 .win-window-footer-welcome { padding: 10px; font-size: 14px; border-top: 2px solid #808080; }
-
-/* Layouts Creadores */
 .body-creador { display: flex; gap: 20px; align-items: center; }
 .creador-text { font-size: 24px; font-weight: bold; }
 .creador-assets { display: flex; flex-direction: column; gap: 10px; }
@@ -429,10 +418,7 @@ body {
    ÁRBOL CSS YAHOO (Welcome Screen)
    ========================================= */
 #yahoo-tree-container { display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%; font-family: monospace; }
-
 .tree-level { display: flex; gap: 30px; justify-content: center; width: 100%; }
-
-/* Nodos */
 .node-pink, .node-white {
   padding: 10px 20px; border-radius: 8px;
   border: 2px solid #000;
@@ -441,8 +427,6 @@ body {
 }
 .node-pink { background-color: #ffccff; color: #000; }
 .node-white { background-color: #ffffff; color: #000; }
-
-/* Enlace NASA */
 .link-nasa { font-size: 18px; color: #000080; font-weight: bold; margin-top: 15px; }
 
 /* =========================================
@@ -450,3 +434,292 @@ body {
    ========================================= */
 .asset-placeholder { background: #e0e0e0; border: 2px dashed #808080; color: #666; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 14px; }
 .hidden { display: none !important; }
+
+/* =========================================
+   SECCIÓN Y VENTANA ESTÁTICA DE COMPARACIÓN
+   ========================================= */
+
+/* Contenedor exterior con separación de 128px e independizado de Windows */
+.comparacion-section {
+  width: 100%;
+  padding-top: 128px;
+  padding-bottom: 128px;
+  display: flex;
+  flex-direction: column; /* Apila verticalmente */
+  align-items: center;    /* Centra horizontalmente */
+  gap: 128px;             /* Separación de 128px entre ventanas */
+  background-color: #eae6df;
+}
+
+/* Estructura de la ventana centrada y fija */
+.win-comparacion-container {
+  position: relative !important; /* Importante: Cambia de absolute a relative para no encimarse */
+  width: 680px;
+  background-color: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  box-shadow: 2px 2px 0px #000000;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0 !important;
+  user-select: none;
+}
+
+.win-comp-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.win-comp-heading h2 {
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 0;
+  color: #000000;
+}
+
+.win-divider-line {
+  border: none;
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #ffffff;
+  margin-bottom: 20px;
+}
+
+/* Grilla interna Archie vs Yahoo! */
+.win-comp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.win-inner-box {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  padding: 2px;
+}
+
+.win-inner-header {
+  background: #000080;
+  color: white;
+  padding: 3px 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.win-inner-content {
+  padding: 15px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.step-icon {
+  font-size: 24px;
+}
+
+.step-text {
+  font-size: 14px;
+  line-height: 1.2;
+  color: #000000;
+}
+
+.step-arrow {
+  font-size: 12px;
+  margin-left: 10px;
+  color: #000000;
+}
+
+.categories-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 10px;
+}
+
+.cat-item {
+  color: #000000;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: default;
+}
+
+/* =========================================
+   REPRODUCTOR WINDOWS MEDIA PLAYER (WMP)
+   ========================================= */
+
+.win-wmp-container {
+  position: relative !important; /* Mantiene el flujo vertical */
+  width: 680px;
+  background-color: #0a2463;
+  border: 3px solid #0055ea;
+  border-radius: 6px 6px 0 0;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.4);
+  font-family: 'Tahoma', 'Segoe UI', sans-serif;
+  margin: 0 !important;
+  overflow: hidden;
+}
+
+/* Barra de Título */
+.wmp-header {
+  background: linear-gradient(to right, #0055ea, #3a83ff);
+  color: #ffffff;
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.wmp-title-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wmp-icon {
+  font-size: 11px;
+  background: #ff9900;
+  color: #fff;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wmp-controls {
+  display: flex;
+  gap: 3px;
+}
+
+.wmp-btn {
+  background: linear-gradient(to bottom, #ece9d8, #d6d2c2);
+  border: 1px solid #7f9db9;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 1px 6px;
+  cursor: pointer;
+}
+
+.wmp-btn.wmp-close {
+  background: linear-gradient(to bottom, #f28a78, #d93a20);
+  color: white;
+  border-color: #990000;
+}
+
+/* Menú Superior */
+.wmp-menu-bar {
+  background-color: #eff3f7;
+  border-bottom: 1px solid #a7bacb;
+  padding: 3px 10px;
+  display: flex;
+  gap: 15px;
+  font-size: 12px;
+  color: #000;
+}
+
+.wmp-menu-bar span {
+  cursor: pointer;
+}
+
+.wmp-menu-bar span:hover {
+  text-decoration: underline;
+}
+
+/* Pantalla del Video */
+.wmp-video-container {
+  width: 100%;
+  height: 380px;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wmp-video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Barra de Controles Estilo Retro */
+.wmp-controls-bar {
+  background: linear-gradient(to bottom, #2b5797, #0e2e5c);
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-top: 1px solid #486eab;
+}
+
+.wmp-play-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 10%, #9bc2e6 80%);
+  border: 2px solid #1f3864;
+  color: #0e2e5c;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0px 1px 3px rgba(255,255,255,0.8);
+}
+
+.wmp-play-btn:hover {
+  background: radial-gradient(circle, #ffffff 10%, #bd3e32 80%);
+}
+
+.wmp-seek-container {
+  flex-grow: 1;
+}
+
+.wmp-seek-bar, .wmp-vol-bar {
+  height: 8px;
+  background: #000;
+  border: 1px solid #5b9bd5;
+  border-radius: 4px;
+  position: relative;
+}
+
+.wmp-seek-handle, .wmp-vol-handle {
+  width: 10px;
+  height: 14px;
+  background: linear-gradient(to bottom, #d9d9d9, #7f7f7f);
+  border: 1px solid #000;
+  position: absolute;
+  top: -4px;
+  left: 20%;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.wmp-volume-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100px;
+}
+
+.wmp-vol-icon {
+  font-size: 14px;
+  color: #fff;
+}

@@ -18,9 +18,11 @@
 <body>
 
   <!-- Barra superior fija -->
-  <header class="top-bar">
+<header class="top-bar">
+  <div class="top-bar-content">
     <p>Infografía interactiva - Evolución digital</p>
-  </header>
+  </div>
+</header>
 
   <!-- Contenedor general del proyecto -->
   <main class="viewport-wrapper">
@@ -384,6 +386,140 @@
       </div>
 
     </section>
+
+   <!-- NUEVA SECCIÓN INDEPENDIENTE PARA COMPARACIÓN -->
+<section id="comparacion-section" class="comparacion-section">
+
+  <div id="win-comparacion" class="win-window win-comparacion-container">
+    
+    <!-- Barra de título -->
+    <div class="win-window-header">
+      <div class="win-title-left">
+        <span class="win-icon">🖥️</span>
+        <span class="win-title-text">Comparación</span>
+      </div>
+      <div class="win-controls">
+        <button class="win-btn-control">_</button>
+        <button class="win-btn-control">🗖</button>
+        <button class="win-btn-control win-close">X</button>
+      </div>
+    </div>
+
+    <!-- Cuerpo de la ventana estilo Bloc de Notas / Notepads -->
+    <div class="win-window-body">
+      
+      <div class="win-comp-heading">
+        <span class="win-comp-icon">🖥️</span>
+        <h2>Comparación</h2>
+      </div>
+
+      <hr class="win-divider-line">
+
+      <!-- Grilla Archie vs Yahoo! -->
+      <div class="win-comp-grid">
+        
+        <!-- Columna Archie -->
+        <div class="win-inner-box">
+          <div class="win-inner-header">
+            <span>ARCHIE</span>
+            <button class="win-inner-btn">🗖</button>
+          </div>
+          <div class="win-inner-content">
+            <div class="step-item">
+              <span class="step-icon">🔍</span>
+              <span class="step-text">Búsqueda por coincidencia</span>
+            </div>
+            <div class="step-arrow">▼</div>
+            <div class="step-item">
+              <span class="step-icon">📄</span>
+              <span class="step-text">Archivo encontrado</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Yahoo! -->
+        <div class="win-inner-box">
+          <div class="win-inner-header">
+            <span>Yahoo!</span>
+            <button class="win-inner-btn">🗖</button>
+          </div>
+          <div class="win-inner-content">
+            <div class="step-item">
+              <span class="step-icon">📁</span>
+              <span class="step-text">Búsqueda por categorías</span>
+            </div>
+            <div class="step-arrow">▼</div>
+            <div class="categories-list">
+              <span class="cat-item">ARTE</span>
+              <span class="cat-item">FOTOGRAFIA</span>
+              <span class="cat-item">SITIOS</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Se eliminó la mini taskbar de abajo -->
+
+  </div>
+
+  <!-- VENTANA REPRODUCTOR DE VIDEO (Windows Media Player) -->
+<div id="win-media-player" class="win-wmp-container">
+  
+  <!-- Barra de Título WMP (Azul clásico XP) -->
+  <div class="wmp-header">
+    <div class="wmp-title-left">
+      <span class="wmp-icon">▶</span>
+      <span class="wmp-title-text">Windows Media Player</span>
+    </div>
+    <div class="wmp-controls">
+      <button class="wmp-btn">_</button>
+      <button class="wmp-btn">🗖</button>
+      <button class="wmp-btn wmp-close">X</button>
+    </div>
+  </div>
+
+  <!-- Barra de Menú superior -->
+  <div class="wmp-menu-bar">
+    <span>File</span>
+    <span>View</span>
+    <span>Play</span>
+    <span>Tools</span>
+    <span>Help</span>
+  </div>
+
+  <!-- Área de Video -->
+  <div class="wmp-video-container">
+    <!-- Reemplazá 'assets/videos/tu-video.mp4' por la ruta de tu video -->
+    <video id="wmp-video" controls poster="../assets/imagenes/wmp-placeholder.png">
+      <source src="../assets/videos/tu-video.mp4" type="video/mp4">
+      Tu navegador no soporta el formato de video.
+    </video>
+  </div>
+
+  <!-- Barra de Controles Inferior -->
+  <div class="wmp-controls-bar">
+    <button class="wmp-play-btn" id="wmp-play-trigger">▶</button>
+    
+    <div class="wmp-seek-container">
+      <div class="wmp-seek-bar">
+        <div class="wmp-seek-handle"></div>
+      </div>
+    </div>
+
+    <div class="wmp-volume-container">
+      <span class="wmp-vol-icon">🔊</span>
+      <div class="wmp-vol-bar">
+        <div class="wmp-vol-handle"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</section>
     
   </main>
 

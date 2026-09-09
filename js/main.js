@@ -106,21 +106,22 @@ function initWindowsDesktop() {
   const startBtn = document.getElementById("start-btn");
   const startMenu = document.getElementById("start-menu");
 
-  // --- A. Abrir/Cerrar Menú Start y Submenús ---
+  // --- A. Menú Start abierto por defecto ---
+  if (startMenu) {
+    startMenu.classList.remove("hidden");
+  }
+
   if (startBtn && startMenu) {
+    startBtn.classList.add("active");
+
+    // Permite abrir/cerrar manualmente si el usuario cliquea la tecla Start
     startBtn.addEventListener("click", (e) => {
       e.stopPropagation();
       startMenu.classList.toggle("hidden");
       startBtn.classList.toggle("active");
     });
 
-    document.querySelectorAll('.win-item:not(.has-submenu)').forEach(item => {
-      item.addEventListener('click', () => {
-        startMenu.classList.add("hidden");
-        startBtn.classList.remove("active");
-      });
-    });
-
+    // Control de Submenús al pasar el mouse
     document.querySelectorAll('.has-submenu').forEach(item => {
       item.addEventListener('mouseenter', () => {
         const targetId = item.getAttribute("data-submenu");
@@ -137,12 +138,18 @@ function initWindowsDesktop() {
 
   // --- B. APERTURA DE VENTANAS CON POSICIÓN ALEATORIA ---
   document.querySelectorAll('.show-window').forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation(); // Evita propagaciones que puedan cerrar menús
+      
       const winId = btn.getAttribute('data-window');
       const winEl = document.getElementById(winId);
 
       if (winEl) {
         winEl.classList.remove('hidden');
+
+        // Eleva el z-index de la ventana abierta sobre las demás
+        document.querySelectorAll('.win-window').forEach(w => w.style.zIndex = '10');
+        winEl.style.zIndex = '100';
 
         const desktopEl = document.getElementById('desktop-section');
         const desktopWidth = desktopEl ? desktopEl.clientWidth : window.innerWidth;
@@ -181,6 +188,7 @@ function initWindowsDesktop() {
           }
         }
       }
+      // NOTA: Se eliminó el cierre automático de 'startMenu' al abrir ventanas
     });
   });
 
@@ -244,20 +252,16 @@ function initYahooWelcomeData() {
     step++;
 
     if (step === 1) {
-      // Oculta el texto y muestra contenedor + Raíz (Yahoo!)
       if (introText) introText.classList.add('hidden');
       if (treeContainer) treeContainer.classList.remove('hidden');
       if (level1) level1.classList.remove('hidden');
     } else if (step === 2) {
-      // Muestra Nivel 2 (Categorías) y dibuja líneas
       if (level2) level2.classList.remove('hidden');
       drawYahooTreeLines();
     } else if (step === 3) {
-      // Muestra Nivel 3 (Subcategorías) y dibuja líneas
       if (level3) level3.classList.remove('hidden');
       drawYahooTreeLines();
     } else if (step === 4) {
-      // Muestra el link final y deshabilita el botón
       if (nasaLink) nasaLink.classList.remove('hidden');
       nextBtn.disabled = true;
       nextBtn.classList.add('win-btn-disabled');
@@ -401,7 +405,7 @@ function renderArchieChart() {
     archieChartInstance.destroy();
   }
 
-  // PASO 1: Renderizar Archie en solitario (Escala Lineal Inicial)
+  // PASO 1: Renderizar Archie en solitario
   archieChartInstance = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -418,7 +422,7 @@ function renderArchieChart() {
       responsive: true,
       maintainAspectRatio: false,
       animation: {
-        duration: 1200, // Entrada suave de Archie
+        duration: 1200,
         easing: 'easeOutQuart'
       },
       plugins: {
@@ -445,31 +449,27 @@ function renderArchieChart() {
     }
   });
 
-  // PASO 2: Pausa de 3.5 segundos para que la persona lea la barra de Archie cómodamente
+  // PASO 2: Transición con escala logarítmica
   setTimeout(() => {
     if (!archieChartInstance) return;
 
-    // Cambiamos a escala logarítmica para que la barra de 50.000 sea perfectamente visible al lado de 16.400M
     archieChartInstance.options.scales.y.type = 'logarithmic';
-    archieChartInstance.options.scales.y.min = 1000; // Define una base fija para que no parta de cero absoluto
+    archieChartInstance.options.scales.y.min = 1000;
     
-    // Extendemos la duración de la animación de transición
     archieChartInstance.options.animation = {
       duration: 1200,
       easing: 'easeInOutCubic'
     };
 
-    // Agregamos Google a los datos
     archieChartInstance.data.labels = ['Archie (1993)', 'Google (2025)'];
     archieChartInstance.data.datasets[0].data = [50000, 16400000000];
     archieChartInstance.data.datasets[0].backgroundColor = ['#000080', '#34a853'];
 
-    // Actualizamos el gráfico con la nueva escala e información
     archieChartInstance.update();
-  },1800);
+  }, 1800);
 }
 
-// Evento de apertura desde el menú
+// Evento de apertura del gráfico de Archie
 document.querySelectorAll('[data-window="win-archie-data"]').forEach(item => {
   item.addEventListener('click', () => {
     setTimeout(renderArchieChart, 50);
