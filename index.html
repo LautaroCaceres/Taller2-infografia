@@ -455,7 +455,7 @@
 
         <div class="wmp-video-container">
           <video id="wmp-video" controls poster="../assets/imagenes/wmp-placeholder.png">
-            <source src="../assets/videos/tu-video.mp4" type="video/mp4">
+            <source src="../assets/videos/video1.mp4" type="video/mp4">
             Tu navegador no soporta el formato de video.
           </video>
         </div>
@@ -715,6 +715,286 @@
       </div>
 
     </div>
+
+    <!-- SECCIÓN GOOGLE / PAGERANK -->
+<section id="google-pagerank-section" class="google-section">
+  
+  <!-- Marco/Contenedor tipo Pantalla de Monitor -->
+  <div class="screen-frame">
+    
+    <!-- NAVEGADOR VIRTUAL -->
+    <div class="virtual-browser">
+
+      <!-- BARRA DEL NAVEGADOR GOOGLE (Header Fijo) -->
+      <div class="gb-header">
+        <button id="gb-back-btn" class="gb-nav-btn hidden" title="Volver a la búsqueda">
+          ◄ Volver a Búsqueda
+        </button>
+
+        <div class="gb-logo-container">
+          <span class="gb-logo-text"><span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span><span class="g-beta">! BETA</span></span>
+        </div>
+
+        <div class="gb-search-bar">
+          <input type="text" value="pagerank" readonly />
+          <select disabled>
+            <option>10 results</option>
+          </select>
+          <button class="gb-btn">Google Search</button>
+          <button class="gb-btn">I'm feeling lucky</button>
+        </div>
+      </div>
+
+      <!-- CONTENIDO DINÁMICO DE LA PANTALLA -->
+      <div class="gb-viewport">
+
+        <!-- 1. VISTA: RESULTADOS DE BÚSQUEDA (SERP) -->
+        <div id="gb-view-results" class="gb-view active">
+          <div class="serp-container">
+            <h2 class="serp-main-title">
+              <a href="#" class="gb-link-trigger" data-target="que-es">PageRank (Google 1998)</a>
+            </h2>
+            <p class="serp-snippet">PageRank es el algoritmo original que creó Google para <strong>medir la importancia...</strong></p>
+            <span class="serp-url">www.google.com</span>
+
+            <div class="serp-sublinks">
+              <div class="serp-item">
+                <a href="#" class="gb-link-trigger" data-target="que-es">Qué es</a>
+                <p>PageRank es el algoritmo original que creó Google para <strong>medir la importancia...</strong></p>
+                <span class="serp-url">www.google.com</span>
+              </div>
+
+              <div class="serp-item">
+                <a href="#" class="gb-link-trigger" data-target="como-funciona">Cómo funciona</a>
+                <p>PageRank funcionaba a partir de <strong>votos</strong>. Cada enlace desde una página hacia otra...</p>
+                <span class="serp-url">www.google.com</span>
+              </div>
+
+              <div class="serp-item">
+                <a href="#" class="gb-link-trigger" data-target="historia">Historia</a>
+                <p>PageRank tomó de inspiración el <strong>sistema académico de citaciones</strong> de los años...</p>
+                <span class="serp-url">www.google.com</span>
+              </div>
+
+              <div class="serp-item">
+                <a href="#" class="gb-link-trigger" data-target="ecuacion">Ecuación</a>
+                <p>El término <strong>(1 - d)</strong> representa el "salto aleatorio", es decir, la probabilidad...</p>
+                <span class="serp-url">www.google.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. VISTA: DETALLE CON MENÚ LATERAL (Pestañas) -->
+        <div id="gb-view-detail" class="gb-view hidden">
+          <div class="detail-layout">
+            
+            <!-- Sidebar / Menú de navegación lateral -->
+            <nav class="detail-sidebar">
+              <button class="sidebar-btn" data-tab="que-es">Qué es?</button>
+              <button class="sidebar-btn" data-tab="como-funciona">Cómo funciona?</button>
+              <button class="sidebar-btn" data-tab="historia">Historia</button>
+              <button class="sidebar-btn" data-tab="ecuacion">Ecuación</button>
+            </nav>
+
+            <!-- Área del tab activo -->
+            <main class="detail-content">
+              <div class="tab-folder-header">
+                <span id="tab-folder-title" class="folder-label">Qué es</span>
+              </div>
+              <div class="folder-body">
+
+                <!-- CONTENIDO: QUÉ ES -->
+                <div id="tab-content-que-es" class="tab-pane">
+                  <h1 class="pane-title">Qué es</h1>
+                  <p class="pane-description">
+                    PageRank es el algoritmo original que creó Google para medir la importancia de las páginas web y ordenar los resultados de búsqueda.
+                  </p>
+                  <div class="diagram-flow">
+                    <div class="diag-step">
+                      <div class="diag-circle">🗳️</div>
+                      <span>Sistema de votos</span>
+                    </div>
+                    <span class="diag-arrow">Determina ➔</span>
+                    <div class="diag-step">
+                      <div class="diag-circle">📈</div>
+                      <span>Posición de la página (dentro de los resultados)</span>
+                    </div>
+                    <span class="diag-arrow">Con ➔</span>
+                    <div class="diag-step">
+                      <div class="diag-circle badge-number">30</div>
+                      <span>PageRank (PR)<br><small>(Valor numérico)</small></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- CONTENIDO: CÓMO FUNCIONA -->
+                <div id="tab-content-como-funciona" class="tab-pane hidden">
+  <h1 class="pane-title">Como funciona?</h1>
+  
+  <div class="cf-diagram-wrapper">
+    <!-- Cuadro Página 1 -->
+    <div class="cf-box">
+      <span class="cf-box-title">Página1</span>
+      <div class="cf-box-content">
+        <span class="cf-link-text">Página2</span>
+      </div>
+    </div>
+
+    <!-- Flecha central con texto -->
+    <div class="cf-arrow-container">
+      <span class="cf-arrow-label">+1 Voto</span>
+      <div class="cf-arrow-line">➔</div>
+    </div>
+
+    <!-- Cuadro Página 2 -->
+    <div class="cf-box">
+      <span class="cf-box-title">Página2</span>
+      <div class="cf-box-content"></div>
+    </div>
+  </div>
+
+  <div class="cf-results-list">
+    <strong>Búsqueda Resultados:</strong>
+    <ul>
+      <li>Página2</li>
+      <li>Página 1</li>
+    </ul>
+  </div>
+</div>
+
+                <!-- CONTENIDO: HISTORIA -->
+                <div id="tab-content-historia" class="tab-pane hidden">
+  <h1 class="pane-title">Historia</h1>
+  
+  <div class="history-vertical-flow">
+    <div class="history-card">
+      Análisis de citaciones académicos
+    </div>
+    
+    <div class="flow-arrow-down">↓</div>
+    
+    <div class="history-card">
+      Calcula importancia de papers científicos
+    </div>
+    
+    <div class="flow-split-arrows">
+      <span class="arrow-left">↙</span>
+      <span class="arrow-right">↘</span>
+    </div>
+    
+    <div class="history-outcomes-row">
+      <div class="outcome-pill">+Citaciones = +importante</div>
+      <div class="outcome-pill">-Citaciones = -importante</div>
+    </div>
+  </div>
+</div>
+
+                <!-- CONTENIDO: ECUACIÓN -->
+             <div id="tab-content-ecuacion" class="tab-pane hidden">
+  <h1 class="pane-title">Ecuación</h1>
+  
+  <div class="ecuacion-grid-layout">
+    <!-- Columna Izquierda: Imagen de la Fórmula en PNG y Leyenda -->
+    <div class="ecuacion-left-col">
+      <!-- LUGAR PARA TU IMAGEN DE LA FÓRMULA PNG -->
+      <div class="formula-img-wrapper">
+        <img src="assets/imagenes/formula-pagerank.png" alt="Fórmula PageRank" class="img-responsive" />
+      </div>
+
+     <ul class="formula-legend">
+        <li><strong>PR(A):</strong> Puntuación de importancia final de la página A.</li>
+        <li><strong>1 - d:</strong> Probabilidad de llegar a la página mediante un salto directo o aleatorio.</li>
+        <li><strong>d:</strong> Factor de amortiguación que mide la probabilidad de seguir haciendo clic en los enlaces.</li>
+        <li><strong>PR(i):</strong> Autoridad o nivel de importancia de la página que emite el enlace.</li>
+        <li><strong>C(i):</strong> Cantidad total de enlaces salientes que tiene la página que emite el enlace.</li>
+        <li><strong>Σ:</strong> Sumatoria de todos los votos recibidos desde las páginas que enlazan a A.</li>
+      </ul>
+    </div>
+
+    <!-- Columna Derecha: LUGAR PARA TU IMAGEN DE PELOTAS/CÍRCULOS -->
+    <div class="ecuacion-right-col">
+      <div class="diagram-img-wrapper">
+        <img src="assets/imagenes/grafico-pelotas-pagerank.png" alt="Gráfico de Nodos PageRank" class="img-responsive" />
+      </div>
+    </div>
+  </div>
+</div>
+
+              </div>
+            </main>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- SECCIÓN DE BANNER Y VIDEO 2 -->
+<section id="video-section-2" class="video-section-2">
+
+  <!-- Banner intermedio (Transición hacia el video) -->
+  <div class="modern-card scroll-reveal" id="modern-banner-video-2">
+    <div class="modern-card-content">
+      <p class="modern-card-text">
+        El impacto de PageRank cambió la Web para siempre y sentó las bases de la búsqueda moderna.
+      </p>
+    </div>
+  </div>
+
+  <!-- REPRODUCTOR MEDIA PLAYER 2 -->
+  <div id="win-media-player-2" class="win-wmp-container">
+    <div class="wmp-header">
+      <div class="wmp-title-left">
+        <span class="wmp-icon">▶</span>
+        <span class="wmp-title-text">Windows Media Player</span>
+      </div>
+      <div class="wmp-controls">
+        <button class="wmp-btn">_</button>
+        <button class="wmp-btn">🗖</button>
+        <button class="wmp-btn wmp-close">X</button>
+      </div>
+    </div>
+
+    <div class="wmp-menu-bar">
+      <span>File</span>
+      <span>View</span>
+      <span>Play</span>
+      <span>Tools</span>
+      <span>Help</span>
+    </div>
+
+    <!-- Contenedor del segundo video -->
+    <div class="wmp-video-container">
+      <video id="wmp-video-2" controls poster="assets/imagenes/wmp-placeholder-2.png">
+        <source src="assets/videos/video2.mp4" type="video/mp4">
+        Tu navegador no soporta el formato de video.
+      </video>
+    </div>
+
+    <div class="wmp-controls-bar">
+      <button class="wmp-play-btn" id="wmp-play-trigger-2">▶</button>
+      
+      <div class="wmp-seek-container">
+        <div class="wmp-seek-bar">
+          <div class="wmp-seek-handle"></div>
+        </div>
+      </div>
+
+      <div class="wmp-volume-container">
+        <span class="wmp-vol-icon">🔊</span>
+        <div class="wmp-vol-bar">
+          <div class="wmp-vol-handle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
 
   </main>
 

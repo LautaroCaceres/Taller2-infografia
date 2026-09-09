@@ -218,6 +218,96 @@ document.addEventListener("DOMContentLoaded", () => {
     browserContent.innerHTML = originalBrowserContent;
     initSearchDropdown(); // Re-vinculamos eventos del buscador
   }
+
+  const backBtn = document.getElementById("gb-back-btn");
+  const viewResults = document.getElementById("gb-view-results");
+  const viewDetail = document.getElementById("gb-view-detail");
+
+  const linkTriggers = document.querySelectorAll(".gb-link-trigger");
+  const sidebarBtns = document.querySelectorAll(".sidebar-btn");
+  const tabPanes = document.querySelectorAll(".tab-pane");
+  const folderLabel = document.getElementById("tab-folder-title");
+
+  // Diccionario de títulos para la pestaña superior del folder
+  const tabTitles = {
+    "que-es": "Qué es",
+    "como-funciona": "Cómo funciona",
+    "historia": "Historia",
+    "ecuacion": "Ecuación"
+  };
+
+  // Función para cambiar de pestaña interna en la vista de detalle
+  function switchTab(targetTab) {
+    sidebarBtns.forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.tab === targetTab);
+    });
+
+    tabPanes.forEach(pane => {
+      pane.classList.toggle("hidden", pane.id !== `tab-content-${targetTab}`);
+    });
+
+    if (folderLabel && tabTitles[targetTab]) {
+      folderLabel.textContent = tabTitles[targetTab];
+    }
+
+    // Renderizar LaTeX cuando la solapa de Ecuación se vuelve visible
+    if (targetTab === "ecuacion" && window.MathJax) {
+      MathJax.typesetPromise();
+    }
+  }
+
+  // Clic en los enlaces de la búsqueda Google (SERP)
+  linkTriggers.forEach(trigger => {
+    trigger.addEventListener("click", (e) => {
+      e.preventDefault();
+      const target = trigger.dataset.target;
+
+      // Cambiar de vista SERP a Detalle
+      viewResults.classList.add("hidden");
+      viewDetail.classList.remove("hidden");
+      backBtn.classList.remove("hidden");
+
+      // Activar la solapa correspondiente
+      switchTab(target);
+    });
+  });
+
+  // Clics en la barra lateral del navegador
+  sidebarBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      switchTab(btn.dataset.tab);
+    });
+  });
+
+  // Botón Volver a la Búsqueda
+  backBtn.addEventListener("click", () => {
+    viewDetail.classList.add("hidden");
+    viewResults.classList.remove("hidden");
+    backBtn.classList.add("hidden");
+  });
+
+  const video2 = document.getElementById("wmp-video-2");
+  const playTrigger2 = document.getElementById("wmp-play-trigger-2");
+
+  if (video2 && playTrigger2) {
+    playTrigger2.addEventListener("click", () => {
+      if (video2.paused) {
+        video2.play();
+        playTrigger2.textContent = "❚❚";
+      } else {
+        video2.pause();
+        playTrigger2.textContent = "▶";
+      }
+    });
+
+    video2.addEventListener("play", () => {
+      playTrigger2.textContent = "❚❚";
+    });
+
+    video2.addEventListener("pause", () => {
+      playTrigger2.textContent = "▶";
+    });
+  }
 });
 
 // Listener global para redimensionar la ventana del navegador
