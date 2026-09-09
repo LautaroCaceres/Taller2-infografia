@@ -465,6 +465,15 @@
 
   </div>
 
+  <!-- TARJETA MODERNA INTERMEDIA (POP-UP / BANNER) -->
+<div class="modern-card scroll-reveal" id="modern-banner">
+  <div class="modern-card-content">
+    <p class="modern-card-text">
+      Internet crecía más rápido de lo que cualquier humano podía catalogar. Era hora de un cambio.
+    </p>
+  </div>
+</div>
+
   <!-- VENTANA REPRODUCTOR DE VIDEO (Windows Media Player) -->
 <div id="win-media-player" class="win-wmp-container">
   
@@ -520,6 +529,369 @@
 </div>
 
 </section>
+
+<!-- SECCIÓN NAVEGADOR RETRO -->
+<section id="browser-section" class="browser-section">
+  <div class="old-browser-window">
+    
+    <!-- Barra de título del Navegador -->
+    <div class="browser-header">
+      <div class="browser-title">
+        <span class="browser-icon">🌐</span>
+        <span>Microsoft Internet Explorer</span>
+      </div>
+      <div class="win-controls">
+        <button class="win-btn">_</button>
+        <button class="win-btn">🗖</button>
+        <button class="win-btn win-close">X</button>
+      </div>
+    </div>
+
+    <!-- Barra de direcciones Address -->
+    <div class="browser-address-bar">
+      <span class="address-label">Address</span>
+      <div class="address-input-wrapper">
+        <input type="text" value="http://www.search-engine.com/1995" readonly />
+        <button class="go-btn">➜ Go</button>
+      </div>
+    </div>
+
+    <!-- Área de Contenido Web -->
+    <div class="browser-content">
+      
+      <!-- Buscador Central -->
+      <div class="search-hero">
+  <h1 class="search-logo">
+    Búsqueda por<br>palabras clave
+  </h1>
+  
+  <div class="search-input-container">
+    <input 
+      type="text" 
+      id="search-input" 
+      placeholder="Search the web..." 
+      autocomplete="off"
+    />
+    <ul id="search-dropdown" class="search-dropdown hidden">
+      <li data-category="busqueda">Búsqueda por palabras clave</li>
+      <li data-category="altavista">Altavista</li>
+      <li data-category="lycos">Lycos</li>
+    </ul>
+  </div>
+
+  <div class="search-buttons">
+    <button class="retro-btn">Search</button>
+    <button class="retro-btn">I'm feeling lucky</button>
+  </div>
+</div>
+
+      <!-- Bloques de Categorías (Grilla de 3 columnas) -->
+      <div class="categories-grid">
+        
+        <!-- Columna 1 -->
+        <div class="category-card card-cyan">
+          <h3>Búsqueda por palabras clave</h3>
+          <ul>
+            <li><a href="#" class="retro-link" data-info="que-es-busqueda">qué es?</a></li>
+            <li><a href="#" class="retro-link" data-info="como-busqueda">cómo funcionaba?</a></li>
+            <li><a href="#" class="retro-link" data-info="problema-busqueda">qué problema tenía?</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna 2 -->
+        <div class="category-card card-teal">
+          <h3>Altavista</h3>
+          <ul>
+            <li><a href="#" class="retro-link" data-info="que-es-altavista">qué es</a></li>
+    <li><a href="#" class="retro-link" data-info="datos-altavista">datos</a></li>
+    <li><a href="#" class="retro-link" data-info="veia-altavista">cómo se veía</a></li>
+          </ul>
+        </div>
+
+        <!-- Columna 3 -->
+        <div class="category-card card-dark-teal">
+          <h3>Lycos</h3>
+          <ul>
+<li><a href="#" class="retro-link" data-info="que-es-lycos">qué es</a></li>
+    <li><a href="#" class="retro-link" data-info="datos-lycos">datos</a></li>
+    <li><a href="#" class="retro-link" data-info="veia-lycos">cómo se veía</a></li>
+          </ul>
+        </div>
+
+      </div> <!-- Cierra categories-grid -->
+
+    </div> <!-- Cierra browser-content -->
+  </div> <!-- Cierra old-browser-window -->
+</section>
+<!-- MODALES Y POP-UPS INTERACTIVOS DE PALABRAS CLAVE -->
+<div id="modal-overlay" class="modal-overlay hidden">
+
+  <!-- VENTANA 1: QUÉ ES (Bloc de notas / Flujograma) -->
+  <div id="modal-que-es" class="retro-window modal-window hidden">
+    <div class="browser-header">
+      <div class="browser-title"><span>Como funcionaba</span></div>
+      <button class="win-btn win-close close-modal-btn">X</button>
+    </div>
+    <div class="retro-window-body flex-center">
+      <div class="flow-container">
+        <div class="flow-box">Usuario busca “auto barato”</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-box">
+          Buscador busca palabras exactas<br><strong>auto + barato</strong>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-box highlight-box">
+          <strong>Resultado</strong><br>
+          “Venta de autos baratos usados”<br>
+          <small>Coincide porque tiene ambas palabras</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VENTANA 2: QUÉ PROBLEMA TENÍA (Pestañas 1, 2, 3) -->
+  <div id="modal-problemas" class="retro-window modal-window hidden">
+    <div class="browser-header">
+      <div class="browser-title"><span>Problemas</span></div>
+      <button class="win-btn win-close close-modal-btn">X</button>
+    </div>
+    <div class="retro-window-body">
+      <!-- Contenido intercambiable -->
+      <div class="tab-content-wrapper">
+        <!-- Pestaña 1 -->
+        <div id="tab-1" class="tab-panel active">
+          <div class="card-problem green-card">
+            <h4>Sinonimia</h4>
+            <p>Mismo significado, distintas palabras</p>
+            <div class="problem-example">
+              <span class="pill">Auto</span>
+              <span class="neq">≠</span>
+              <span class="pill">Coche</span>
+            </div>
+            <small>Mismo objeto, distinta búsqueda</small>
+          </div>
+        </div>
+        <!-- Pestaña 2 -->
+        <div id="tab-2" class="tab-panel">
+          <div class="card-problem red-card">
+            <h4>Polisemia</h4>
+            <p>Una palabra con varios significados</p>
+            <div class="problem-example flex-col">
+              <span class="pill center-pill">Banco</span>
+              <div class="sub-labels">
+                <span>Banco financiero</span>
+                <span>Banco para sentarse</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Pestaña 3 -->
+        <div id="tab-3" class="tab-panel">
+          <div class="card-problem yellow-card">
+            <h4>Intención</h4>
+            <p>La palabra sola no explica qué quiere el usuario</p>
+            <div class="problem-example flex-col">
+              <span class="pill center-pill">Apple</span>
+              <div class="sub-labels">
+                <span>¿Fruta?</span>
+                <span>¿Empresa?</span>
+                <span>¿Producto?</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botones numéricos de navegación -->
+      <div class="tab-buttons-bar">
+        <button class="tab-btn active" data-tab="1">1</button>
+        <button class="tab-btn" data-tab="2">2</button>
+        <button class="tab-btn" data-tab="3">3</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VENTANA 3: CÓMO FUNCIONABA / LIMITACIONES (Mapa Secuencial) -->
+  <div id="modal-limitaciones" class="retro-window modal-window hidden">
+    <div class="browser-header">
+      <div class="browser-title"><span>Limitaciones</span></div>
+      <button class="win-btn win-close close-modal-btn">X</button>
+    </div>
+    <div class="retro-window-body">
+      <div class="tree-diagram">
+        <!-- Paso 1 -->
+        <div id="step-node-1" class="tree-node">
+          <strong>Antes: “auto barato”</strong><br>
+          <small>Búsqueda por coincidencia de palabras</small>
+        </div>
+        
+        <!-- Paso 2 -->
+        <div id="step-node-2" class="tree-node hidden-node">
+          <div class="tree-arrow">↓</div>
+          <div class="node-box teal-node">La web crece</div>
+          <div class="tree-arrow">↓</div>
+          <div class="node-box orange-node">El lenguaje es más complejo</div>
+        </div>
+
+        <!-- Paso 3 -->
+        <div id="step-node-3" class="tree-node hidden-node">
+          <div class="tree-arrow">↓</div>
+          <div class="node-branches">
+            <span>Sinonimia</span>
+            <span>Polisemia</span>
+            <span>Intención</span>
+          </div>
+          <div class="tree-arrow">↓</div>
+          <div class="node-box red-node">Las coincidencias ya no alcanzan</div>
+        </div>
+      </div>
+
+      <!-- Controles de avance / retroceso -->
+      <div class="player-controls-bar">
+        <button id="prev-step-btn" class="retro-btn" disabled>◄◄</button>
+        <button id="next-step-btn" class="retro-btn">►►</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- POP-UP RETRO DE ERROR FINAL -->
+  <div id="modal-error" class="retro-window alert-window hidden">
+    <div class="browser-header alert-header">
+      <span>Reminder</span>
+      <button class="win-btn win-close close-error-btn">X</button>
+    </div>
+    <div class="alert-body">
+      <span class="alert-icon">⚠️</span>
+      <p>Se necesitan buscadores más inteligentes</p>
+    </div>
+    <div class="alert-footer">
+      <button class="retro-btn close-error-btn">Ok, thanks</button>
+    </div>
+  </div>
+
+  <!-- VENTANA ALTAVISTA 1: QUÉ ES -->
+<div id="modal-altavista-que-es" class="retro-window modal-window hidden">
+  <div class="browser-header">
+    <div class="browser-title"><span>Que es</span></div>
+    <button class="win-btn win-close close-modal-btn">X</button>
+  </div>
+  <div class="retro-window-body flex-center">
+    <div class="notepad-container">
+      <p class="notepad-text-lg">
+        AltaVista fue un motor de búsqueda de internet, popular en los años 90, antecesor de Google.
+      </p>
+      <div class="notepad-icon">🔍</div>
+    </div>
+  </div>
+</div>
+
+<!-- VENTANA ALTAVISTA 2: DATOS -->
+<div id="modal-altavista-datos" class="retro-window modal-window hidden">
+  <div class="browser-header">
+    <div class="browser-title"><span>Datos</span></div>
+    <button class="win-btn win-close close-modal-btn">X</button>
+  </div>
+  <div class="retro-window-body altavista-datos-body">
+    
+    <!-- Gráfico Comparativo -->
+    <div class="chart-section">
+      <p class="chart-title">Crecimiento explosivo de visitas</p>
+      <div class="chart-container">
+        <div class="bar-wrapper">
+          <div class="bar bar-small">
+            <span class="bar-tooltip">300 mil</span>
+          </div>
+        </div>
+        <div class="bar-wrapper">
+          <div id="altavista-bar-big" class="bar bar-large hidden-bar">
+            <span class="bar-tooltip">80 millones</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="win-divider" />
+
+    <!-- Cards de Datos Secuenciales -->
+    <div class="data-cards-grid">
+      <div id="data-card-1" class="data-card seq-card hidden-card">
+        <h3>13 millones</h3>
+        <p>de búsquedas realizadas en promedio cada día</p>
+      </div>
+
+      <div id="data-card-2" class="data-card seq-card hidden-card">
+        <h3>N.º 1</h3>
+        <p>como índice de navegación en su época dorada</p>
+      </div>
+
+      <div id="data-card-3" class="data-card seq-card hidden-card">
+        <h3>Uno de los sitios</h3>
+        <p>más antiguos de internet</p>
+      </div>
+    </div>
+
+    <div class="dialog-footer">
+      <button class="retro-btn close-modal-btn">OK</button>
+      <button class="retro-btn close-modal-btn">Cancel</button>
+      <button class="retro-btn" disabled>Apply</button>
+    </div>
+  </div>
+</div>
+
+<!-- VENTANA LYCOS 1: QUÉ ES -->
+<div id="modal-lycos-que-es" class="retro-window modal-window hidden">
+  <div class="browser-header">
+    <div class="browser-title"><span>Que es</span></div>
+    <button class="win-btn win-close close-modal-btn">X</button>
+  </div>
+  <div class="retro-window-body flex-center">
+    <div class="notepad-container">
+      <p class="notepad-text-lg">
+        Motor de búsqueda + portal web (noticias, email, etc)
+      </p>
+      <!-- Podés usar un SVG/PNG o ícono vectorial para el portal -->
+      <div class="portal-illustration">
+        <span style="font-size: 50px;">🖥️</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VENTANA LYCOS 2: DATOS -->
+<div id="modal-lycos-datos" class="retro-window modal-window hidden">
+  <div class="browser-header">
+    <div class="browser-title"><span>Datos</span></div>
+    <button class="win-btn win-close close-modal-btn">X</button>
+  </div>
+  <div class="retro-window-body lycos-datos-body">
+    
+    <div class="lycos-info-text">
+      <p>
+        El nombre proviene de la araña <strong>Lycosidae</strong>, como metáfora de una criatura que recorre y teje la red para encontrar su presa.
+      </p>
+    </div>
+
+    <hr class="win-divider" />
+
+    <!-- Fotos de Araña -->
+    <div class="spider-images-container">
+      <div class="spider-img-box">
+        <img src="assets/imagenes/lycos-spider1.png" alt="Araña Lycosidae entera" class="spider-img">
+      </div>
+      <div class="spider-img-box">
+        <img src="assets/imagenes/lycos-spider2.png" alt="Macro ojos araña Lycosidae" class="spider-img">
+      </div>
+    </div>
+
+    <div class="dialog-footer">
+      <button class="retro-btn close-modal-btn">OK</button>
+      <button class="retro-btn close-modal-btn">Cancel</button>
+      <button class="retro-btn" disabled>Apply</button>
+    </div>
+  </div>
+</div>
+
+</div>
     
   </main>
 

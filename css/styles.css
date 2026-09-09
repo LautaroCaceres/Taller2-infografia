@@ -723,3 +723,673 @@ body {
   font-size: 14px;
   color: #fff;
 }
+
+/* =========================================
+   TARJETA MODERNA (BANNER DE TRANSICIÓN)
+   ========================================= */
+
+.modern-card {
+  width: 680px;
+  max-width: 90%;
+  padding: 40px 36px;
+  border-radius: 28px;
+  
+  /* --- FONDO BASE CON GRADIENTE EDITABLE --- */
+  background: linear-gradient(135deg, #1b263e 0%, #154589 100%); 
+  
+  /* Borde fino sutil para resalte UI */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 
+              0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+  
+  text-align: center;
+  position: relative;
+  z-index: 10;
+
+  /* Estado inicial animación */
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modern-card-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modern-card-text {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin: 0;
+  
+  /* ESTADO INICIAL TEXTO */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out 0.3s, 
+              transform 0.6s ease-out 0.3s; /* Delay para entrar después del pop-up */
+}
+
+/* --- ESTADOS CUANDO SE ACTIVA AL HACER SCROLL --- */
+
+.modern-card.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.modern-card.is-visible .modern-card-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   SECCIÓN NAVEGADOR WEB VIEJO
+   ========================================= */
+
+.browser-section {
+  width: 100%;
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.old-browser-window {
+  width: 1200px;
+  max-width: 95%;
+  min-height: 800px; /* Le da más presencia y espacio vertical */
+  background-color: #c0c0c0;
+  border: 3px solid;
+  border-color: #ffffff #404040 #404040 #ffffff;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.4);
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Navegador */
+.browser-header {
+  background: linear-gradient(to right, #000080, #1084d0);
+  color: white;
+  padding: 4px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.browser-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Barra de Dirección Address */
+.browser-address-bar {
+  background-color: #d4d0c8;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 2px solid #808080;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 12px;
+}
+
+.address-input-wrapper {
+  display: flex;
+  flex-grow: 1;
+  gap: 6px;
+}
+
+.address-input-wrapper input {
+  flex-grow: 1;
+  padding: 3px 6px;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  background-color: #fff;
+  font-family: monospace;
+}
+
+.go-btn {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  padding: 2px 8px;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+/* Contenido Interno */
+.browser-content {
+  background-color: #ffffff;
+  padding: 40px 20px;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  margin: 8px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* Centra todo el bloque unificado verticalmente */
+  align-items: center;
+}
+
+/* Buscador Central */
+.search-hero {
+  background-color: #e5e5e5;
+  border: 1px solid #a0a0a0;
+  padding: 30px;
+  text-align: center;
+  width: 900px;             /* Mismo ancho que la grilla */
+  max-width: 100%;
+  margin: 0 auto;           /* Eliminamos el margin-bottom para que pegue con la grilla */
+  box-sizing: border-box;
+}
+
+.search-logo {
+  font-size: 38px; /* Tamaño de tipografía más prominente */
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  color: #000;
+  text-align: center;
+}
+
+.search-input-container {
+  position: relative;
+  width: 80%;
+  margin: 0 auto 15px auto;
+}
+
+.search-input-container input {
+  width: 100%;
+  padding: 6px;
+  border: 2px solid;
+  border-color: #404040 #ffffff #ffffff #404040;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Desplegable de búsqueda */
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border: 2px solid #000080;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  z-index: 100;
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+}
+
+.search-dropdown li {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.search-dropdown li:hover {
+  background-color: #000080;
+  color: #ffffff;
+}
+
+.search-dropdown.hidden {
+  display: none;
+}
+
+.search-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.retro-btn {
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #404040 #404040 #ffffff;
+  padding: 4px 16px;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.retro-btn:active {
+  border-color: #404040 #ffffff #ffffff #404040;
+}
+
+/* Grilla de Categorías */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;                   /* O un gap controlado si querés división interna */
+  width: 900px;             /* Mismo ancho que el buscador */
+  max-width: 100%;
+  margin: 0 auto;           /* Centrado horizontal sin margen superior */
+  box-sizing: border-box;
+}
+
+.category-card {
+  padding: 20px;
+  color: #000;
+}
+
+.card-cyan { background-color: #7cebeb; }
+.card-teal { background-color: #52c2c2; }
+.card-dark-teal { background-color: #429e9e; }
+
+.category-card h3 {
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.category-card ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.category-card li {
+  margin-bottom: 8px;
+}
+
+.retro-link {
+  color: #0000ee;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.retro-link:visited {
+  color: #551a8b;
+}
+
+.retro-link:hover {
+  color: #ff0000;
+}
+
+/* --- OVERLAY DE MODALES --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-overlay.hidden,
+.modal-window.hidden,
+.alert-window.hidden {
+  display: none !important;
+}
+
+/* --- VENTANAS RETRO BASE --- */
+.retro-window {
+  width: 520px;
+  max-width: 90%;
+  background-color: #c0c0c0;
+  border: 3px solid;
+  border-color: #ffffff #404040 #404040 #ffffff;
+  box-shadow: 6px 6px 0px rgba(0,0,0,0.5);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.retro-window-body {
+  background: #ffffff;
+  margin: 6px;
+  padding: 24px;
+  border: 2px solid;
+  border-color: #808080 #ffffff #ffffff #808080;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* VENTANA 1: FLOWCHART */
+.flow-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+.flow-box {
+  border: 1px solid #000;
+  padding: 8px 16px;
+  background: #f9f9f9;
+}
+.highlight-box {
+  background: #eefdfd;
+  border: 2px solid #008080;
+}
+
+/* VENTANA 2: PESTAÑAS Y TARJETAS */
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.card-problem {
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+.green-card { background: #e6f7f5; border: 1px solid #7cebeb; }
+.red-card { background: #fde8e8; border: 1px solid #f8b4b4; }
+.yellow-card { background: #fef5e7; border: 1px solid #fde0b2; }
+
+.problem-example {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 15px 0;
+}
+.pill {
+  background: #fff;
+  border: 1px solid #404040;
+  padding: 6px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+.sub-labels {
+  display: flex;
+  gap: 15px;
+  font-size: 11px;
+  margin-top: 8px;
+}
+
+.tab-buttons-bar {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+.tab-btn {
+  width: 40px;
+  height: 30px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #404040 #404040 #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+}
+.tab-btn.active {
+  border-color: #404040 #ffffff #ffffff #404040;
+  background: #a0a0a0;
+}
+
+/* VENTANA 3: MAPA SECUENCIAL */
+.tree-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  font-size: 12px;
+}
+.hidden-node { display: none; }
+.node-box {
+  padding: 6px 12px;
+  border: 1px solid #606060;
+  border-radius: 4px;
+}
+.teal-node { background: #e0f7f6; }
+.orange-node { background: #fde8e4; }
+.red-node { background: #fde8e8; font-weight: bold; }
+.node-branches {
+  display: flex;
+  gap: 10px;
+  font-weight: bold;
+}
+
+.player-controls-bar {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+/* POP-UP ERROR RETRO */
+.alert-window {
+  width: 320px;
+  position: absolute;
+  z-index: 10000;
+}
+.alert-header { background: #000080; }
+.alert-body {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #c0c0c0;
+}
+.alert-icon { font-size: 24px; }
+.alert-footer {
+  background: #c0c0c0;
+  padding: 8px;
+  text-align: center;
+}
+
+/* --- ESTILOS DE NOTEPAD CON TEXTO GRANDE --- */
+.notepad-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  gap: 20px;
+}
+
+.notepad-text-lg {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.4;
+  color: #000;
+  margin: 0;
+}
+
+.notepad-icon {
+  font-size: 48px;
+}
+
+/* --- ESTILOS MODAL DATOS Y GRÁFICO --- */
+.altavista-datos-body {
+  padding: 16px;
+  gap: 12px;
+}
+
+.chart-section {
+  background: #ffffff;
+  border: 1px solid #a0a0a0;
+  padding: 12px;
+  text-align: center;
+}
+
+.chart-title {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 120px;
+  gap: 40px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #808080;
+}
+
+.bar-wrapper {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.bar {
+  width: 90px;
+  background-color: #008080;
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: bold;
+  transition: height 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.bar-small {
+  height: 25px;
+  background-color: #8edcdc;
+  color: #000;
+}
+
+.bar-large {
+  height: 100px;
+  background-color: #0d6e6e;
+}
+
+.bar:hover .bar-tooltip {
+  transform: scale(1.1);
+}
+
+.hidden-bar {
+  height: 0px !important;
+  opacity: 0;
+}
+
+/* CARDS DE DATOS SECUENCIALES */
+.win-divider {
+  border: none;
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #ffffff;
+  margin: 8px 0;
+}
+
+.data-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  min-height: 140px;
+}
+
+.data-card {
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  text-align: center;
+  background: #f0f8f8;
+  border: 1px solid #b0e0e0;
+}
+
+.data-card h3 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  color: #0d6e6e;
+}
+
+.data-card p {
+  margin: 0;
+  font-size: 11px;
+  color: #333;
+}
+
+.seq-card {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.seq-card.hidden-card {
+  opacity: 0;
+  transform: translateY(15px);
+  pointer-events: none;
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* --- VISTA REEMPLAZABLE EN EL NAVEGADOR ("CÓMO SE VEÍA") --- */
+.browser-injected-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.browser-back-bar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+.altavista-preview-img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #808080;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+/* --- ESTILOS MODAL DATOS DE LYCOS --- */
+.lycos-datos-body {
+  padding: 16px;
+  gap: 12px;
+}
+
+.lycos-info-text p {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #000000;
+  margin: 0 0 10px 0;
+  text-align: left;
+}
+
+.spider-images-container {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.spider-img-box {
+  flex: 1;
+  height: 140px;
+  border: 1px solid #808080;
+  overflow: hidden;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spider-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

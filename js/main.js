@@ -1,13 +1,223 @@
 gsap.registerPlugin(ScrollTrigger);
 
+// Instancias globales para gráficos de Chart.js
+let dirChartInstance = null;
+let archieChartInstance = null;
+
+// =========================================================================
+// LISTENER PRINCIPAL (DOMContentLoaded)
+// =========================================================================
 document.addEventListener("DOMContentLoaded", () => {
+
+  // --- 1. INICIALIZACIONES GENERALES ---
   initLupaFollower();
   initTypingEffect();
   initIntroAnimation();
   initWindowsClock();     // Reloj de la taskbar
-  initWindowsDesktop();   // Menú, Apertura/Cierre y Draggable
+  initWindowsDesktop();   // Menú Start, Apertura/Cierre y Draggable
   initYahooWelcomeData(); // Lógica secuencial del gráfico/árbol Yahoo!
-  initDirWebsChart();
+  initDirWebsChart();     // Gráfico inicial de directorios
+  initSearchDropdown();   // Desplegable del buscador retro
+
+  // --- 2. REVEAL AL HACER SCROLL ---
+  const scrollElements = document.querySelectorAll(".scroll-reveal");
+
+  const elementInView = (el, dividend = 1.25) => {
+    const elementTop = el.getBoundingClientRect().top;
+    return elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend;
+  };
+
+  const handleScrollAnimation = () => {
+    scrollElements.forEach((el) => {
+      if (elementInView(el)) {
+        el.classList.add("is-visible");
+      }
+    });
+  };
+
+  window.addEventListener("scroll", handleScrollAnimation);
+  handleScrollAnimation(); // Disparo inicial al cargar
+
+  // --- 3. MANEJO DE MODALES Y LINKS RETRO (.retro-link) ---
+  const overlay = document.getElementById("modal-overlay");
+  const modalQueEs = document.getElementById("modal-que-es");
+  const modalProblemas = document.getElementById("modal-problemas");
+  const modalLimitaciones = document.getElementById("modal-limitaciones");
+  const modalError = document.getElementById("modal-error");
+  
+  // Modales AltaVista
+  const modalAltavistaQueEs = document.getElementById("modal-altavista-que-es");
+  const modalAltavistaDatos = document.getElementById("modal-altavista-datos");
+
+  // Modales Lycos
+  const modalLycosQueEs = document.getElementById("modal-lycos-que-es");
+  const modalLycosDatos = document.getElementById("modal-lycos-datos");
+
+  const browserContent = document.querySelector(".browser-content");
+
+  // Guardamos el contenido original del navegador para restaurarlo con el botón "Volver"
+  const originalBrowserContent = browserContent ? browserContent.innerHTML : "";
+
+  document.querySelectorAll(".retro-link").forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetInfo = link.getAttribute("data-info");
+
+      // Ocultar todos los modales abiertos
+      document.querySelectorAll(".modal-window, .alert-window").forEach(m => m.classList.add("hidden"));
+
+      // --- Modales de Palabras Clave ---
+      if (targetInfo === "que-es-busqueda") {
+        overlay?.classList.remove("hidden");
+        modalQueEs?.classList.remove("hidden");
+      } else if (targetInfo === "problema-busqueda") {
+        overlay?.classList.remove("hidden");
+        modalProblemas?.classList.remove("hidden");
+      } else if (targetInfo === "como-busqueda") {
+        overlay?.classList.remove("hidden");
+        modalLimitaciones?.classList.remove("hidden");
+        resetTreeSequence();
+      }
+
+      // --- Modales y acciones de AltaVista ---
+      else if (targetInfo === "que-es-altavista") {
+        overlay?.classList.remove("hidden");
+        modalAltavistaQueEs?.classList.remove("hidden");
+      } else if (targetInfo === "datos-altavista") {
+        overlay?.classList.remove("hidden");
+        modalAltavistaDatos?.classList.remove("hidden");
+        triggerAltavistaAnimations();
+      } else if (targetInfo === "veia-altavista") {
+        injectPreview("assets/imagenes/altavista-preview.png", "AltaVista");
+      }
+
+      // --- Modales y acciones de Lycos ---
+      else if (targetInfo === "que-es-lycos") {
+        overlay?.classList.remove("hidden");
+        modalLycosQueEs?.classList.remove("hidden");
+      } else if (targetInfo === "datos-lycos") {
+        overlay?.classList.remove("hidden");
+        modalLycosDatos?.classList.remove("hidden");
+      } else if (targetInfo === "veia-lycos") {
+        injectPreview("assets/imagenes/lycos-preview.png", "Lycos");
+      }
+    });
+  });
+
+  // Cerrar ventanas modal con botón 'X'
+  document.querySelectorAll(".close-modal-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      overlay?.classList.add("hidden");
+      btn.closest(".retro-window")?.classList.add("hidden");
+    });
+  });
+
+  // --- 4. SISTEMA DE PESTAÑAS (Tabs) ---
+  const tabBtns = document.querySelectorAll(".tab-btn");
+  const tabPanels = document.querySelectorAll(".tab-panel");
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const tabNum = btn.getAttribute("data-tab");
+
+      tabBtns.forEach(b => b.classList.remove("active"));
+      tabPanels.forEach(p => p.classList.remove("active"));
+
+      btn.classList.add("active");
+      document.getElementById(`tab-${tabNum}`)?.classList.add("active");
+    });
+  });
+
+  // --- 5. LÓGICA DE MAPA SECUENCIAL Y ERROR FINAL ---
+  let currentStep = 1;
+  const maxSteps = 3;
+  const prevBtn = document.getElementById("prev-step-btn");
+  const nextBtn = document.getElementById("next-step-btn");
+
+  function updateTreeDisplay() {
+    for (let i = 1; i <= maxSteps; i++) {
+      const node = document.getElementById(`step-node-${i}`);
+      if (node) {
+        if (i <= currentStep) {
+          node.classList.remove("hidden-node");
+        } else {
+          node.classList.add("hidden-node");
+        }
+      }
+    }
+    if (prevBtn) prevBtn.disabled = (currentStep === 1);
+  }
+
+  function resetTreeSequence() {
+    currentStep = 1;
+    updateTreeDisplay();
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      if (currentStep < maxSteps) {
+        currentStep++;
+        updateTreeDisplay();
+      } else {
+        modalLimitaciones?.classList.add("hidden");
+        modalError?.classList.remove("hidden");
+      }
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      if (currentStep > 1) {
+        currentStep--;
+        updateTreeDisplay();
+      }
+    });
+  }
+
+  // Cerrar Pop-up de Error
+  document.querySelectorAll(".close-error-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      modalError?.classList.add("hidden");
+      overlay?.classList.add("hidden");
+    });
+  });
+
+  // --- 6. FUNCIONES AUXILIARES INTERNAS DE PREVIEW Y ANIMACIONES ---
+  function triggerAltavistaAnimations() {
+    const bigBar = document.getElementById("altavista-bar-big");
+    const card1 = document.getElementById("data-card-1");
+    const card2 = document.getElementById("data-card-2");
+    const card3 = document.getElementById("data-card-3");
+
+    if (bigBar) bigBar.classList.add("hidden-bar");
+    [card1, card2, card3].forEach(c => c?.classList.add("hidden-card"));
+
+    setTimeout(() => bigBar?.classList.remove("hidden-bar"), 400);
+    setTimeout(() => card1?.classList.remove("hidden-card"), 1000);
+    setTimeout(() => card2?.classList.remove("hidden-card"), 1800);
+    setTimeout(() => card3?.classList.remove("hidden-card"), 2600);
+  }
+
+  // Inyectar vista previa dinámica (AltaVista / Lycos)
+  function injectPreview(imagePath, name) {
+    if (!browserContent) return;
+    browserContent.innerHTML = `
+      <div class="browser-injected-view">
+        <div class="browser-back-bar">
+          <button id="browser-back-btn" class="retro-btn">◄ Volver al buscador</button>
+        </div>
+        <img src="${imagePath}" alt="${name} Preview" class="altavista-preview-img" />
+      </div>
+    `;
+
+    document.getElementById("browser-back-btn")?.addEventListener("click", restoreBrowserContent);
+  }
+
+  function restoreBrowserContent() {
+    if (!browserContent) return;
+    browserContent.innerHTML = originalBrowserContent;
+    initSearchDropdown(); // Re-vinculamos eventos del buscador
+  }
 });
 
 // Listener global para redimensionar la ventana del navegador
@@ -18,7 +228,18 @@ window.addEventListener('resize', () => {
   }
 });
 
-// 1. Efecto de la lupa (solo activa dentro del Hero)
+// Evento para renderizar el gráfico de Archie al hacer click
+document.querySelectorAll('[data-window="win-archie-data"]').forEach(item => {
+  item.addEventListener('click', () => {
+    setTimeout(renderArchieChart, 50);
+  });
+});
+
+// =========================================================================
+// MÓDULOS DE FUNCIONES INDEPENDIENTES
+// =========================================================================
+
+// 1. Efecto Lupa (Hero)
 function initLupaFollower() {
   const hero = document.getElementById("hero");
   const lupa = document.getElementById("magnifying-glass");
@@ -44,7 +265,7 @@ function initLupaFollower() {
   });
 }
 
-// 2. Efecto de escritura en la barra de búsqueda
+// 2. Efecto Tipeo
 function initTypingEffect() {
   const texto = "¿Cómo lee mentes Google?";
   const contenedor = document.getElementById("typing-text");
@@ -62,7 +283,7 @@ function initTypingEffect() {
   setTimeout(escribir, 600);
 }
 
-// 3. Animación de entrada para la sección Intro
+// 3. Animación Intro
 function initIntroAnimation() {
   gsap.from(".intro-title, .intro-text", {
     y: 50,
@@ -78,11 +299,7 @@ function initIntroAnimation() {
   });
 }
 
-// =========================================
-// SECCIÓN 3: LOGICA ESCRITORIO WINDOWS
-// =========================================
-
-// 1. Reloj de la barra de tareas
+// 4. Reloj Taskbar
 function initWindowsClock() {
   const clockEl = document.getElementById('win-clock');
   if (!clockEl) return;
@@ -92,8 +309,7 @@ function initWindowsClock() {
     let hours = now.getHours();
     let minutes = now.getMinutes();
     const ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12;
+    hours = hours % 12 || 12;
     minutes = minutes < 10 ? '0' + minutes : minutes;
     clockEl.textContent = `${hours}:${minutes} ${ampm}`;
   }
@@ -101,45 +317,38 @@ function initWindowsClock() {
   setInterval(updateClock, 10000);
 }
 
-// 2. Menú, Ventanas y Comportamiento Draggable (interact.js)
+// 5. Escritorio Windows (Start, Ventanas, Drag)
 function initWindowsDesktop() {
   const startBtn = document.getElementById("start-btn");
   const startMenu = document.getElementById("start-menu");
 
-  // --- A. Menú Start abierto por defecto ---
-  if (startMenu) {
-    startMenu.classList.remove("hidden");
-  }
+  if (startMenu) startMenu.classList.remove("hidden");
 
   if (startBtn && startMenu) {
     startBtn.classList.add("active");
 
-    // Permite abrir/cerrar manualmente si el usuario cliquea la tecla Start
     startBtn.addEventListener("click", (e) => {
       e.stopPropagation();
       startMenu.classList.toggle("hidden");
       startBtn.classList.toggle("active");
     });
 
-    // Control de Submenús al pasar el mouse
     document.querySelectorAll('.has-submenu').forEach(item => {
       item.addEventListener('mouseenter', () => {
         const targetId = item.getAttribute("data-submenu");
-        const sub = document.getElementById(targetId);
-        if (sub) sub.classList.remove("hidden");
+        document.getElementById(targetId)?.classList.remove("hidden");
       });
       item.addEventListener('mouseleave', () => {
         const targetId = item.getAttribute("data-submenu");
-        const sub = document.getElementById(targetId);
-        if (sub) sub.classList.add("hidden");
+        document.getElementById(targetId)?.classList.add("hidden");
       });
     });
   }
 
-  // --- B. APERTURA DE VENTANAS CON POSICIÓN ALEATORIA ---
+  // Apertura de ventanas
   document.querySelectorAll('.show-window').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.stopPropagation(); // Evita propagaciones que puedan cerrar menús
+      e.stopPropagation();
       
       const winId = btn.getAttribute('data-window');
       const winEl = document.getElementById(winId);
@@ -147,7 +356,6 @@ function initWindowsDesktop() {
       if (winEl) {
         winEl.classList.remove('hidden');
 
-        // Eleva el z-index de la ventana abierta sobre las demás
         document.querySelectorAll('.win-window').forEach(w => w.style.zIndex = '10');
         winEl.style.zIndex = '100';
 
@@ -180,27 +388,23 @@ function initWindowsDesktop() {
           setTimeout(drawYahooTreeLines, 50);
 
           if (!winEl.dataset.hasResizeListener) {
-            const resizeObserver = new ResizeObserver(() => {
-              drawYahooTreeLines();
-            });
+            const resizeObserver = new ResizeObserver(() => drawYahooTreeLines());
             resizeObserver.observe(winEl);
             winEl.dataset.hasResizeListener = 'true';
           }
         }
       }
-      // NOTA: Se eliminó el cierre automático de 'startMenu' al abrir ventanas
     });
   });
 
-  // Botones "X" o "Close" que cierran ventanas
+  // Botones de cierre
   document.querySelectorAll('.win-close-btn, .win-close-btn-footer').forEach(btn => {
     btn.addEventListener('click', () => {
-      const winEl = btn.closest('.win-window');
-      if (winEl) winEl.classList.add('hidden');
+      btn.closest('.win-window')?.classList.add('hidden');
     });
   });
 
-  // --- C. Comportamiento Draggable (interact.js) ---
+  // Draggable con Interact.js
   if (typeof interact !== 'undefined') {
     interact('.draggable').draggable({
       allowFrom: '.win-window-header',
@@ -231,7 +435,7 @@ function initWindowsDesktop() {
   }
 }
 
-// 3. Lógica Secuencial de Yahoo! Welcome Screen / Árbol
+// 6. Secuencia Yahoo! Screen
 function initYahooWelcomeData() {
   const winComo = document.getElementById('win-yahoo-como');
   if (!winComo) return;
@@ -250,42 +454,64 @@ function initYahooWelcomeData() {
 
   nextBtn.addEventListener('click', () => {
     step++;
-
     if (step === 1) {
-      if (introText) introText.classList.add('hidden');
-      if (treeContainer) treeContainer.classList.remove('hidden');
-      if (level1) level1.classList.remove('hidden');
+      introText?.classList.add('hidden');
+      treeContainer?.classList.remove('hidden');
+      level1?.classList.remove('hidden');
     } else if (step === 2) {
-      if (level2) level2.classList.remove('hidden');
+      level2?.classList.remove('hidden');
       drawYahooTreeLines();
     } else if (step === 3) {
-      if (level3) level3.classList.remove('hidden');
+      level3?.classList.remove('hidden');
       drawYahooTreeLines();
     } else if (step === 4) {
-      if (nasaLink) nasaLink.classList.remove('hidden');
+      nasaLink?.classList.remove('hidden');
       nextBtn.disabled = true;
       nextBtn.classList.add('win-btn-disabled');
     }
   });
 
-  // Reiniciar estado al cerrar la ventana
   winComo.querySelectorAll('.win-close-btn, .win-close-btn-footer').forEach(btn => {
     btn.addEventListener('click', () => {
       step = 0;
-      if (introText) introText.classList.remove('hidden');
-      if (treeContainer) treeContainer.classList.add('hidden');
-      if (level1) level1.classList.add('hidden');
-      if (level2) level2.classList.add('hidden');
-      if (level3) level3.classList.add('hidden');
-      if (nasaLink) nasaLink.classList.add('hidden');
+      introText?.classList.remove('hidden');
+      treeContainer?.classList.add('hidden');
+      level1?.classList.add('hidden');
+      level2?.classList.add('hidden');
+      level3?.classList.add('hidden');
+      nasaLink?.classList.add('hidden');
       nextBtn.disabled = false;
       nextBtn.classList.remove('win-btn-disabled');
     });
   });
 }
 
-let dirChartInstance = null;
+// 7. Buscador Desplegable Retro
+function initSearchDropdown() {
+  const searchInput = document.getElementById('search-input');
+  const searchDropdown = document.getElementById('search-dropdown');
 
+  if (!searchInput || !searchDropdown) return;
+
+  searchInput.addEventListener('focus', () => {
+    searchDropdown.classList.remove('hidden');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!searchInput.contains(e.target) && !searchDropdown.contains(e.target)) {
+      searchDropdown.classList.add('hidden');
+    }
+  });
+
+  searchDropdown.querySelectorAll('li').forEach(item => {
+    item.addEventListener('click', () => {
+      searchInput.value = item.textContent;
+      searchDropdown.classList.add('hidden');
+    });
+  });
+}
+
+// 8. Gráfico de Directorios Web
 function initDirWebsChart() {
   const ctx = document.getElementById('chart-dir-webs');
   if (!ctx) return;
@@ -301,11 +527,7 @@ function initDirWebsChart() {
       datasets: [{
         label: 'Sitios Web en línea',
         data: [1, 10, 3000],
-        backgroundColor: [
-          '#008080',
-          '#1084d0',
-          '#000080'
-        ],
+        backgroundColor: ['#008080', '#1084d0', '#000080'],
         borderColor: '#000000',
         borderWidth: 2
       }]
@@ -313,33 +535,20 @@ function initDirWebsChart() {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      animation: {
-        duration: 1200,
-        easing: 'easeOutQuart'
-      },
+      animation: { duration: 1200, easing: 'easeOutQuart' },
       plugins: {
         legend: { display: false },
-        tooltip: {
-          callbacks: {
-            label: (ctx) => ` Sitios: ${ctx.raw}`
-          }
-        }
+        tooltip: { callbacks: { label: (ctx) => ` Sitios: ${ctx.raw}` } }
       },
       scales: {
         y: {
           type: 'logarithmic',
           min: 1,
-          ticks: {
-            font: { family: 'monospace', size: 12 },
-            color: '#000'
-          },
+          ticks: { font: { family: 'monospace', size: 12 }, color: '#000' },
           grid: { color: '#c0c0c0' }
         },
         x: {
-          ticks: {
-            font: { family: 'monospace', size: 14, weight: 'bold' },
-            color: '#000'
-          },
+          ticks: { font: { family: 'monospace', size: 14, weight: 'bold' }, color: '#000' },
           grid: { display: false }
         }
       }
@@ -347,13 +556,13 @@ function initDirWebsChart() {
   });
 }
 
+// 9. Conexiones SVG del Árbol de Yahoo!
 function drawYahooTreeLines() {
   const svg = document.getElementById('yahoo-tree-svg');
   const container = document.getElementById('yahoo-tree-container');
   if (!svg || !container) return;
 
   svg.innerHTML = '';
-
   const containerRect = container.getBoundingClientRect();
 
   const connections = [
@@ -396,16 +605,17 @@ function drawYahooTreeLines() {
   });
 }
 
-let archieChartInstance = null;
-
+// 10. Gráfico Archie vs Google
 function renderArchieChart() {
-  const ctx = document.getElementById('chart-archie-vs-google').getContext('2d');
+  const canvas = document.getElementById('chart-archie-vs-google');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
 
   if (archieChartInstance) {
     archieChartInstance.destroy();
   }
 
-  // PASO 1: Renderizar Archie en solitario
   archieChartInstance = new Chart(ctx, {
     type: 'bar',
     data: {
@@ -421,17 +631,10 @@ function renderArchieChart() {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      animation: {
-        duration: 1200,
-        easing: 'easeOutQuart'
-      },
+      animation: { duration: 1200, easing: 'easeOutQuart' },
       plugins: {
         legend: { display: false },
-        tooltip: {
-          callbacks: {
-            label: (context) => ` ${context.raw.toLocaleString()} consultas`
-          }
-        }
+        tooltip: { callbacks: { label: (context) => ` ${context.raw.toLocaleString()} consultas` } }
       },
       scales: {
         y: {
@@ -442,14 +645,11 @@ function renderArchieChart() {
             callback: value => value >= 1e6 ? (value / 1e6) + 'M' : value.toLocaleString()
           }
         },
-        x: {
-          ticks: { font: { family: 'monospace', weight: 'bold' } }
-        }
+        x: { ticks: { font: { family: 'monospace', weight: 'bold' } } }
       }
     }
   });
 
-  // PASO 2: Transición con escala logarítmica
   setTimeout(() => {
     if (!archieChartInstance) return;
 
@@ -468,10 +668,3 @@ function renderArchieChart() {
     archieChartInstance.update();
   }, 1800);
 }
-
-// Evento de apertura del gráfico de Archie
-document.querySelectorAll('[data-window="win-archie-data"]').forEach(item => {
-  item.addEventListener('click', () => {
-    setTimeout(renderArchieChart, 50);
-  });
-});
