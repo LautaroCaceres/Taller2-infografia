@@ -170,3 +170,283 @@ body {
   margin: 0 auto;
   line-height: 1.3;
 }
+
+/* =========================================
+   SECCIÓN ESCRITORIO WINDOWS (1920x1080)
+   ========================================= */
+.desktop-section {
+  /* Ancho responsive o contenido dentro de tus márgenes generales */
+  width: 100%;
+  max-width: 1920px;
+  height: 1080px;
+  background-color: #008080; /* Teal clásico */
+  position: relative;
+  overflow: hidden;
+  
+  /* Centrado y márgenes laterales coordinados con la maqueta */
+  margin: 0 auto;
+  box-sizing: border-box;
+  font-family: 'MS Sans Serif', Tahoma, sans-serif;
+}
+
+/* --- Barra de Tareas (Taskbar) --- */
+.taskbar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 48px;
+  background-color: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Start a la izquierda, Reloj a la derecha */
+  
+  /* Márgenes internos respetando los bordes de la barra */
+  padding: 0 16px;
+  box-sizing: border-box;
+  z-index: 200;
+  user-select: none;
+}
+
+.start-btn {
+  height: 36px;
+  padding: 0 14px;
+  background: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  font-weight: bold;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.start-btn:active, .start-btn.active {
+  border-top: 2px solid #000000;
+  border-left: 2px solid #000000;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+.taskbar-divider {
+  width: 2px;
+  height: 34px;
+  background-color: #808080;
+  border-right: 1px solid #ffffff;
+  margin: 0 8px;
+}
+
+.clock {
+  margin-left: auto; /* Empuja el reloj siempre al extremo visible */
+  height: 34px;
+  padding: 0 14px;
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  white-space: nowrap; /* Evita que el texto del reloj se deforme */
+}
+
+/* =========================================
+   ESTILOS GENERALES VENTANAS WINDOWS
+   ========================================= */
+.win-window, .win-menu, .win-submenu {
+  background-color: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  position: absolute;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
+}
+
+/* --- Menú de Inicio y Submenús --- */
+.win-menu {
+  bottom: 52px;
+  left: 6px;
+  display: flex;
+  z-index: 201;
+  min-width: 250px;
+}
+
+.win-sidebar {
+  background: linear-gradient(to top, #000080, #1084d0);
+  color: white;
+  padding: 12px 6px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-weight: bold;
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+.win-menu-list, .win-submenu {
+  list-style: none;
+  padding: 3px;
+  margin: 0;
+  width: 100%;
+}
+
+.win-submenu {
+  top: -2px;
+  left: 100%;
+  min-width: 220px;
+}
+
+.win-item {
+  padding: 8px 16px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: #000;
+}
+
+.win-item:hover {
+  background-color: #000080;
+  color: #ffffff;
+}
+
+.win-item .arrow { margin-left: auto; font-size: 12px; }
+.win-divider { height: 2px; background-color: #808080; border-bottom: 1px solid #ffffff; margin: 6px 3px; }
+
+/* --- Estructura Ventanas de Info (Draggables) --- */
+.win-window {
+  z-index: 100; /* Fondo por defecto */
+  min-width: 400px;
+  color: #000;
+}
+
+.win-window.dragging { z-index: 150; opacity: 0.9; } /* Encima al arrastrar */
+
+.win-window-header {
+  background-color: #000080; /* Azul Título Activo */
+  color: white;
+  padding: 6px 10px;
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: grab;
+  user-select: none;
+}
+
+.win-window-header:active { cursor: grabbing; }
+
+.win-close-btn {
+  margin-left: auto;
+  width: 24px; height: 22px;
+  background-color: #c0c0c0;
+  border-top: 2px solid #ffffff; border-left: 2px solid #ffffff;
+  border-right: 2px solid #000000; border-bottom: 2px solid #000000;
+  color: black; font-weight: bold; font-size: 14px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+}
+.win-close-btn:active { border-top: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #ffffff; border-bottom: 2px solid #ffffff; }
+
+.win-window-menu {
+  padding: 4px 10px;
+  font-size: 14px;
+  border-bottom: 1px solid #808080;
+  user-select: none;
+}
+
+.win-window-body {
+  padding: 20px;
+  background-color: #ffffff; /* Fondo blanco para leer */
+  border: 2px solid #808080; margin: 4px;
+  font-size: 16px; line-height: 1.5;
+}
+
+.win-window-footer {
+  padding: 10px; display: flex; justify-content: flex-end; gap: 10px;
+  border-top: 1px solid #808080;
+}
+
+/* --- Botones Estándar Windows --- */
+.win-btn-standard, .win-close-btn-footer {
+  min-width: 100px; height: 35px;
+  background-color: #c0c0c0;
+  border-top: 2px solid #ffffff; border-left: 2px solid #ffffff;
+  border-right: 2px solid #000000; border-bottom: 2px solid #000000;
+  font-size: 16px; cursor: pointer;
+}
+.win-btn-standard:active, .win-close-btn-footer:active { border-top: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #ffffff; border-bottom: 2px solid #ffffff; }
+
+.win-btn-disabled { color: #808080; cursor: default; border-color: #808080; }
+
+
+/* =========================================
+   VARIACIONES ESPECÍFICAS DE VENTANAS
+   ========================================= */
+
+/* Compacta (Directorios Que es, Archie Que es) */
+.win-window-compact { width: 500px; left: 300px; top: 150px; }
+
+/* Notepad (Directorios Cómo/Data, Archie Cómo/Creador) */
+.win-window-notepad { width: 700px; left: 400px; top: 200px; }
+.win-window-body-notepad { font-family: monospace; font-size: 18px; }
+.notepad-list { list-style: none; padding-top: 15px; text-align: center; }
+
+/* Properties (Archie Data) */
+.win-window-properties { width: 600px; left: 500px; top: 250px; }
+.win-window-tabs { display: flex; gap: 2px; padding: 4px 4px 0; border-bottom: 2px solid #808080; }
+.win-window-tabs .tab { padding: 6px 15px; background: #c0c0c0; border: 2px solid #000; border-bottom: none; border-radius: 4px 4px 0 0; font-size: 14px; cursor: pointer; }
+.win-window-tabs .tab.active { background: #ffffff; font-weight: bold; position: relative; bottom: -2px; }
+
+/* Browser/Veia (Archie Veia, Yahoo Veia) */
+.win-window-browser { width: 800px; left: 600px; top: 100px; }
+.win-window-body-veia { height: 500px; padding: 0; }
+.win-window-status { padding: 4px 10px; font-size: 12px; border-top: 2px solid #808080; background: #c0c0c0; }
+
+/* Welcome (Yahoo Cómo/Data) */
+.win-window-welcome { width: 850px; left: 450px; top: 180px; }
+.win-window-body-welcome { background-color: #c0c0c0; border: none; padding: 10px; display: flex; gap: 10px; }
+.welcome-main { background: #ffffff; border: 2px solid #808080; flex-grow: 1; padding: 25px; }
+.welcome-title { font-family: 'Times New Roman', serif; font-size: 40px; font-weight: bold; margin-bottom: 20px; }
+.welcome-viewpoint { min-height: 350px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 20px; }
+.viewpoint-text { text-align: left; align-items: flex-start; }
+.welcome-sidebar { width: 150px; display: flex; flex-direction: column; gap: 15px; justify-content: center; }
+.win-window-footer-welcome { padding: 10px; font-size: 14px; border-top: 2px solid #808080; }
+
+/* Layouts Creadores */
+.body-creador { display: flex; gap: 20px; align-items: center; }
+.creador-text { font-size: 24px; font-weight: bold; }
+.creador-assets { display: flex; flex-direction: column; gap: 10px; }
+.img-creador { width: 200px; height: 150px; }
+.logo-mcgill { width: 200px; height: 80px; }
+
+/* =========================================
+   ÁRBOL CSS YAHOO (Welcome Screen)
+   ========================================= */
+#yahoo-tree-container { display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%; font-family: monospace; }
+
+.tree-level { display: flex; gap: 30px; justify-content: center; width: 100%; }
+
+/* Nodos */
+.node-pink, .node-white {
+  padding: 10px 20px; border-radius: 8px;
+  border: 2px solid #000;
+  font-weight: bold; font-size: 16px;
+  min-width: 120px; text-align: center;
+}
+.node-pink { background-color: #ffccff; color: #000; }
+.node-white { background-color: #ffffff; color: #000; }
+
+/* Enlace NASA */
+.link-nasa { font-size: 18px; color: #000080; font-weight: bold; margin-top: 15px; }
+
+/* =========================================
+   UTILITIES
+   ========================================= */
+.asset-placeholder { background: #e0e0e0; border: 2px dashed #808080; color: #666; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 14px; }
+.hidden { display: none !important; }

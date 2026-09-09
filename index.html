@@ -19,7 +19,7 @@
 
   <!-- Barra superior fija -->
   <header class="top-bar">
-    <p>Infografia interactiva - Evolucion digital</p>
+    <p>Infografía interactiva - Evolución digital</p>
   </header>
 
   <!-- Contenedor general del proyecto -->
@@ -51,7 +51,6 @@
 
       <!-- Elemento de la Lupa (Cursor flotante) -->
       <div id="magnifying-glass" class="lupa-follower">
-        <!-- Reemplazar con <img src="assets/lupa.png"> cuando tengas el PNG transparente -->
         <div class="lupa-placeholder">🔍</div>
       </div>
     </section>
@@ -61,11 +60,331 @@
       <div class="intro-container">
         <h2 class="intro-title">¡Iniciá la búsqueda!</h2>
         <p class="intro-text">
-          Descubrí como la evolución de la ia reescribio la reglas de los motores de búsqueda desde los años 90 hasa la era generativa.
+          Descubrí cómo la evolución de la IA reescribió las reglas de los motores de búsqueda desde los años 90 hasta la era generativa.
         </p>
       </div>
     </section>
 
+    <!-- SECCIÓN 3: ESCRITORIO WINDOWS RETRO -->
+    <section id="desktop-section" class="desktop-section">
+      
+      <div class="desktop-screen">
+        <!-- Íconos sueltos del escritorio si aplica -->
+      </div>
+
+      <!-- --- MENÚ DE INICIO (Taskbar) --- -->
+      <div id="start-menu" class="win-menu hidden">
+        <div class="win-sidebar"><span>Windows</span>95</div>
+        <ul class="win-menu-list">
+          <li class="win-item"><span class="icon">🌐</span> Windows Update</li>
+          <li class="win-divider"></li>
+          
+          <!-- 3.1 Directorios H -->
+          <li class="win-item has-submenu" data-submenu="sub-directorios">
+            <span class="icon">📁</span> Directorios.h <span class="arrow">▶</span>
+            <ul id="sub-directorios" class="win-submenu hidden">
+              <li class="win-item show-window" data-window="win-dir-que"><span class="icon">📄</span> Que es</li>
+              <li class="win-item show-window" data-window="win-dir-como"><span class="icon">📄</span> Como funcionaba</li>
+              <li class="win-item show-window" data-window="win-dir-data"><span class="icon">📊</span> Estadística</li>
+            </ul>
+          </li>
+
+          <!-- 3.2 Archie -->
+          <li class="win-item has-submenu" data-submenu="sub-archie">
+            <span class="icon">📁</span> Archie (1990) <span class="arrow">▶</span>
+            <ul id="sub-archie" class="win-submenu hidden">
+              <li class="win-item show-window" data-window="win-archie-que"><span class="icon">📄</span> Que es</li>
+              <li class="win-item show-window" data-window="win-archie-como"><span class="icon">📄</span> Como funcionaba</li>
+              <li class="win-item show-window" data-window="win-archie-data"><span class="icon">📊</span> Datos</li>
+              <li class="win-item show-window" data-window="win-archie-veia"><span class="icon">🔍</span> Como se veía</li>
+              <li class="win-item show-window" data-window="win-archie-creador"><span class="icon">👤</span> Creador</li>
+            </ul>
+          </li>
+
+          <!-- 3.3 Yahoo! -->
+          <li class="win-item has-submenu" data-submenu="sub-yahoo">
+            <span class="icon">⚙️</span> Yahoo! (1994) <span class="arrow">▶</span>
+            <ul id="sub-yahoo" class="win-submenu hidden">
+              <li class="win-item show-window" data-window="win-yahoo"><span class="icon">📄</span> Que es</li>
+              <li class="win-item show-window" data-window="win-yahoo-como"><span class="icon">📄</span> Como funcionaba</li>
+              <li class="win-item show-window" data-window="win-yahoo-data"><span class="icon">📊</span> Datos</li>
+              <li class="win-item show-window" data-window="win-yahoo-veia"><span class="icon">🔍</span> Como se veía</li>
+              <li class="win-item show-window" data-window="win-yahoo-creador"><span class="icon">👤</span> Creador</li>
+            </ul>
+          </li>
+
+          <li class="win-divider"></li>
+          <li class="win-item"><span class="icon">💻</span> Shut Down...</li>
+        </ul>
+      </div>
+
+      <!-- --- BARRA DE TAREAS INFERIOR --- -->
+      <div class="taskbar">
+        <button id="start-btn" class="start-btn">
+          <span class="win-flag">❖</span> Start
+        </button>
+        <div class="taskbar-divider"></div>
+        <div class="clock" id="win-clock">4:18 PM</div>
+      </div>
+
+
+      <!-- =========================================
+            VENTANAS DE INFORMACIÓN (Contenedores Draggables)
+           ========================================= -->
+
+      <!-- --- 3.1 DIRECTORIOS H --- -->
+      
+      <!-- Qué es (Compacta) -->
+      <div id="win-dir-que" class="win-window win-window-compact hidden draggable">
+        <div class="win-window-header">
+          <span class="icon">📁</span> Directorios H
+          <button class="win-close-btn">X</button>
+        </div>
+        <div class="win-window-body">
+          <p>Los humanos organizaban los sitios en categorías y jerarquías, la Web empezó a organizarse como una biblioteca.</p>
+        </div>
+      </div>
+
+      <!-- Cómo funcionaba (Notepad) -->
+      <div id="win-dir-como" class="win-window win-window-notepad hidden draggable">
+        <div class="win-window-header">
+          <span class="icon">📄</span> Untitled - Notepad
+          <button class="win-close-btn">X</button>
+        </div>
+        <div class="win-window-menu">File Edit Search Help</div>
+        <div class="win-window-body win-window-body-notepad">
+          <p>Antes de los buscadores, las personas ordenaban la Web</p>
+          <ul class="notepad-list">
+            <li>👤 EDITOR HUMANO</li>
+            <li>&nbsp;&nbsp;👇</li>
+            <li>📁 CATEGORÍA</li>
+            <li>&nbsp;&nbsp;👇</li>
+            <li>📁 SUBCATEGORÍA</li>
+            <li>&nbsp;&nbsp;👇</li>
+            <li>🌐 SITIOS WEB</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Estadística Directorios.h -->
+      <div id="win-dir-data" class="win-window win-window-notepad hidden draggable">
+        <div class="win-window-header">
+          <span class="icon">📊</span> Untitled - Notepad
+          <button class="win-close-btn">X</button>
+        </div>
+        <div class="win-window-menu">File Edit Search Help</div>
+        <div class="win-window-body win-window-body-notepad">
+          <p style="margin-bottom: 15px; font-weight: bold;">Cantidad de webs 1991-1994</p>
+          <div style="position: relative; height: 260px; width: 100%;">
+            <canvas id="chart-dir-webs"></canvas>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- --- 3.2 ARCHIE --- -->
+
+      <!-- Qué es (Compacta) -->
+      <div id="win-archie-que" class="win-window win-window-compact hidden draggable">
+        <div class="win-window-header">
+          <span class="icon">📁</span> Archie
+          <button class="win-close-btn">X</button>
+        </div>
+        <div class="win-window-body">
+          <p>Archie fue el primer motor de búsqueda de Internet de la historia. Nació como un proyecto académico para localizar software y documentos en una red que conectaba principalmente a universidades.</p>
+        </div>
+      </div>
+
+      <!-- Cómo funcionaba (Notepad) -->
+      <div id="win-archie-como" class="win-window win-window-notepad hidden draggable">
+        <div class="win-window-header">
+          <span class="icon">📄</span> Untitled - Notepad
+          <button class="win-close-btn">X</button>
+        </div>
+        <div class="win-window-menu">File Edit Search Help</div>
+        <div class="win-window-body win-window-body-notepad">
+          <ul class="notepad-list">
+            <li>Problema: 📄📄📄📄📄</li>
+            <li>¿Dónde está este archivo?</li>
+            <li>&nbsp;&nbsp;👇</li>
+            <li>⌨️ nombre_del_archivo</li>
+            <li>&nbsp;&nbsp;👇</li>
+            <li>🔍 COINCIDENCIA</li>
+            <li>&nbsp;&nbsp;👇</li>
+            <li>📄 resultado</li>
+          </ul>
+        </div>
+      </div>
+
+     <!-- Datos (Properties con Gráfico) -->
+<div id="win-archie-data" class="win-window win-window-properties hidden draggable">
+  <div class="win-window-header">
+    <span class="icon">📊</span> Archie Properties
+    <button class="win-close-btn">X</button>
+  </div>
+  <div class="win-window-tabs">
+    <div class="tab active">General</div> 
+    <div class="tab">Tools</div> 
+    <div class="tab">Sharing</div>
+  </div>
+  <div class="win-window-body">
+    <p style="margin-bottom: 5px; font-weight: bold;">Consultas diarias:</p>
+    <p style="margin: 2px 0;">• Archie (1993): 50.000</p>
+    <p style="margin: 2px 0;">• Google (2025): 16.400 M</p>
+    
+    <div style="position: relative; height: 180px; width: 100%; margin-top: 15px;">
+      <canvas id="chart-archie-vs-google"></canvas>
+    </div>
+  </div>
+  <div class="win-window-footer">
+    <button class="win-close-btn-footer">OK</button>
+    <button class="win-btn-disabled">Cancel</button>
+    <button class="win-btn-disabled">Apply</button>
+  </div>
+</div>
+
+      <!-- Cómo se veía (Browser) -->
+      <div id="win-archie-veia" class="win-window win-window-browser hidden draggable">
+        <div class="win-window-header">
+          <span class="icon">🔍</span> Archie Query Form
+          <button class="win-close-btn">X</button>
+        </div>
+        <div class="win-window-menu">File Edit View Help</div>
+        <div class="win-window-body win-window-body-veia">
+          <div class="asset-placeholder">[ Captura: Archie Query Form ]</div>
+        </div>
+        <div class="win-window-status">1 object(s) selected</div>
+      </div>
+
+      <!-- Creador (Notepad con Imagen) -->
+      <div id="win-archie-creador" class="win-window win-window-notepad hidden draggable">
+        <div class="win-window-header">
+          <span class="icon">👤</span> Untitled - Notepad
+          <button class="win-close-btn">X</button>
+        </div>
+        <div class="win-window-menu">File Edit Search Help</div>
+        <div class="win-window-body win-window-body-notepad body-creador">
+          <div class="creador-text">
+            <p>Alan Emtage</p>
+            <p>Bill Heelan</p>
+            <p>Peter Deutsch</p>
+          </div>
+          <div class="creador-assets">
+            <div class="asset-placeholder img-creador">[ Imagen Alan Emtage ]</div>
+            <div class="asset-placeholder logo-mcgill">[ Logo McGill University ]</div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- --- 3.3 YAHOO! --- -->
+
+      <!-- VENTANA 1: YAHOO - "Qué es" (Bloque compacto de texto) -->
+      <div id="win-yahoo" class="win-window win-window-compact hidden draggable">
+        <div class="win-window-header">
+          <span class="icon">📁</span> Yahoo
+          <button class="win-close-btn">X</button>
+        </div>
+        <div class="win-window-body" style="padding: 20px; font-family: monospace; font-size: 15px; line-height: 1.5; background: #c0c0c0;">
+          <p>Comenzó como un directorio web de enlaces ordenados por categorías antes de convertirse en un buscador y portal integral de contenidos.</p>
+        </div>
+      </div>
+
+      <!-- VENTANA 2: YAHOO - "Cómo funcionaba" (Welcome Screen interactiva con árbol) -->
+      <div id="win-yahoo-como" class="win-window win-window-welcome hidden draggable">
+        <div class="win-window-header">
+          <span class="icon">⚙️</span> Welcome
+          <button class="win-close-btn">X</button>
+        </div>
+        
+        <div class="win-window-body win-window-body-welcome">
+          <div class="welcome-main" style="overflow-y: auto; background: #fff; padding: 25px; border: 2px solid #7d7d7d; min-height: 320px;">
+            <h2 class="welcome-title" style="font-family: 'Times New Roman', serif; font-size: 28px; margin-bottom: 20px;">Welcome to Yahoo!</h2>
+
+            <!-- Texto Inicial (Paso 0) -->
+            <div id="yahoo-intro-text" style="font-family: monospace; font-size: 15px; line-height: 1.5; max-width: 450px;">
+              <p>Los humanos organizaban los sitios en categorías y jerarquías, la Web empezó a organizarse como una biblioteca.</p>
+            </div>
+
+            <!-- Contenedor del Árbol (Oculto al inicio) -->
+            <div id="yahoo-tree-container" class="hidden" style="position: relative; width: 100%; min-height: 260px;">
+              <svg id="yahoo-tree-svg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></svg>
+
+              <!-- Nivel 1 -->
+              <div id="tree-level-1" class="hidden" style="display: flex; justify-content: center; margin-bottom: 30px; position: relative; z-index: 2;">
+                <div id="node-root" style="background: #ffd0f4; border: 2px solid #000; border-radius: 8px; padding: 6px 16px; font-weight: bold; font-family: monospace;">Yahoo!</div>
+              </div>
+
+              <!-- Nivel 2 -->
+              <div id="tree-level-2" class="hidden" style="display: flex; justify-content: space-around; margin-bottom: 30px; position: relative; z-index: 2;">
+                <div id="node-ciencia" style="background: #ffd0f4; border: 2px solid #000; border-radius: 8px; padding: 6px 14px; font-weight: bold; font-family: monospace;">Ciencia</div>
+                <div id="node-negocios" style="background: #ffffff; border: 2px solid #000; border-radius: 8px; padding: 6px 14px; font-weight: bold; font-family: monospace;">Negocios</div>
+                <div id="node-recreacion" style="background: #ffffff; border: 2px solid #000; border-radius: 8px; padding: 6px 14px; font-weight: bold; font-family: monospace;">Recreación</div>
+              </div>
+
+              <!-- Nivel 3 -->
+              <div id="tree-level-3" class="hidden" style="display: flex; justify-content: space-between; gap: 4px; position: relative; z-index: 2;">
+                <div id="node-bio" style="background: #ffffff; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Biología</div>
+                <div id="node-astro" style="background: #ffd0f4; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Astronomía</div>
+                <div id="node-emp" style="background: #ffffff; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Empresas</div>
+                <div id="node-fin" style="background: #ffffff; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Finanzas</div>
+                <div id="node-dep" style="background: #ffffff; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Deportes</div>
+                <div id="node-viajes" style="background: #ffffff; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Viajes</div>
+              </div>
+
+              <!-- Enlace Final -->
+              <div id="yahoo-nasa-link" class="hidden" style="margin-top: 15px; padding: 8px; background: #fff; border: 1px dashed #000; font-family: monospace;">
+                <strong style="color: #000080;">Astronomía</strong> 🔗 Enlace: <a href="https://www.nasa.gov" target="_blank" style="color: #0000ed; font-weight: bold;">NASA</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Barra Lateral Win95 -->
+          <div class="welcome-sidebar">
+            <button id="yahoo-next-btn" class="win-btn-standard">Next Tip</button>
+            <button class="win-btn-standard win-close-btn-footer">Close</button>
+          </div>
+        </div>
+
+        <div class="win-window-footer-welcome">
+          <label><input type="checkbox" checked> Show this Welcome Screen next time you start Windows</label>
+        </div>
+      </div>
+
+      <!-- Cómo se veía (Browser) -->
+      <div id="win-yahoo-veia" class="win-window win-window-browser hidden draggable">
+        <div class="win-window-header">
+          <span class="icon">🔍</span> Yahoo
+          <button class="win-close-btn">X</button>
+        </div>
+        <div class="win-window-menu">File Edit View Help</div>
+        <div class="win-window-body win-window-body-veia">
+          <div class="asset-placeholder">[ Captura: Yahoo - A Guide to WWW ]</div>
+        </div>
+        <div class="win-window-status">1 object(s) selected</div>
+      </div>
+
+      <!-- Creador (Notepad con Imagen) -->
+      <div id="win-yahoo-creador" class="win-window win-window-notepad hidden draggable">
+        <div class="win-window-header">
+          <span class="icon">👤</span> Untitled - Notepad
+          <button class="win-close-btn">X</button>
+        </div>
+        <div class="win-window-menu">File Edit Search Help</div>
+        <div class="win-window-body win-window-body-notepad body-creador">
+          <div class="creador-text creador-text-yahoo">
+            <p>Jerry Yang</p>
+            <p>David Filo</p>
+          </div>
+          <div class="creador-assets">
+            <div class="asset-placeholder logo-stanford">[ Logo Stanford University ]</div>
+            <div class="asset-placeholder img-creador-yahoo">[ Imagen Jerry & David ]</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    
   </main>
 
 </body>
