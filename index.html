@@ -18,11 +18,11 @@
 <body>
 
   <!-- Barra superior fija -->
-<header class="top-bar">
-  <div class="top-bar-content">
-    <p>Infografía interactiva - Evolución digital</p>
-  </div>
-</header>
+  <header class="top-bar">
+    <div class="top-bar-content">
+      <p>Infografía interactiva - Evolución digital</p>
+    </div>
+  </header>
 
   <!-- Contenedor general del proyecto -->
   <main class="viewport-wrapper">
@@ -129,14 +129,7 @@
         <div class="clock" id="win-clock">4:18 PM</div>
       </div>
 
-
-      <!-- =========================================
-            VENTANAS DE INFORMACIÓN (Contenedores Draggables)
-           ========================================= -->
-
-      <!-- --- 3.1 DIRECTORIOS H --- -->
-      
-      <!-- Qué es (Compacta) -->
+      <!-- VENTANAS DE INFORMACIÓN -->
       <div id="win-dir-que" class="win-window win-window-compact hidden draggable">
         <div class="win-window-header">
           <span class="icon">📁</span> Directorios H
@@ -147,7 +140,6 @@
         </div>
       </div>
 
-      <!-- Cómo funcionaba (Notepad) -->
       <div id="win-dir-como" class="win-window win-window-notepad hidden draggable">
         <div class="win-window-header">
           <span class="icon">📄</span> Untitled - Notepad
@@ -168,7 +160,6 @@
         </div>
       </div>
 
-      <!-- Estadística Directorios.h -->
       <div id="win-dir-data" class="win-window win-window-notepad hidden draggable">
         <div class="win-window-header">
           <span class="icon">📊</span> Untitled - Notepad
@@ -183,10 +174,6 @@
         </div>
       </div>
 
-
-      <!-- --- 3.2 ARCHIE --- -->
-
-      <!-- Qué es (Compacta) -->
       <div id="win-archie-que" class="win-window win-window-compact hidden draggable">
         <div class="win-window-header">
           <span class="icon">📁</span> Archie
@@ -197,7 +184,6 @@
         </div>
       </div>
 
-      <!-- Cómo funcionaba (Notepad) -->
       <div id="win-archie-como" class="win-window win-window-notepad hidden draggable">
         <div class="win-window-header">
           <span class="icon">📄</span> Untitled - Notepad
@@ -218,34 +204,32 @@
         </div>
       </div>
 
-     <!-- Datos (Properties con Gráfico) -->
-<div id="win-archie-data" class="win-window win-window-properties hidden draggable">
-  <div class="win-window-header">
-    <span class="icon">📊</span> Archie Properties
-    <button class="win-close-btn">X</button>
-  </div>
-  <div class="win-window-tabs">
-    <div class="tab active">General</div> 
-    <div class="tab">Tools</div> 
-    <div class="tab">Sharing</div>
-  </div>
-  <div class="win-window-body">
-    <p style="margin-bottom: 5px; font-weight: bold;">Consultas diarias:</p>
-    <p style="margin: 2px 0;">• Archie (1993): 50.000</p>
-    <p style="margin: 2px 0;">• Google (2025): 16.400 M</p>
-    
-    <div style="position: relative; height: 180px; width: 100%; margin-top: 15px;">
-      <canvas id="chart-archie-vs-google"></canvas>
-    </div>
-  </div>
-  <div class="win-window-footer">
-    <button class="win-close-btn-footer">OK</button>
-    <button class="win-btn-disabled">Cancel</button>
-    <button class="win-btn-disabled">Apply</button>
-  </div>
-</div>
+      <div id="win-archie-data" class="win-window win-window-properties hidden draggable">
+        <div class="win-window-header">
+          <span class="icon">📊</span> Archie Properties
+          <button class="win-close-btn">X</button>
+        </div>
+        <div class="win-window-tabs">
+          <div class="tab active">General</div> 
+          <div class="tab">Tools</div> 
+          <div class="tab">Sharing</div>
+        </div>
+        <div class="win-window-body">
+          <p style="margin-bottom: 5px; font-weight: bold;">Consultas diarias:</p>
+          <p style="margin: 2px 0;">• Archie (1993): 50.000</p>
+          <p style="margin: 2px 0;">• Google (2025): 16.400 M</p>
+          
+          <div style="position: relative; height: 180px; width: 100%; margin-top: 15px;">
+            <canvas id="chart-archie-vs-google"></canvas>
+          </div>
+        </div>
+        <div class="win-window-footer">
+          <button class="win-close-btn-footer">OK</button>
+          <button class="win-btn-disabled">Cancel</button>
+          <button class="win-btn-disabled">Apply</button>
+        </div>
+      </div>
 
-      <!-- Cómo se veía (Browser) -->
       <div id="win-archie-veia" class="win-window win-window-browser hidden draggable">
         <div class="win-window-header">
           <span class="icon">🔍</span> Archie Query Form
@@ -258,7 +242,6 @@
         <div class="win-window-status">1 object(s) selected</div>
       </div>
 
-      <!-- Creador (Notepad con Imagen) -->
       <div id="win-archie-creador" class="win-window win-window-notepad hidden draggable">
         <div class="win-window-header">
           <span class="icon">👤</span> Untitled - Notepad
@@ -278,10 +261,6 @@
         </div>
       </div>
 
-
-      <!-- --- 3.3 YAHOO! --- -->
-
-      <!-- VENTANA 1: YAHOO - "Qué es" (Bloque compacto de texto) -->
       <div id="win-yahoo" class="win-window win-window-compact hidden draggable">
         <div class="win-window-header">
           <span class="icon">📁</span> Yahoo
@@ -292,7 +271,6 @@
         </div>
       </div>
 
-      <!-- VENTANA 2: YAHOO - "Cómo funcionaba" (Welcome Screen interactiva con árbol) -->
       <div id="win-yahoo-como" class="win-window win-window-welcome hidden draggable">
         <div class="win-window-header">
           <span class="icon">⚙️</span> Welcome
@@ -303,28 +281,23 @@
           <div class="welcome-main" style="overflow-y: auto; background: #fff; padding: 25px; border: 2px solid #7d7d7d; min-height: 320px;">
             <h2 class="welcome-title" style="font-family: 'Times New Roman', serif; font-size: 28px; margin-bottom: 20px;">Welcome to Yahoo!</h2>
 
-            <!-- Texto Inicial (Paso 0) -->
             <div id="yahoo-intro-text" style="font-family: monospace; font-size: 15px; line-height: 1.5; max-width: 450px;">
               <p>Los humanos organizaban los sitios en categorías y jerarquías, la Web empezó a organizarse como una biblioteca.</p>
             </div>
 
-            <!-- Contenedor del Árbol (Oculto al inicio) -->
             <div id="yahoo-tree-container" class="hidden" style="position: relative; width: 100%; min-height: 260px;">
               <svg id="yahoo-tree-svg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></svg>
 
-              <!-- Nivel 1 -->
               <div id="tree-level-1" class="hidden" style="display: flex; justify-content: center; margin-bottom: 30px; position: relative; z-index: 2;">
                 <div id="node-root" style="background: #ffd0f4; border: 2px solid #000; border-radius: 8px; padding: 6px 16px; font-weight: bold; font-family: monospace;">Yahoo!</div>
               </div>
 
-              <!-- Nivel 2 -->
               <div id="tree-level-2" class="hidden" style="display: flex; justify-content: space-around; margin-bottom: 30px; position: relative; z-index: 2;">
                 <div id="node-ciencia" style="background: #ffd0f4; border: 2px solid #000; border-radius: 8px; padding: 6px 14px; font-weight: bold; font-family: monospace;">Ciencia</div>
                 <div id="node-negocios" style="background: #ffffff; border: 2px solid #000; border-radius: 8px; padding: 6px 14px; font-weight: bold; font-family: monospace;">Negocios</div>
                 <div id="node-recreacion" style="background: #ffffff; border: 2px solid #000; border-radius: 8px; padding: 6px 14px; font-weight: bold; font-family: monospace;">Recreación</div>
               </div>
 
-              <!-- Nivel 3 -->
               <div id="tree-level-3" class="hidden" style="display: flex; justify-content: space-between; gap: 4px; position: relative; z-index: 2;">
                 <div id="node-bio" style="background: #ffffff; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Biología</div>
                 <div id="node-astro" style="background: #ffd0f4; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Astronomía</div>
@@ -334,14 +307,12 @@
                 <div id="node-viajes" style="background: #ffffff; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Viajes</div>
               </div>
 
-              <!-- Enlace Final -->
               <div id="yahoo-nasa-link" class="hidden" style="margin-top: 15px; padding: 8px; background: #fff; border: 1px dashed #000; font-family: monospace;">
                 <strong style="color: #000080;">Astronomía</strong> 🔗 Enlace: <a href="https://www.nasa.gov" target="_blank" style="color: #0000ed; font-weight: bold;">NASA</a>
               </div>
             </div>
           </div>
 
-          <!-- Barra Lateral Win95 -->
           <div class="welcome-sidebar">
             <button id="yahoo-next-btn" class="win-btn-standard">Next Tip</button>
             <button class="win-btn-standard win-close-btn-footer">Close</button>
@@ -353,7 +324,6 @@
         </div>
       </div>
 
-      <!-- Cómo se veía (Browser) -->
       <div id="win-yahoo-veia" class="win-window win-window-browser hidden draggable">
         <div class="win-window-header">
           <span class="icon">🔍</span> Yahoo
@@ -366,7 +336,6 @@
         <div class="win-window-status">1 object(s) selected</div>
       </div>
 
-      <!-- Creador (Notepad con Imagen) -->
       <div id="win-yahoo-creador" class="win-window win-window-notepad hidden draggable">
         <div class="win-window-header">
           <span class="icon">👤</span> Untitled - Notepad
@@ -387,512 +356,366 @@
 
     </section>
 
-   <!-- NUEVA SECCIÓN INDEPENDIENTE PARA COMPARACIÓN -->
-<section id="comparacion-section" class="comparacion-section">
+    <!-- SECCIÓN COMPARACIÓN -->
+    <section id="comparacion-section" class="comparacion-section">
 
-  <div id="win-comparacion" class="win-window win-comparacion-container">
-    
-    <!-- Barra de título -->
-    <div class="win-window-header">
-      <div class="win-title-left">
-        <span class="win-icon">🖥️</span>
-        <span class="win-title-text">Comparación</span>
-      </div>
-      <div class="win-controls">
-        <button class="win-btn-control">_</button>
-        <button class="win-btn-control">🗖</button>
-        <button class="win-btn-control win-close">X</button>
-      </div>
-    </div>
-
-    <!-- Cuerpo de la ventana estilo Bloc de Notas / Notepads -->
-    <div class="win-window-body">
-      
-      <div class="win-comp-heading">
-        <span class="win-comp-icon">🖥️</span>
-        <h2>Comparación</h2>
-      </div>
-
-      <hr class="win-divider-line">
-
-      <!-- Grilla Archie vs Yahoo! -->
-      <div class="win-comp-grid">
+      <div id="win-comparacion" class="win-window win-comparacion-container">
         
-        <!-- Columna Archie -->
-        <div class="win-inner-box">
-          <div class="win-inner-header">
-            <span>ARCHIE</span>
-            <button class="win-inner-btn">🗖</button>
+        <div class="win-window-header">
+          <div class="win-title-left">
+            <span class="win-icon">🖥️</span>
+            <span class="win-title-text">Comparación</span>
           </div>
-          <div class="win-inner-content">
-            <div class="step-item">
-              <span class="step-icon">🔍</span>
-              <span class="step-text">Búsqueda por coincidencia</span>
-            </div>
-            <div class="step-arrow">▼</div>
-            <div class="step-item">
-              <span class="step-icon">📄</span>
-              <span class="step-text">Archivo encontrado</span>
-            </div>
+          <div class="win-controls">
+            <button class="win-btn-control">_</button>
+            <button class="win-btn-control">🗖</button>
+            <button class="win-btn-control win-close">X</button>
           </div>
         </div>
 
-        <!-- Columna Yahoo! -->
-        <div class="win-inner-box">
-          <div class="win-inner-header">
-            <span>Yahoo!</span>
-            <button class="win-inner-btn">🗖</button>
+        <div class="win-window-body">
+          <div class="win-comp-heading">
+            <span class="win-comp-icon">🖥️</span>
+            <h2>Comparación</h2>
           </div>
-          <div class="win-inner-content">
-            <div class="step-item">
-              <span class="step-icon">📁</span>
-              <span class="step-text">Búsqueda por categorías</span>
-            </div>
-            <div class="step-arrow">▼</div>
-            <div class="categories-list">
-              <span class="cat-item">ARTE</span>
-              <span class="cat-item">FOTOGRAFIA</span>
-              <span class="cat-item">SITIOS</span>
-            </div>
-          </div>
-        </div>
 
-      </div>
+          <hr class="win-divider-line">
 
-    </div>
-
-    <!-- Se eliminó la mini taskbar de abajo -->
-
-  </div>
-
-  <!-- TARJETA MODERNA INTERMEDIA (POP-UP / BANNER) -->
-<div class="modern-card scroll-reveal" id="modern-banner">
-  <div class="modern-card-content">
-    <p class="modern-card-text">
-      Internet crecía más rápido de lo que cualquier humano podía catalogar. Era hora de un cambio.
-    </p>
-  </div>
-</div>
-
-  <!-- VENTANA REPRODUCTOR DE VIDEO (Windows Media Player) -->
-<div id="win-media-player" class="win-wmp-container">
-  
-  <!-- Barra de Título WMP (Azul clásico XP) -->
-  <div class="wmp-header">
-    <div class="wmp-title-left">
-      <span class="wmp-icon">▶</span>
-      <span class="wmp-title-text">Windows Media Player</span>
-    </div>
-    <div class="wmp-controls">
-      <button class="wmp-btn">_</button>
-      <button class="wmp-btn">🗖</button>
-      <button class="wmp-btn wmp-close">X</button>
-    </div>
-  </div>
-
-  <!-- Barra de Menú superior -->
-  <div class="wmp-menu-bar">
-    <span>File</span>
-    <span>View</span>
-    <span>Play</span>
-    <span>Tools</span>
-    <span>Help</span>
-  </div>
-
-  <!-- Área de Video -->
-  <div class="wmp-video-container">
-    <!-- Reemplazá 'assets/videos/tu-video.mp4' por la ruta de tu video -->
-    <video id="wmp-video" controls poster="../assets/imagenes/wmp-placeholder.png">
-      <source src="../assets/videos/tu-video.mp4" type="video/mp4">
-      Tu navegador no soporta el formato de video.
-    </video>
-  </div>
-
-  <!-- Barra de Controles Inferior -->
-  <div class="wmp-controls-bar">
-    <button class="wmp-play-btn" id="wmp-play-trigger">▶</button>
-    
-    <div class="wmp-seek-container">
-      <div class="wmp-seek-bar">
-        <div class="wmp-seek-handle"></div>
-      </div>
-    </div>
-
-    <div class="wmp-volume-container">
-      <span class="wmp-vol-icon">🔊</span>
-      <div class="wmp-vol-bar">
-        <div class="wmp-vol-handle"></div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-</section>
-
-<!-- SECCIÓN NAVEGADOR RETRO -->
-<section id="browser-section" class="browser-section">
-  <div class="old-browser-window">
-    
-    <!-- Barra de título del Navegador -->
-    <div class="browser-header">
-      <div class="browser-title">
-        <span class="browser-icon">🌐</span>
-        <span>Microsoft Internet Explorer</span>
-      </div>
-      <div class="win-controls">
-        <button class="win-btn">_</button>
-        <button class="win-btn">🗖</button>
-        <button class="win-btn win-close">X</button>
-      </div>
-    </div>
-
-    <!-- Barra de direcciones Address -->
-    <div class="browser-address-bar">
-      <span class="address-label">Address</span>
-      <div class="address-input-wrapper">
-        <input type="text" value="http://www.search-engine.com/1995" readonly />
-        <button class="go-btn">➜ Go</button>
-      </div>
-    </div>
-
-    <!-- Área de Contenido Web -->
-    <div class="browser-content">
-      
-      <!-- Buscador Central -->
-      <div class="search-hero">
-  <h1 class="search-logo">
-    Búsqueda por<br>palabras clave
-  </h1>
-  
-  <div class="search-input-container">
-    <input 
-      type="text" 
-      id="search-input" 
-      placeholder="Search the web..." 
-      autocomplete="off"
-    />
-    <ul id="search-dropdown" class="search-dropdown hidden">
-      <li data-category="busqueda">Búsqueda por palabras clave</li>
-      <li data-category="altavista">Altavista</li>
-      <li data-category="lycos">Lycos</li>
-    </ul>
-  </div>
-
-  <div class="search-buttons">
-    <button class="retro-btn">Search</button>
-    <button class="retro-btn">I'm feeling lucky</button>
-  </div>
-</div>
-
-      <!-- Bloques de Categorías (Grilla de 3 columnas) -->
-      <div class="categories-grid">
-        
-        <!-- Columna 1 -->
-        <div class="category-card card-cyan">
-          <h3>Búsqueda por palabras clave</h3>
-          <ul>
-            <li><a href="#" class="retro-link" data-info="que-es-busqueda">qué es?</a></li>
-            <li><a href="#" class="retro-link" data-info="como-busqueda">cómo funcionaba?</a></li>
-            <li><a href="#" class="retro-link" data-info="problema-busqueda">qué problema tenía?</a></li>
-          </ul>
-        </div>
-
-        <!-- Columna 2 -->
-        <div class="category-card card-teal">
-          <h3>Altavista</h3>
-          <ul>
-            <li><a href="#" class="retro-link" data-info="que-es-altavista">qué es</a></li>
-    <li><a href="#" class="retro-link" data-info="datos-altavista">datos</a></li>
-    <li><a href="#" class="retro-link" data-info="veia-altavista">cómo se veía</a></li>
-          </ul>
-        </div>
-
-        <!-- Columna 3 -->
-        <div class="category-card card-dark-teal">
-          <h3>Lycos</h3>
-          <ul>
-<li><a href="#" class="retro-link" data-info="que-es-lycos">qué es</a></li>
-    <li><a href="#" class="retro-link" data-info="datos-lycos">datos</a></li>
-    <li><a href="#" class="retro-link" data-info="veia-lycos">cómo se veía</a></li>
-          </ul>
-        </div>
-
-      </div> <!-- Cierra categories-grid -->
-
-    </div> <!-- Cierra browser-content -->
-  </div> <!-- Cierra old-browser-window -->
-</section>
-<!-- MODALES Y POP-UPS INTERACTIVOS DE PALABRAS CLAVE -->
-<div id="modal-overlay" class="modal-overlay hidden">
-
-  <!-- VENTANA 1: QUÉ ES (Bloc de notas / Flujograma) -->
-  <div id="modal-que-es" class="retro-window modal-window hidden">
-    <div class="browser-header">
-      <div class="browser-title"><span>Como funcionaba</span></div>
-      <button class="win-btn win-close close-modal-btn">X</button>
-    </div>
-    <div class="retro-window-body flex-center">
-      <div class="flow-container">
-        <div class="flow-box">Usuario busca “auto barato”</div>
-        <div class="flow-arrow">↓</div>
-        <div class="flow-box">
-          Buscador busca palabras exactas<br><strong>auto + barato</strong>
-        </div>
-        <div class="flow-arrow">↓</div>
-        <div class="flow-box highlight-box">
-          <strong>Resultado</strong><br>
-          “Venta de autos baratos usados”<br>
-          <small>Coincide porque tiene ambas palabras</small>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- VENTANA 2: QUÉ PROBLEMA TENÍA (Pestañas 1, 2, 3) -->
-  <div id="modal-problemas" class="retro-window modal-window hidden">
-    <div class="browser-header">
-      <div class="browser-title"><span>Problemas</span></div>
-      <button class="win-btn win-close close-modal-btn">X</button>
-    </div>
-    <div class="retro-window-body">
-      <!-- Contenido intercambiable -->
-      <div class="tab-content-wrapper">
-        <!-- Pestaña 1 -->
-        <div id="tab-1" class="tab-panel active">
-          <div class="card-problem green-card">
-            <h4>Sinonimia</h4>
-            <p>Mismo significado, distintas palabras</p>
-            <div class="problem-example">
-              <span class="pill">Auto</span>
-              <span class="neq">≠</span>
-              <span class="pill">Coche</span>
-            </div>
-            <small>Mismo objeto, distinta búsqueda</small>
-          </div>
-        </div>
-        <!-- Pestaña 2 -->
-        <div id="tab-2" class="tab-panel">
-          <div class="card-problem red-card">
-            <h4>Polisemia</h4>
-            <p>Una palabra con varios significados</p>
-            <div class="problem-example flex-col">
-              <span class="pill center-pill">Banco</span>
-              <div class="sub-labels">
-                <span>Banco financiero</span>
-                <span>Banco para sentarse</span>
+          <div class="win-comp-grid">
+            <div class="win-inner-box">
+              <div class="win-inner-header">
+                <span>ARCHIE</span>
+                <button class="win-inner-btn">🗖</button>
+              </div>
+              <div class="win-inner-content">
+                <div class="step-item">
+                  <span class="step-icon">🔍</span>
+                  <span class="step-text">Búsqueda por coincidencia</span>
+                </div>
+                <div class="step-arrow">▼</div>
+                <div class="step-item">
+                  <span class="step-icon">📄</span>
+                  <span class="step-text">Archivo encontrado</span>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-        <!-- Pestaña 3 -->
-        <div id="tab-3" class="tab-panel">
-          <div class="card-problem yellow-card">
-            <h4>Intención</h4>
-            <p>La palabra sola no explica qué quiere el usuario</p>
-            <div class="problem-example flex-col">
-              <span class="pill center-pill">Apple</span>
-              <div class="sub-labels">
-                <span>¿Fruta?</span>
-                <span>¿Empresa?</span>
-                <span>¿Producto?</span>
+
+            <div class="win-inner-box">
+              <div class="win-inner-header">
+                <span>Yahoo!</span>
+                <button class="win-inner-btn">🗖</button>
+              </div>
+              <div class="win-inner-content">
+                <div class="step-item">
+                  <span class="step-icon">📁</span>
+                  <span class="step-text">Búsqueda por categorías</span>
+                </div>
+                <div class="step-arrow">▼</div>
+                <div class="categories-list">
+                  <span class="cat-item">ARTE</span>
+                  <span class="cat-item">FOTOGRAFIA</span>
+                  <span class="cat-item">SITIOS</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Botones numéricos de navegación -->
-      <div class="tab-buttons-bar">
-        <button class="tab-btn active" data-tab="1">1</button>
-        <button class="tab-btn" data-tab="2">2</button>
-        <button class="tab-btn" data-tab="3">3</button>
+      <!-- BANNER MODERNO 1 -->
+      <div class="modern-card scroll-reveal" id="modern-banner">
+        <div class="modern-card-content">
+          <p class="modern-card-text">
+            Internet crecía más rápido de lo que cualquier humano podía catalogar. Era hora de un cambio.
+          </p>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- VENTANA 3: CÓMO FUNCIONABA / LIMITACIONES (Mapa Secuencial) -->
-  <div id="modal-limitaciones" class="retro-window modal-window hidden">
-    <div class="browser-header">
-      <div class="browser-title"><span>Limitaciones</span></div>
-      <button class="win-btn win-close close-modal-btn">X</button>
-    </div>
-    <div class="retro-window-body">
-      <div class="tree-diagram">
-        <!-- Paso 1 -->
-        <div id="step-node-1" class="tree-node">
-          <strong>Antes: “auto barato”</strong><br>
-          <small>Búsqueda por coincidencia de palabras</small>
-        </div>
-        
-        <!-- Paso 2 -->
-        <div id="step-node-2" class="tree-node hidden-node">
-          <div class="tree-arrow">↓</div>
-          <div class="node-box teal-node">La web crece</div>
-          <div class="tree-arrow">↓</div>
-          <div class="node-box orange-node">El lenguaje es más complejo</div>
-        </div>
-
-        <!-- Paso 3 -->
-        <div id="step-node-3" class="tree-node hidden-node">
-          <div class="tree-arrow">↓</div>
-          <div class="node-branches">
-            <span>Sinonimia</span>
-            <span>Polisemia</span>
-            <span>Intención</span>
+      <!-- REPRODUCTOR MEDIA PLAYER -->
+      <div id="win-media-player" class="win-wmp-container">
+        <div class="wmp-header">
+          <div class="wmp-title-left">
+            <span class="wmp-icon">▶</span>
+            <span class="wmp-title-text">Windows Media Player</span>
           </div>
-          <div class="tree-arrow">↓</div>
-          <div class="node-box red-node">Las coincidencias ya no alcanzan</div>
-        </div>
-      </div>
-
-      <!-- Controles de avance / retroceso -->
-      <div class="player-controls-bar">
-        <button id="prev-step-btn" class="retro-btn" disabled>◄◄</button>
-        <button id="next-step-btn" class="retro-btn">►►</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- POP-UP RETRO DE ERROR FINAL -->
-  <div id="modal-error" class="retro-window alert-window hidden">
-    <div class="browser-header alert-header">
-      <span>Reminder</span>
-      <button class="win-btn win-close close-error-btn">X</button>
-    </div>
-    <div class="alert-body">
-      <span class="alert-icon">⚠️</span>
-      <p>Se necesitan buscadores más inteligentes</p>
-    </div>
-    <div class="alert-footer">
-      <button class="retro-btn close-error-btn">Ok, thanks</button>
-    </div>
-  </div>
-
-  <!-- VENTANA ALTAVISTA 1: QUÉ ES -->
-<div id="modal-altavista-que-es" class="retro-window modal-window hidden">
-  <div class="browser-header">
-    <div class="browser-title"><span>Que es</span></div>
-    <button class="win-btn win-close close-modal-btn">X</button>
-  </div>
-  <div class="retro-window-body flex-center">
-    <div class="notepad-container">
-      <p class="notepad-text-lg">
-        AltaVista fue un motor de búsqueda de internet, popular en los años 90, antecesor de Google.
-      </p>
-      <div class="notepad-icon">🔍</div>
-    </div>
-  </div>
-</div>
-
-<!-- VENTANA ALTAVISTA 2: DATOS -->
-<div id="modal-altavista-datos" class="retro-window modal-window hidden">
-  <div class="browser-header">
-    <div class="browser-title"><span>Datos</span></div>
-    <button class="win-btn win-close close-modal-btn">X</button>
-  </div>
-  <div class="retro-window-body altavista-datos-body">
-    
-    <!-- Gráfico Comparativo -->
-    <div class="chart-section">
-      <p class="chart-title">Crecimiento explosivo de visitas</p>
-      <div class="chart-container">
-        <div class="bar-wrapper">
-          <div class="bar bar-small">
-            <span class="bar-tooltip">300 mil</span>
+          <div class="wmp-controls">
+            <button class="wmp-btn">_</button>
+            <button class="wmp-btn">🗖</button>
+            <button class="wmp-btn wmp-close">X</button>
           </div>
         </div>
-        <div class="bar-wrapper">
-          <div id="altavista-bar-big" class="bar bar-large hidden-bar">
-            <span class="bar-tooltip">80 millones</span>
+
+        <div class="wmp-menu-bar">
+          <span>File</span>
+          <span>View</span>
+          <span>Play</span>
+          <span>Tools</span>
+          <span>Help</span>
+        </div>
+
+        <div class="wmp-video-container">
+          <video id="wmp-video" controls poster="../assets/imagenes/wmp-placeholder.png">
+            <source src="../assets/videos/tu-video.mp4" type="video/mp4">
+            Tu navegador no soporta el formato de video.
+          </video>
+        </div>
+
+        <div class="wmp-controls-bar">
+          <button class="wmp-play-btn" id="wmp-play-trigger">▶</button>
+          
+          <div class="wmp-seek-container">
+            <div class="wmp-seek-bar">
+              <div class="wmp-seek-handle"></div>
+            </div>
+          </div>
+
+          <div class="wmp-volume-container">
+            <span class="wmp-vol-icon">🔊</span>
+            <div class="wmp-vol-bar">
+              <div class="wmp-vol-handle"></div>
+            </div>
           </div>
         </div>
       </div>
+
+    </section>
+
+    <!-- SECCIÓN NAVEGADOR RETRO -->
+    <section id="browser-section" class="browser-section">
+      <div class="old-browser-window">
+        <div class="browser-header">
+          <div class="browser-title">
+            <span class="browser-icon">🌐</span>
+            <span>Microsoft Internet Explorer</span>
+          </div>
+          <div class="win-controls">
+            <button class="win-btn">_</button>
+            <button class="win-btn">🗖</button>
+            <button class="win-btn win-close">X</button>
+          </div>
+        </div>
+
+        <div class="browser-address-bar">
+          <span class="address-label">Address</span>
+          <div class="address-input-wrapper">
+            <input type="text" value="http://www.search-engine.com/1995" readonly />
+            <button class="go-btn">➜ Go</button>
+          </div>
+        </div>
+
+        <div class="browser-content">
+          <div class="search-hero">
+            <h1 class="search-logo">
+              Búsqueda por<br>palabras clave
+            </h1>
+            
+            <div class="search-input-container">
+              <input 
+                type="text" 
+                id="search-input" 
+                placeholder="Search the web..." 
+                autocomplete="off"
+              />
+              <ul id="search-dropdown" class="search-dropdown hidden">
+                <li data-category="busqueda">Búsqueda por palabras clave</li>
+                <li data-category="altavista">Altavista</li>
+                <li data-category="lycos">Lycos</li>
+              </ul>
+            </div>
+
+            <div class="search-buttons">
+              <button class="retro-btn">Search</button>
+              <button class="retro-btn">I'm feeling lucky</button>
+            </div>
+          </div>
+
+          <div class="categories-grid">
+            <div class="category-card card-cyan">
+              <h3>Búsqueda por palabras clave</h3>
+              <ul>
+                <li><a href="#" class="retro-link" data-info="que-es-busqueda">qué es?</a></li>
+                <li><a href="#" class="retro-link" data-info="como-busqueda">cómo funcionaba?</a></li>
+                <li><a href="#" class="retro-link" data-info="problema-busqueda">qué problema tenía?</a></li>
+              </ul>
+            </div>
+
+            <div class="category-card card-teal">
+              <h3>Altavista</h3>
+              <ul>
+                <li><a href="#" class="retro-link" data-info="que-es-altavista">qué es</a></li>
+                <li><a href="#" class="retro-link" data-info="datos-altavista">datos</a></li>
+                <li><a href="#" class="retro-link" data-info="veia-altavista">cómo se veía</a></li>
+              </ul>
+            </div>
+
+            <div class="category-card card-dark-teal">
+              <h3>Lycos</h3>
+              <ul>
+                <li><a href="#" class="retro-link" data-info="que-es-lycos">qué es</a></li>
+                <li><a href="#" class="retro-link" data-info="datos-lycos">datos</a></li>
+                <li><a href="#" class="retro-link" data-info="veia-lycos">cómo se veía</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BANNER 2 (Debajo del Navegador Retro) -->
+    <div class="modern-card scroll-reveal is-visible" id="modern-banner-2" style="margin: 40px auto; max-width: 900px;">
+      <div class="modern-card-content">
+        <p class="modern-card-text">
+          Contar palabras no bastaba para saber qué era realmente relevante. Google cambió las reglas.
+        </p>
+      </div>
     </div>
 
-    <hr class="win-divider" />
+    <!-- MODALES Y POP-UPS INTERACTIVOS -->
+    <div id="modal-overlay" class="modal-overlay hidden">
 
-    <!-- Cards de Datos Secuenciales -->
-    <div class="data-cards-grid">
-      <div id="data-card-1" class="data-card seq-card hidden-card">
-        <h3>13 millones</h3>
-        <p>de búsquedas realizadas en promedio cada día</p>
+      <div id="modal-que-es" class="retro-window modal-window hidden">
+        <div class="browser-header">
+          <div class="browser-title"><span>Como funcionaba</span></div>
+          <button class="win-btn win-close close-modal-btn">X</button>
+        </div>
+        <div class="retro-window-body flex-center">
+          <div class="flow-container">
+            <div class="flow-box">Usuario busca “auto barato”</div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-box">
+              Buscador busca palabras exactas<br><strong>auto + barato</strong>
+            </div>
+            <div class="flow-arrow">↓</div>
+            <div class="flow-box highlight-box">
+              <strong>Resultado</strong><br>
+              “Venta de autos baratos usados”<br>
+              <small>Coincide porque tiene ambas palabras</small>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div id="data-card-2" class="data-card seq-card hidden-card">
-        <h3>N.º 1</h3>
-        <p>como índice de navegación en su época dorada</p>
+      <div id="modal-problemas" class="retro-window modal-window hidden">
+        <div class="browser-header">
+          <div class="browser-title"><span>Problemas</span></div>
+          <button class="win-btn win-close close-modal-btn">X</button>
+        </div>
+        <div class="retro-window-body">
+          <div class="tab-content-wrapper">
+            <div id="tab-1" class="tab-panel active">
+              <div class="card-problem green-card">
+                <h4>Sinonimia</h4>
+                <p>Mismo significado, distintas palabras</p>
+                <div class="problem-example">
+                  <span class="pill">Auto</span>
+                  <span class="neq">≠</span>
+                  <span class="pill">Coche</span>
+                </div>
+                <small>Mismo objeto, distinta búsqueda</small>
+              </div>
+            </div>
+            <div id="tab-2" class="tab-panel">
+              <div class="card-problem red-card">
+                <h4>Polisemia</h4>
+                <p>Una palabra con varios significados</p>
+                <div class="problem-example flex-col">
+                  <span class="pill center-pill">Banco</span>
+                  <div class="sub-labels">
+                    <span>Banco financiero</span>
+                    <span>Banco para sentarse</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="tab-3" class="tab-panel">
+              <div class="card-problem yellow-card">
+                <h4>Intención</h4>
+                <p>La palabra sola no explica qué quiere el usuario</p>
+                <div class="problem-example flex-col">
+                  <span class="pill center-pill">Apple</span>
+                  <div class="sub-labels">
+                    <span>¿Fruta?</span>
+                    <span>¿Empresa?</span>
+                    <span>¿Producto?</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-buttons-bar">
+            <button class="tab-btn active" data-tab="1">1</button>
+            <button class="tab-btn" data-tab="2">2</button>
+            <button class="tab-btn" data-tab="3">3</button>
+          </div>
+        </div>
       </div>
 
-      <div id="data-card-3" class="data-card seq-card hidden-card">
-        <h3>Uno de los sitios</h3>
-        <p>más antiguos de internet</p>
+      <div id="modal-limitaciones" class="retro-window modal-window hidden">
+        <div class="browser-header">
+          <div class="browser-title"><span>Limitaciones</span></div>
+          <button class="win-btn win-close close-modal-btn">X</button>
+        </div>
+        <div class="retro-window-body">
+          <div class="tree-diagram">
+            <div id="step-node-1" class="tree-node">
+              <strong>Antes: “auto barato”</strong><br>
+              <small>Búsqueda por coincidencia de palabras</small>
+            </div>
+            
+            <div id="step-node-2" class="tree-node hidden-node">
+              <div class="tree-arrow">↓</div>
+              <div class="node-box teal-node">La web crece</div>
+              <div class="tree-arrow">↓</div>
+              <div class="node-box orange-node">El lenguaje es más complejo</div>
+            </div>
+
+            <div id="step-node-3" class="tree-node hidden-node">
+              <div class="tree-arrow">↓</div>
+              <div class="node-branches">
+                <span>Sinonimia</span>
+                <span>Polisemia</span>
+                <span>Intención</span>
+              </div>
+              <div class="tree-arrow">↓</div>
+              <div class="node-box red-node">Las coincidencias ya no alcanzan</div>
+            </div>
+          </div>
+
+          <div class="player-controls-bar">
+            <button id="prev-step-btn" class="retro-btn" disabled>◄◄</button>
+            <button id="next-step-btn" class="retro-btn">►►</button>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="dialog-footer">
-      <button class="retro-btn close-modal-btn">OK</button>
-      <button class="retro-btn close-modal-btn">Cancel</button>
-      <button class="retro-btn" disabled>Apply</button>
-    </div>
-  </div>
-</div>
-
-<!-- VENTANA LYCOS 1: QUÉ ES -->
-<div id="modal-lycos-que-es" class="retro-window modal-window hidden">
-  <div class="browser-header">
-    <div class="browser-title"><span>Que es</span></div>
-    <button class="win-btn win-close close-modal-btn">X</button>
-  </div>
-  <div class="retro-window-body flex-center">
-    <div class="notepad-container">
-      <p class="notepad-text-lg">
-        Motor de búsqueda + portal web (noticias, email, etc)
-      </p>
-      <!-- Podés usar un SVG/PNG o ícono vectorial para el portal -->
-      <div class="portal-illustration">
-        <span style="font-size: 50px;">🖥️</span>
+      <div id="modal-error" class="retro-window alert-window hidden">
+        <div class="browser-header alert-header">
+          <span>Reminder</span>
+          <button class="win-btn win-close close-error-btn">X</button>
+        </div>
+        <div class="alert-body">
+          <span class="alert-icon">⚠️</span>
+          <p>Se necesitan buscadores más inteligentes</p>
+        </div>
+        <div class="alert-footer">
+          <button class="retro-btn close-error-btn">Ok, thanks</button>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
-<!-- VENTANA LYCOS 2: DATOS -->
-<div id="modal-lycos-datos" class="retro-window modal-window hidden">
-  <div class="browser-header">
-    <div class="browser-title"><span>Datos</span></div>
-    <button class="win-btn win-close close-modal-btn">X</button>
-  </div>
-  <div class="retro-window-body lycos-datos-body">
-    
-    <div class="lycos-info-text">
-      <p>
-        El nombre proviene de la araña <strong>Lycosidae</strong>, como metáfora de una criatura que recorre y teje la red para encontrar su presa.
-      </p>
-    </div>
-
-    <hr class="win-divider" />
-
-    <!-- Fotos de Araña -->
-    <div class="spider-images-container">
-      <div class="spider-img-box">
-        <img src="assets/imagenes/lycos-spider1.png" alt="Araña Lycosidae entera" class="spider-img">
+      <!-- MODAL ALTAVISTA QUE ES -->
+      <div id="modal-altavista-que-es" class="retro-window modal-window hidden">
+        <div class="browser-header">
+          <div class="browser-title"><span>Altavista - Qué es</span></div>
+          <button class="win-btn win-close close-modal-btn">X</button>
+        </div>
+        <div class="retro-window-body">
+          <p>AltaVista fue un motor de búsqueda web creado en 1995 que revolucionó la búsqueda por palabras clave gracias a su velocidad e indexación masiva.</p>
+        </div>
       </div>
-      <div class="spider-img-box">
-        <img src="assets/imagenes/lycos-spider2.png" alt="Macro ojos araña Lycosidae" class="spider-img">
-      </div>
+
     </div>
 
-    <div class="dialog-footer">
-      <button class="retro-btn close-modal-btn">OK</button>
-      <button class="retro-btn close-modal-btn">Cancel</button>
-      <button class="retro-btn" disabled>Apply</button>
-    </div>
-  </div>
-</div>
-
-</div>
-    
   </main>
 
 </body>

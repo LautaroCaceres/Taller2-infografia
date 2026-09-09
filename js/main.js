@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initSearchDropdown();   // Desplegable del buscador retro
 
   // --- 2. REVEAL AL HACER SCROLL ---
-  const scrollElements = document.querySelectorAll(".scroll-reveal");
+  const scrollElements = document.querySelectorAll(".scroll-reveal, .modern-card");
 
   const elementInView = (el, dividend = 1.25) => {
     const elementTop = el.getBoundingClientRect().top;
