@@ -20,9 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
   initSearchDropdown();   // Desplegable del buscador retro
   initGoogleBrowserEvents(); // Eventos de pestañas y búsqueda de Google
   initRetroLinks();
+  initMLGame();
 
   // --- 2. REVEAL AL HACER SCROLL ---
-  const scrollElements = document.querySelectorAll(".scroll-reveal, .modern-card");
+  const scrollElements = document.querySelectorAll(".scroll-reveal, .modern-card, .reveal-ml");
 
   const elementInView = (el, dividend = 1.25) => {
     const elementTop = el.getBoundingClientRect().top;
@@ -818,6 +819,401 @@ function initRetroLinks() {
       } else if (targetInfo === "veia-lycos") {
         injectPreview("assets/imagenes/lycos-preview.png", "Lycos");
       }
+    });
+  });
+}
+
+// 11. Juego interactivo de clasificación (Machine Learning)
+function initMLGame() {
+  const tray = document.getElementById('ml-dogs-tray');
+  if (!tray || typeof interact === 'undefined') return;
+
+  const totalDogs = document.querySelectorAll('.draggable-dog').length;
+  let correctCount = 0;
+
+  function dragMoveListenerML(event) {
+    const target = event.target;
+    const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+    const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+    target.style.transform = `translate(${x}px, ${y}px)`;
+    target.setAttribute('data-x', x);
+    target.setAttribute('data-y', y);
+  }
+
+  interact('.draggable-dog').draggable({
+    inertia: false,
+    listeners: {
+      start(event) {
+        event.target.classList.add('dragging-dog');
+      },
+      move: dragMoveListenerML,
+      end(event) {
+        const target = event.target;
+        target.classList.remove('dragging-dog');
+        if (target.getAttribute('data-placed') !== 'true') {
+          target.style.transform = 'translate(0px, 0px)';
+          target.setAttribute('data-x', 0);
+          target.setAttribute('data-y', 0);
+        }
+      }
+    }
+  });
+
+  interact('.ml-dropzone').dropzone({
+    accept: '.draggable-dog',
+    overlap: 0.5,
+    ondropactivate(event) {
+      event.target.classList.add('drop-active');
+    },
+    ondragenter(event) {
+      event.target.classList.add('drop-target-hover');
+    },
+    ondragleave(event) {
+      event.target.classList.remove('drop-target-hover');
+    },
+    ondrop(event) {
+      const dropzoneEl = event.target;
+      const dogEl = event.relatedTarget;
+      const tipoCorrecto = dogEl.getAttribute('data-tipo');
+      const tipoZona = dropzoneEl.getAttribute('data-tipo');
+
+      if (dogEl.getAttribute('data-placed') === 'true') return;
+
+      if (tipoCorrecto === tipoZona) {
+        dogEl.setAttribute('data-placed', 'true');
+        dogEl.classList.add('dog-placed');
+        dogEl.style.transform = '';
+        dogEl.removeAttribute('data-x');
+        dogEl.removeAttribute('data-y');
+
+        const slot = dropzoneEl.querySelector('.ml-dropzone-slots');
+        slot?.appendChild(dogEl);
+
+        correctCount++;
+        if (correctCount === totalDogs) {
+          showMLFinalText();
+        }
+      } else {
+        dogEl.classList.add('dog-shake');
+        setTimeout(() => dogEl.classList.remove('dog-shake'), 400);
+      }
+    },
+    ondragdeactivate(event) {
+      event.target.classList.remove('drop-active', 'drop-target-hover');
+    }
+  });
+}
+
+function showMLFinalText() {
+  const finalText = document.getElementById('ml-final-text');
+  if (!finalText) return;
+  finalText.classList.remove('hidden');
+  requestAnimationFrame(() => {
+    finalText.classList.add('is-visible');
+  });
+}
+
+// =========================================================================
+// SECCIÓN CHATBOTS: GRÁFICOS Y FILTROS
+// =========================================================================
+
+let chartGoogleChatgpt = null;
+let chartEdad = null;
+let chartMarketShare = null;
+let chartTimeline = null;
+
+document.addEventListener("DOMContentLoaded", () => {
+  initFiltrosDashboard();
+  initChartGoogleChatgpt();
+  initChartEdad();
+  initChartMarketShare();
+  initChartTimeline();
+  initPopupsChatbot();
+});
+
+// --- Filtros Actividad / Dispositivos / Edad ---
+function initFiltrosDashboard() {
+  const btns = document.querySelectorAll('.filtro-btn');
+  const vistaCombinada = document.getElementById('vista-actividad-dispositivos');
+  const vistaEdad = document.getElementById('vista-edad');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filtro = btn.dataset.filtro;
+
+      if (filtro === 'edad') {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        vistaCombinada.classList.add('hidden');
+        vistaEdad.classList.remove('hidden');
+        return;
+      }
+
+      // Si el usuario clickea Actividad o Dispositivos, apagamos Edad
+      document.querySelector('[data-filtro="edad"]').classList.remove('active');
+      vistaEdad.classList.add('hidden');
+      vistaCombinada.classList.remove('hidden');
+
+      const actividadBtn = document.querySelector('[data-filtro="actividad"]');
+      const dispositivosBtn = document.querySelector('[data-filtro="dispositivos"]');
+      const estaActivo = btn.classList.contains('active');
+      const otroEstaActivo = (btn === actividadBtn ? dispositivosBtn : actividadBtn).classList.contains('active');
+
+      // No permitir apagar el último filtro activo
+      if (estaActivo && !otroEstaActivo) {
+        return;
+      }
+
+      btn.classList.toggle('active');
+      updateChartGoogleChatgpt();
+    });
+  });
+}
+
+// --- Gráfico: Google vs ChatGPT (Actividad + Dispositivos) ---
+function initChartGoogleChatgpt() {
+  const ctx = document.getElementById('chart-google-chatgpt');
+  if (!ctx) return;
+
+  chartGoogleChatgpt = new Chart(ctx, {
+    type: 'bar',
+    data: { labels: [], datasets: [] },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: true },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => ` ${ctx.dataset.label}: ${ctx.raw}%`
+          }
+        }
+      },
+      scales: {
+        y: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' } }
+      }
+    }
+  });
+
+  updateChartGoogleChatgpt();
+}
+
+function updateChartGoogleChatgpt() {
+  if (!chartGoogleChatgpt) return;
+
+  const actividadOn = document.querySelector('[data-filtro="actividad"]').classList.contains('active');
+  const dispositivosOn = document.querySelector('[data-filtro="dispositivos"]').classList.contains('active');
+
+  const labels = ['Google Search', 'ChatGPT', 'Otros'];
+  const datasets = [];
+
+  if (actividadOn) {
+    datasets.push({
+      label: '% de búsquedas totales',
+      data: [57, 17.9, 25.1],
+      backgroundColor: '#4285F4'
+    });
+  }
+
+  if (dispositivosOn) {
+    datasets.push({
+      label: '% Desktop',
+      data: [37, 62, null], // Otros no tiene dato
+      backgroundColor: '#10a37f'
+    });
+    datasets.push({
+      label: '% Mobile',
+      data: [63, 38, null], // Otros no tiene dato
+      backgroundColor: '#a0d9c8'
+    });
+  }
+
+  chartGoogleChatgpt.data.labels = labels;
+  chartGoogleChatgpt.data.datasets = datasets;
+  chartGoogleChatgpt.update();
+}
+
+// --- Gráfico: Market Share por edad ---
+function initChartEdad() {
+  const ctx = document.getElementById('chart-edad');
+  if (!ctx) return;
+
+  chartEdad = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['13-24', '25-44', '45-64', '65+'],
+      datasets: [
+        {
+          label: 'Google',
+          data: [74, 80, 86, 89],
+          backgroundColor: '#4285F4'
+        },
+        {
+          label: 'ChatGPT',
+          data: [17, 13, 8, 5],
+          backgroundColor: '#10a37f'
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { position: 'top' } },
+      scales: {
+        y: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' } }
+      }
+    }
+  });
+}
+
+// --- Gráfico: Market Share chatbots enero 2026 ---
+function initChartMarketShare() {
+  const ctx = document.getElementById('chart-market-share');
+  if (!ctx) return;
+
+  chartMarketShare = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['ChatGPT', 'Google Gemini', 'DeepSeek', 'Grok', 'Perplexity', 'Copilot'],
+      datasets: [{
+        label: 'Market share',
+        data: [64.5, 18.2, 4, 3.4, 2, 1.2],
+        backgroundColor: ['#8ecae6', '#ffd166', '#c0c0c0', '#c0c0c0', '#c0c0c0', '#c0c0c0']
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { beginAtZero: true, max: 70, ticks: { callback: v => v + '%' } }
+      }
+    }
+  });
+}
+
+// --- Gráfico: Línea de tiempo con slider ---
+// NOTA: Los valores de este dataset son ESTIMADOS a partir de la tendencia
+// visual del gráfico de referencia. Reemplazar por los datos exactos
+// de Similarweb/fuente original en cuanto los tengas.
+const timelineLabels = [
+  'Q1 2023','Q2 2023','Q3 2023','Q4 2023',
+  'Q1 2024','Q2 2024','Q3 2024','Q4 2024',
+  'Q1 2025','Q2 2025','Q3 2025','Q4 2025',
+  'Q1 2026','Q2 2026'
+];
+const timelineGoogle = [92, 91, 90, 89, 88, 86, 84, 82, 81, 80, 79, 78, 78, 77]; // ESTIMADO
+const timelineChatgpt = [1, 2, 3, 5, 7, 9, 11, 13, 15, 16, 17, 18, 19, 20]; // ESTIMADO
+
+function initChartTimeline() {
+  const ctx = document.getElementById('chart-timeline');
+  const slider = document.getElementById('timeline-slider');
+  const sliderValue = document.getElementById('timeline-slider-value');
+  if (!ctx || !slider) return;
+
+  slider.max = timelineLabels.length - 1;
+  slider.value = timelineLabels.length - 1;
+
+  chartTimeline = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: timelineLabels,
+      datasets: [
+        {
+          label: 'Google',
+          data: timelineGoogle,
+          borderColor: '#4285F4',
+          backgroundColor: 'rgba(66,133,244,0.15)',
+          fill: true,
+          tension: 0.35
+        },
+        {
+          label: 'ChatGPT',
+          data: timelineChatgpt,
+          borderColor: '#10a37f',
+          backgroundColor: 'rgba(16,163,127,0.15)',
+          fill: true,
+          tension: 0.35
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { position: 'top' } },
+      scales: {
+        y: { beginAtZero: true, max: 100, ticks: { callback: v => v + '%' } }
+      }
+    }
+  });
+
+  function updateTimeline() {
+    const hasta = parseInt(slider.value, 10);
+    sliderValue.textContent = timelineLabels[hasta];
+
+    chartTimeline.data.labels = timelineLabels.slice(0, hasta + 1);
+    chartTimeline.data.datasets[0].data = timelineGoogle.slice(0, hasta + 1);
+    chartTimeline.data.datasets[1].data = timelineChatgpt.slice(0, hasta + 1);
+    chartTimeline.update();
+  }
+
+  slider.addEventListener('input', updateTimeline);
+  updateTimeline();
+}
+
+// --- Pop-ups: Market Share detalle y "Por qué" ---
+function initPopupsChatbot() {
+  const overlay = document.getElementById('popup-overlay-cb');
+  const popupMarketShare = document.getElementById('popup-market-share');
+  const popupPorque = document.getElementById('popup-timeline-porque');
+
+  document.getElementById('btn-expand-market-share')?.addEventListener('click', () => {
+    overlay?.classList.remove('hidden');
+    popupMarketShare?.classList.remove('hidden');
+  });
+
+  document.getElementById('btn-timeline-porque')?.addEventListener('click', () => {
+    overlay?.classList.remove('hidden');
+    popupPorque?.classList.remove('hidden');
+  });
+
+  document.querySelectorAll('.close-popup-cb').forEach(btn => {
+    btn.addEventListener('click', () => {
+      overlay?.classList.add('hidden');
+      popupMarketShare?.classList.add('hidden');
+      popupPorque?.classList.add('hidden');
+    });
+  });
+}
+
+// --- Cohete que sigue al mouse en la sección de cierre ---
+document.addEventListener("DOMContentLoaded", () => {
+  initRocketFollower();
+});
+
+function initRocketFollower() {
+  const section = document.getElementById("cierre-section");
+  const rocket = document.getElementById("rocket-follower");
+
+  if (!section || !rocket || typeof gsap === "undefined") return;
+
+  section.addEventListener("mousemove", (e) => {
+    const rect = section.getBoundingClientRect();
+    gsap.to(rocket, {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+      opacity: 1,
+      duration: 0.5,
+      ease: "power2.out"
+    });
+  });
+
+  section.addEventListener("mouseleave", () => {
+    gsap.to(rocket, {
+      opacity: 0,
+      duration: 0.3,
+      ease: "power2.out"
     });
   });
 }

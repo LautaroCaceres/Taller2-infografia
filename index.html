@@ -1072,8 +1072,604 @@
   </div>
 
 </section>
+<div class="modern-card scroll-reveal" id="modern-banner-3" style="margin: 40px auto; max-width: 900px;">
+  <div class="modern-card-content">
+    <p class="modern-card-text">
+      Llegan los años 2000: la Web sigue creciendo y el Machine Learning empieza a transformar la forma en la que las máquinas entienden lo que buscamos.
+    </p>
+  </div>
+</div>
+
+<!-- SECCIÓN MACHINE LEARNING - JUEGO INTERACTIVO -->
+<section id="ml-section" class="ml-section">
+  <div class="ml-container">
+
+    <h2 class="ml-title reveal-ml">Machine Learning:</h2>
+
+    <div class="ml-pill reveal-ml">¿Qué es?</div>
+
+    <p class="ml-description reveal-ml">
+      Conjunto de inteligencia artificial que aprende patrones con datos de entrenamiento.
+    </p>
+
+    <p class="ml-observe-text reveal-ml">
+      Observe que hay <span class="ml-highlight">tres tipos</span>, según la forma de las orejas
+    </p>
+
+    <div class="ml-types-grid">
+      <div class="ml-type-box reveal-ml">
+        <span class="ml-type-label">Orejas puntiagudas</span>
+        <div class="ml-type-img-wrapper">
+          <img src="assets/imagenes/ml-tipo-puntiagudas.png" alt="Orejas puntiagudas" class="ml-type-img">
+        </div>
+      </div>
+      <div class="ml-type-box reveal-ml">
+        <span class="ml-type-label">Orejas dobladas</span>
+        <div class="ml-type-img-wrapper">
+          <img src="assets/imagenes/ml-tipo-dobladas.png" alt="Orejas dobladas" class="ml-type-img">
+        </div>
+      </div>
+      <div class="ml-type-box reveal-ml">
+        <span class="ml-type-label">Orejas de murciélago</span>
+        <div class="ml-type-img-wrapper">
+          <img src="assets/imagenes/ml-tipo-murcielago.png" alt="Orejas de murciélago" class="ml-type-img">
+        </div>
+      </div>
+    </div>
+
+    <h3 class="ml-clasificalos-title reveal-ml">Clasificalos</h3>
+
+    <div class="ml-dogs-tray" id="ml-dogs-tray">
+      <div class="ml-dog-card draggable-dog reveal-ml" data-tipo="puntiagudas" id="ml-dog-1">
+        <img src="assets/imagenes/ml-perro-1.png" alt="Perro 1" draggable="false">
+      </div>
+      <div class="ml-dog-card draggable-dog reveal-ml" data-tipo="dobladas" id="ml-dog-2">
+        <img src="assets/imagenes/ml-perro-2.png" alt="Perro 2" draggable="false">
+      </div>
+      <div class="ml-dog-card draggable-dog reveal-ml" data-tipo="murcielago" id="ml-dog-3">
+        <img src="assets/imagenes/ml-perro-3.png" alt="Perro 3" draggable="false">
+      </div>
+      <div class="ml-dog-card draggable-dog reveal-ml" data-tipo="puntiagudas" id="ml-dog-4">
+        <img src="assets/imagenes/ml-perro-4.png" alt="Perro 4" draggable="false">
+      </div>
+      <div class="ml-dog-card draggable-dog reveal-ml" data-tipo="dobladas" id="ml-dog-5">
+        <img src="assets/imagenes/ml-perro-5.png" alt="Perro 5" draggable="false">
+      </div>
+      <div class="ml-dog-card draggable-dog reveal-ml" data-tipo="murcielago" id="ml-dog-6">
+        <img src="assets/imagenes/ml-perro-6.png" alt="Perro 6" draggable="false">
+      </div>
+    </div>
+
+    <div class="ml-dropzones-grid">
+      <div class="ml-dropzone reveal-ml" data-tipo="puntiagudas">
+        <span class="ml-dropzone-label">Orejas puntiagudas</span>
+        <div class="ml-dropzone-slots"></div>
+      </div>
+      <div class="ml-dropzone reveal-ml" data-tipo="dobladas">
+        <span class="ml-dropzone-label">Orejas dobladas</span>
+        <div class="ml-dropzone-slots"></div>
+      </div>
+      <div class="ml-dropzone reveal-ml" data-tipo="murcielago">
+        <span class="ml-dropzone-label">Orejas de murciélago</span>
+        <div class="ml-dropzone-slots"></div>
+      </div>
+    </div>
+
+    <p class="ml-final-text hidden" id="ml-final-text">
+      De esta manera aprendió la IA a clasificar patrones.<br>
+      Esto generó un antes y un después en la forma en que las máquinas entienden el mundo.
+    </p>
+
+  </div>
+</section>
+
+<!-- BANNER 4 (Transición hacia RankBrain) -->
+<div class="modern-card scroll-reveal" id="modern-banner-rankbrain" style="margin: 40px auto; max-width: 900px;">
+  <div class="modern-card-content">
+    <p class="modern-card-text">
+      En 2015, Google dio un paso más allá: nace RankBrain, el primer sistema de Machine Learning integrado al algoritmo de búsqueda.
+    </p>
+  </div>
+</div>
+
+<!-- SECCIÓN NLU - DASHBOARD -->
+<section id="nlu-section" class="nlu-section">
+  <div class="nlu-container">
+
+    <h2 class="nlu-main-title reveal-ml">Natural Language Understanding (NLU)</h2>
+
+    <!-- TARJETA COMPARACIÓN -->
+    <div class="dash-card dash-card-wide dash-card-ai-response reveal-ml">
+      <div class="dash-card-header">
+        <span class="dash-gear">⚙️</span>
+        <span class="dash-card-title">Comparación NLU con la metodología de búsqueda hasta el momento</span>
+      </div>
+      <div class="dash-card-body">
+        <div class="compare-table">
+          <div class="compare-row compare-row-head">
+            <div class="compare-cell compare-cell-label"></div>
+            <div class="compare-cell">Objetivo</div>
+            <div class="compare-cell">Unidad de análisis</div>
+            <div class="compare-cell">Ambigüedad</div>
+          </div>
+          <div class="compare-row compare-row-nlu">
+            <div class="compare-cell compare-cell-label">NLU</div>
+            <div class="compare-cell">Comprender integralmente la intención, significado y contexto</div>
+            <div class="compare-cell">Consulta completa</div>
+            <div class="compare-cell">Distingue significado según contexto</div>
+          </div>
+          <div class="compare-row compare-row-antes">
+            <div class="compare-cell compare-cell-label">Antes</div>
+            <div class="compare-cell">Coincidir palabras clave</div>
+            <div class="compare-cell">Palabras aisladas</div>
+            <div class="compare-cell">No distingue múltiples significados</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILA: QUÉ ES + DATO -->
+    <div class="dash-row-2">
+      <div class="dash-card dash-card-green reveal-ml">
+        <div class="dash-card-header">
+          <span class="dash-gear">⚙️</span>
+          <span class="dash-card-title">Qué es</span>
+        </div>
+        <div class="dash-card-body">
+          <p class="dash-big-text">
+            Conjunto de IA que utiliza análisis semántico y sintáctico para que la computadora comprenda el lenguaje humano.
+          </p>
+        </div>
+      </div>
+
+      <div class="dash-card dash-card-dark reveal-ml">
+        <div class="dash-card-header">
+          <span class="dash-gear">⚙️</span>
+          <span class="dash-card-title">Dato</span>
+        </div>
+        <div class="dash-card-body">
+          <p class="dash-big-text dash-text-light">
+            Sin NLU, los chatbots de hoy como ChatGPT no podrían mantener una conversación que se sienta natural y real.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TARJETA VENTAJAS + FUNCIONAMIENTO -->
+    <div class="dash-card dash-card-wide dash-card-teal reveal-ml">
+      <div class="dash-card-header">
+        <span class="dash-gear">⚙️</span>
+        <span class="dash-card-title">Ventajas</span>
+      </div>
+      <div class="dash-card-body">
+        <div class="ventajas-layout">
+          <div class="ventajas-central">Computadora<br>entiende</div>
+          <ul class="ventajas-list">
+            <li class="reveal-ml">Matices sutiles</li>
+            <li class="reveal-ml">Oraciones complejas</li>
+            <li class="reveal-ml">Palabras confusas</li>
+            <li class="reveal-ml">Jerga</li>
+            <li class="reveal-ml">Dialectos</li>
+          </ul>
+        </div>
+
+        <hr class="dash-divider">
+
+        <div class="funcionamiento-flow">
+          <div class="func-box">NLU utiliza<br>Machine Learning</div>
+          <span class="func-arrow">➔</span>
+          <div class="func-box">Habla no estructurada /<br>lenguaje escrito</div>
+          <span class="func-arrow">➔</span>
+          <div class="func-box func-box-highlight">Datos estructurados que<br>representan su contenido y significado</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILA: ENTRENAMIENTO + TECNOLOGÍAS -->
+    <div class="dash-row-2">
+      <div class="dash-card dash-card-salmon reveal-ml">
+        <div class="dash-card-header">
+          <span class="dash-gear">⚙️</span>
+          <span class="dash-card-title">Entrenamiento</span>
+        </div>
+        <div class="dash-card-body">
+          <ul class="entrenamiento-list">
+  <li>
+    Tokenización e incorporación
+    <div class="entrenamiento-tooltip">
+      Divide el texto en unidades más pequeñas (palabras o fragmentos) y las convierte en representaciones numéricas que el modelo puede procesar.
+    </div>
+  </li>
+  <li>
+    Named Entity Recognition (NER)
+    <div class="entrenamiento-tooltip">
+      Identifica y clasifica elementos clave dentro del texto, como nombres de personas, lugares, organizaciones o fechas.
+    </div>
+  </li>
+  <li>
+    Reconocimiento de intenciones
+    <div class="entrenamiento-tooltip">
+      Determina qué quiere lograr el usuario con su consulta, más allá de las palabras exactas que usó.
+    </div>
+  </li>
+</ul>
+        </div>
+      </div>
+
+      <div class="dash-card dash-card-blue reveal-ml">
+        <div class="dash-card-header">
+          <span class="dash-gear">⚙️</span>
+          <span class="dash-card-title">Tecnologías</span>
+        </div>
+        <div class="dash-card-body">
+          <ul class="tech-list">
+            <li class="tech-item">
+              RankBrain (2015)
+              <div class="tech-tooltip">
+                Ayuda a interpretar y procesar mejor nuevas búsquedas en lenguaje natural.
+              </div>
+            </li>
+            <li class="tech-item">
+              BERT (2019)
+              <div class="tech-tooltip">
+                Avance en el entendimiento de lenguaje natural.
+              </div>
+            </li>
+            <li class="tech-item">
+              MUM (2021)
+              <div class="tech-tooltip">
+                Permite integrar diferentes tipos de información (texto, imágenes, etc.) para mejores respuestas.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  
+</section>
+
+<!-- BANNER 5 (Transición hacia Chatbots / IA Generativa) -->
+<div class="modern-card scroll-reveal" id="modern-banner-chatbots" style="margin: 40px auto; max-width: 900px;">
+  <div class="modern-card-content">
+    <p class="modern-card-text">
+      Con el lenguaje ya comprendido, llegó el siguiente paso: chatbots como ChatGPT, capaces de generar respuestas y mantener conversaciones naturales.
+    </p>
+  </div>
+</div>
+
+<!-- SECCIÓN CHATBOTS / IA GENERATIVA -->
+<section id="chatbot-section" class="chatbot-section">
+
+  <!-- BIENVENIDA -->
+  <div class="cb-welcome-box reveal-ml">
+    <h2 class="cb-welcome-title">Bienvenidos Chatbots</h2>
+
+    <div class="cb-welcome-media">
+      <video class="cb-robot-video" autoplay muted loop playsinline>
+        <source src="assets/videos/robot-saludo.mp4" type="video/mp4">
+      </video>
+
+      <div class="cb-logo-crossfade">
+        <img class="cb-logo cb-logo-1" src="assets/imagenes/logo-chatgpt.png" alt="ChatGPT">
+        <img class="cb-logo cb-logo-2" src="assets/imagenes/logo-gemini.png" alt="Gemini">
+        <img class="cb-logo cb-logo-3" src="assets/imagenes/logo-deepseek.png" alt="DeepSeek">
+        <img class="cb-logo cb-logo-4" src="assets/imagenes/logo-copilot.png" alt="Copilot">
+      </div>
+    </div>
+  </div>
+
+  <!-- CONVERSACIÓN SIMULADA (EJEMPLO - REEMPLAZAR TEXTOS) -->
+  <div class="cb-chat-container">
+    <div class="cb-chat-bubble cb-chat-user reveal-ml">
+      <p>¿Qué diferencia hay entre buscar en Google y preguntarle a un chatbot?</p>
+    </div>
+    <div class="cb-chat-bubble cb-chat-ai reveal-ml">
+      <p>Google te da una lista de links para que vos busques la respuesta. Un chatbot te da la respuesta directa, entendiendo tu pregunta completa.</p>
+    </div>
+    <div class="cb-chat-bubble cb-chat-user reveal-ml">
+      <p>¿Y recuerda lo que le pregunté antes?</p>
+    </div>
+    <div class="cb-chat-bubble cb-chat-ai reveal-ml">
+      <p>Sí, mantiene el contexto de toda la conversación, por eso puede aclarar dudas o ajustar la respuesta según lo que ya hablamos.</p>
+    </div>
+  </div>
+
+  <!-- GRÁFICO 1: TABLA COMPARATIVA -->
+  <div class="dash-card dash-card-wide dash-card-ai-response reveal-ml">
+    <div class="dash-card-header">
+      <span class="dash-gear">⚙️</span>
+      <span class="dash-card-title">Motores conversacionales vs. tradicionales</span>
+    </div>
+    <div class="dash-card-body">
+      <div class="compare-table compare-table-4col">
+        <div class="compare-row compare-row-head">
+          <div class="compare-cell compare-cell-label"></div>
+          <div class="compare-cell">Formato de respuesta</div>
+          <div class="compare-cell">Interacción</div>
+          <div class="compare-cell">Fuente</div>
+          <div class="compare-cell">Personalización</div>
+        </div>
+        <div class="compare-row compare-row-nlu">
+          <div class="compare-cell compare-cell-label">Conversacionales</div>
+          <div class="compare-cell">Respuestas completas y detalladas, similar a la interacción humana</div>
+          <div class="compare-cell">Diálogo continuo, memoria del contexto de la conversación</div>
+          <div class="compare-cell">Información sintetizada y directa</div>
+          <div class="compare-cell">Puede adaptar el tono, detalle o formato según cómo se pregunte</div>
+        </div>
+        <div class="compare-row compare-row-antes">
+          <div class="compare-cell compare-cell-label">Tradicionales</div>
+          <div class="compare-cell">Listas de enlaces organizados por relevancia</div>
+          <div class="compare-cell">Consulta única, sin memoria de contexto previo</div>
+          <div class="compare-cell">Necesidad de visitar la web entera y buscar la información completa</div>
+          <div class="compare-cell">Genérica, basada en relevancia y popularidad</div>
+        </div>
+      </div>
+      <p class="dash-callout reveal-ml">
+        El usuario ya no necesita hacer consultas diferentes, refinar la búsqueda o entrar en múltiples enlaces para generar una respuesta.
+      </p>
+    </div>
+  </div>
+
+  <!-- GRÁFICO 2: DIAGRAMA RESULTADO -->
+  <div class="dash-card dash-card-teal dash-card-ai-response reveal-ml">
+    <div class="dash-card-header">
+      <span class="dash-gear">⚙️</span>
+      <span class="dash-card-title">Cómo logran responder así</span>
+    </div>
+    <div class="dash-card-body">
+      <p class="dash-big-text">
+        Los motores conversacionales no solo dependen de datos estructurados, sino también de enormes cantidades de datos no estructurados que les permiten ofrecer respuestas mucho más amplias y personalizadas.
+      </p>
+
+      <div class="resultado-tree">
+        <div class="resultado-arrow-down">↓</div>
+        <div class="resultado-label">Resultado</div>
+        <div class="resultado-branches">
+          <div class="resultado-pill reveal-ml">Anticipar necesidades</div>
+          <div class="resultado-pill reveal-ml">Aclarar dudas adicionales</div>
+          <div class="resultado-pill reveal-ml">Proporcionar recomendaciones basadas en la conversación</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="dash-standalone-text reveal-ml">
+    Hoy en día no es necesario navegar y darle forma a una respuesta: directamente conseguimos lo que buscábamos, en contexto y específico.
+  </p>
+
+  <!-- GRÁFICO 3: DASHBOARD CON FILTROS -->
+  <div class="dash-card dash-card-wide dash-card-blue dash-card-ai-response reveal-ml">
+    <div class="dash-card-header">
+      <span class="dash-gear">⚙️</span>
+      <span class="dash-card-title">Google Search vs ChatGPT — Panorama actual</span>
+    </div>
+    <div class="dash-card-body">
+
+      <div class="filtros-bar">
+        <span class="filtros-label">Filtros:</span>
+        <button class="filtro-btn active" data-filtro="actividad">Actividad</button>
+        <button class="filtro-btn active" data-filtro="dispositivos">Dispositivos</button>
+        <button class="filtro-btn" data-filtro="edad">Edad</button>
+      </div>
+
+      <!-- Vista combinada: Actividad + Dispositivos -->
+      <div id="vista-actividad-dispositivos" class="dash-chart-wrapper">
+        <div style="position:relative; height:340px; width:100%;">
+          <canvas id="chart-google-chatgpt"></canvas>
+        </div>
+        <div class="dash-table-mini">
+          <div class="mini-row mini-row-head">
+            <span></span><span>Usuarios activos/mes</span><span>% búsquedas totales</span><span>% Desktop</span><span>% Mobile</span>
+          </div>
+          <div class="mini-row">
+            <span>Google Search</span><span>5.3 Billones</span><span>57%</span><span>37%</span><span>63%</span>
+          </div>
+          <div class="mini-row">
+            <span>ChatGPT</span><span>1 Billón</span><span>17.9%</span><span>62%</span><span>38%</span>
+          </div>
+          <div class="mini-row">
+            <span>Otros</span><span>1.4 Billones</span><span>25.1%</span><span>—</span><span>—</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vista exclusiva: Edad -->
+      <div id="vista-edad" class="dash-chart-wrapper hidden">
+        <div style="position:relative; height:340px; width:100%;">
+          <canvas id="chart-edad"></canvas>
+        </div>
+        <p class="dash-source-note">Google vs ChatGPT Market Share por grupo etario — 2026</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- GRÁFICO 4: BARRAS MARKET SHARE + EXPANDIR -->
+  <div class="dash-card dash-card-dark dash-card-ai-response reveal-ml">
+    <div class="dash-card-header">
+      <span class="dash-gear">⚙️</span>
+      <span class="dash-card-title">AI Chatbot Market Share — Enero 2026</span>
+    </div>
+    <div class="dash-card-body">
+      <div style="position:relative; height:320px; width:100%;">
+        <canvas id="chart-market-share"></canvas>
+      </div>
+      <button class="dash-expand-btn" id="btn-expand-market-share">Ver detalle y variación anual</button>
+    </div>
+  </div>
+
+  <!-- GRÁFICO 5: LÍNEA DE TIEMPO CON SLIDER -->
+  <div class="dash-card dash-card-wide dash-card-ai-response reveal-ml">
+    <div class="dash-card-header">
+      <span class="dash-gear">⚙️</span>
+      <span class="dash-card-title">Evolución trimestral: Google vs ChatGPT</span>
+    </div>
+    <div class="dash-card-body">
+
+      <div class="slider-bar">
+        <span class="slider-label">Hasta:</span>
+        <input type="range" id="timeline-slider" min="0" max="13" value="13" step="1">
+        <span class="slider-value" id="timeline-slider-value">Q2 2026</span>
+      </div>
+
+      <div style="position:relative; height:340px; width:100%;">
+        <canvas id="chart-timeline"></canvas>
+      </div>
+
+      <p class="dash-callout" id="timeline-callout">
+        El crecimiento de ChatGPT se acelera fuerte a partir de 2023.
+      </p>
+
+      <div class="dash-buttons-row">
+        <button class="dash-secondary-btn" id="btn-timeline-porque">Preguntar por qué</button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- POP-UP EXPANDIDO: MARKET SHARE -->
+<div id="popup-overlay-cb" class="modal-overlay hidden">
+  <div id="popup-market-share" class="retro-window modal-window hidden popup-cb-window">
+    <div class="browser-header">
+      <div class="browser-title"><span>Detalle — Market Share Enero 2026</span></div>
+      <button class="win-btn win-close close-popup-cb">X</button>
+    </div>
+    <div class="retro-window-body popup-cb-body">
+      <ul class="popup-yoy-list">
+        <li><strong>ChatGPT:</strong> 64.5% <span class="yoy-down">-22pp YoY</span></li>
+        <li><strong>Google Gemini:</strong> 18.2% <span class="yoy-up">+388% YoY</span></li>
+        <li><strong>DeepSeek:</strong> 4%</li>
+        <li><strong>Grok:</strong> 3.4%</li>
+        <li><strong>Perplexity:</strong> 2%</li>
+        <li><strong>Copilot:</strong> 1.2%</li>
+      </ul>
+      <p class="popup-source">Fuente: Similarweb / ALM Corp, enero 2026</p>
+    </div>
+  </div>
+
+  <div id="popup-timeline-porque" class="retro-window modal-window hidden popup-cb-window">
+    <div class="browser-header">
+      <div class="browser-title"><span>¿Por qué crece ChatGPT?</span></div>
+      <button class="win-btn win-close close-popup-cb">X</button>
+    </div>
+    <div class="retro-window-body popup-cb-body">
+      <p>
+        A partir de 2023, la masificación de ChatGPT introdujo un nuevo hábito: en vez de buscar y navegar múltiples resultados, los usuarios empezaron a pedir respuestas directas y conversacionales, lo que explica el crecimiento sostenido frente a la búsqueda tradicional.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN DE CIERRE - REFLEXIÓN FINAL -->
+<section id="cierre-section" class="cierre-section">
+
+  <div class="cierre-estrella cierre-estrella-1">★</div>
+  <div class="cierre-estrella cierre-estrella-2">★</div>
+  <div class="cierre-estrella cierre-estrella-3">★</div>
+  <div class="cierre-estrella cierre-estrella-4">★</div>
+  <div class="cierre-estrella cierre-estrella-5">★</div>
+
+  <div class="cierre-estela"></div>
+
+  <div class="cierre-content">
+    <h2 class="cierre-title reveal-ml">
+      ¿En algún momento Google<br>nos leerá la mente?
+    </h2>
+  </div>
+
+  <!-- Cohete que sigue al mouse -->
+  <div id="rocket-follower" class="rocket-follower">
+    <div class="rocket-placeholder">🚀</div>
+  </div>
+
+</section>
 
   </main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="site-footer-content">
+    <p class="site-footer-title">Infografía interactiva - Evolución digital</p>
+    <p class="site-footer-sub">Trabajo Práctico - 2026</p>
+
+    <div class="site-footer-refs">
+      <h3 class="site-footer-refs-heading">Fuentes y referencias</h3>
+
+      <div class="refs-grid">
+
+        <div class="refs-block">
+          <h4 class="refs-block-title">Directorios humanos</h4>
+          <ul class="refs-list">
+            <li><a href="https://elplacerdelseo.com/que-eran-los-directorios-web/" target="_blank" rel="noopener">Qué eran los directorios web</a></li>
+            <li><a href="https://www.juventudrebelde.cu/suplementos/informatica/2025-09-03/archie-el-padre-de-los-buscadores" target="_blank" rel="noopener">Archie, el padre de los buscadores</a></li>
+            <li><a href="https://explodingtopics.com/blog/google-searches-per-day" target="_blank" rel="noopener">Google searches per day</a></li>
+            <li><a href="https://www.headcountcoffee.com/blogs/media-history/1994-yahoo-directory-imposed-hierarchy-on-web-navigation?srsltid=AfmBOorQaLGZnVQDWq_0ShnJ-yc9i7t588zBoaKv4NPyZQBTHlrvLMd1" target="_blank" rel="noopener">Yahoo Directory (1994)</a></li>
+            <li><a href="https://www.memo.com.ar/analitica/cuantos-sitios-web-hay-en-el-mundo/" target="_blank" rel="noopener">Cuántos sitios web hay en el mundo</a></li>
+          </ul>
+        </div>
+
+        <div class="refs-block">
+          <h4 class="refs-block-title">Búsqueda por palabras clave</h4>
+          <ul class="refs-list">
+            <li><a href="https://www.researchgate.net/publication/393534475_The_Evolution_of_Search_Engines_From_Keyword_Matching_to_AI-Powered_Understanding#:~:text=A%20new%20inﬂection%20point%20was%20reached%20when,which%20fundamentally%20changed%20semantic%20retrieval%20by%20encoding." target="_blank" rel="noopener">The Evolution of Search Engines</a></li>
+            <li><a href="https://es.digitaltrends.com/computadoras/altavista-historia-buscador-era-pre-google/" target="_blank" rel="noopener">AltaVista: historia del buscador pre-Google</a></li>
+            <li><a href="https://epampliega.com/blog/index.php/2025/09/02/lycos-auge-y-caida-de-un-dinosaurio-digital/" target="_blank" rel="noopener">Lycos: auge y caída de un dinosaurio digital</a></li>
+          </ul>
+        </div>
+
+        <div class="refs-block">
+          <h4 class="refs-block-title">PageRank</h4>
+          <ul class="refs-list">
+            <li><a href="https://www.hn.cl/blog/que-es-el-pagerank/" target="_blank" rel="noopener">Qué es el PageRank</a></li>
+            <li><a href="https://useo.es/historia-google/" target="_blank" rel="noopener">Historia de Google</a></li>
+          </ul>
+        </div>
+
+        <div class="refs-block">
+          <h4 class="refs-block-title">Machine Learning</h4>
+          <ul class="refs-list">
+            <li><a href="https://www.ibm.com/mx-es/think/topics/machine-learning-types#7281536" target="_blank" rel="noopener">Tipos de Machine Learning</a></li>
+            <li><a href="https://www.ibm.com/mx-es/think/topics/classification-machine-learning" target="_blank" rel="noopener">Classification Machine Learning</a></li>
+            <li><a href="https://sheeshmirza.medium.com/pandas-the-essential-python-library-for-data-analysis-and-ai-or-machine-learning-935f4465e67b" target="_blank" rel="noopener">Pandas para Data Analysis y ML</a></li>
+            <li><a href="https://www.analyticsvidhya.com/blog/2022/08/the-ultimate-guide-to-pandas-for-data-science/" target="_blank" rel="noopener">The Ultimate Guide to Pandas</a></li>
+            <li><a href="https://www.paolodossena.com/ai-futuro-del-seo/" target="_blank" rel="noopener">AI, el futuro del SEO</a></li>
+          </ul>
+        </div>
+
+        <div class="refs-block">
+          <h4 class="refs-block-title">Comprensión del lenguaje natural</h4>
+          <ul class="refs-list">
+            <li><a href="https://www.ibm.com/mx-es/think/topics/natural-language-understanding" target="_blank" rel="noopener">Natural Language Understanding (IBM)</a></li>
+            <li><a href="https://www.mediasource.mx/glosario/que-es-rankbrain-algoritmo-google" target="_blank" rel="noopener">Qué es RankBrain</a></li>
+            <li><a href="https://www.paolodossena.com/ai-futuro-del-seo/" target="_blank" rel="noopener">AI, el futuro del SEO</a></li>
+          </ul>
+        </div>
+
+        <div class="refs-block">
+          <h4 class="refs-block-title">IA generativa / conversacional</h4>
+          <ul class="refs-list">
+            <li><a href="https://www.paolodossena.com/ai-futuro-del-seo/" target="_blank" rel="noopener">AI, el futuro del SEO</a></li>
+            <li><a href="https://firstpagesage.com/seo-blog/google-vs-chatgpt-market-share-report/" target="_blank" rel="noopener">Google vs ChatGPT Market Share Report</a></li>
+            <li><a href="https://www.stackmatix.com/blog/ai-powered-search-engine-statistics" target="_blank" rel="noopener">AI-powered search engine statistics</a></li>
+          </ul>
+        </div>
+
+        <div class="refs-block">
+          <h4 class="refs-block-title">Más links</h4>
+          <ul class="refs-list">
+            <li><a href="https://firstpagesage.com/seo-blog/google-vs-chatgpt-market-share-report/" target="_blank" rel="noopener">Google vs ChatGPT Market Share Report</a></li>
+            <li><a href="https://www.stackmatix.com/blog/ai-powered-search-engine-statistics" target="_blank" rel="noopener">AI-powered search engine statistics</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
