@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initYahooWelcomeData(); // Lógica secuencial del gráfico/árbol Yahoo!
   initDirWebsChart();     // Gráfico inicial de directorios
   initSearchDropdown();   // Desplegable del buscador retro
+  initGoogleBrowserEvents(); // Eventos de pestañas y búsqueda de Google
+  initRetroLinks();
 
   // --- 2. REVEAL AL HACER SCROLL ---
   const scrollElements = document.querySelectorAll(".scroll-reveal, .modern-card");
@@ -52,11 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Modales Lycos
   const modalLycosQueEs = document.getElementById("modal-lycos-que-es");
   const modalLycosDatos = document.getElementById("modal-lycos-datos");
-
-  const browserContent = document.querySelector(".browser-content");
-
-  // Guardamos el contenido original del navegador para restaurarlo con el botón "Volver"
-  const originalBrowserContent = browserContent ? browserContent.innerHTML : "";
 
   document.querySelectorAll(".retro-link").forEach(link => {
     link.addEventListener("click", (e) => {
@@ -182,110 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- 6. FUNCIONES AUXILIARES INTERNAS DE PREVIEW Y ANIMACIONES ---
-  function triggerAltavistaAnimations() {
-    const bigBar = document.getElementById("altavista-bar-big");
-    const card1 = document.getElementById("data-card-1");
-    const card2 = document.getElementById("data-card-2");
-    const card3 = document.getElementById("data-card-3");
-
-    if (bigBar) bigBar.classList.add("hidden-bar");
-    [card1, card2, card3].forEach(c => c?.classList.add("hidden-card"));
-
-    setTimeout(() => bigBar?.classList.remove("hidden-bar"), 400);
-    setTimeout(() => card1?.classList.remove("hidden-card"), 1000);
-    setTimeout(() => card2?.classList.remove("hidden-card"), 1800);
-    setTimeout(() => card3?.classList.remove("hidden-card"), 2600);
-  }
-
-  // Inyectar vista previa dinámica (AltaVista / Lycos)
-  function injectPreview(imagePath, name) {
-    if (!browserContent) return;
-    browserContent.innerHTML = `
-      <div class="browser-injected-view">
-        <div class="browser-back-bar">
-          <button id="browser-back-btn" class="retro-btn">◄ Volver al buscador</button>
-        </div>
-        <img src="${imagePath}" alt="${name} Preview" class="altavista-preview-img" />
-      </div>
-    `;
-
-    document.getElementById("browser-back-btn")?.addEventListener("click", restoreBrowserContent);
-  }
-
-  function restoreBrowserContent() {
-    if (!browserContent) return;
-    browserContent.innerHTML = originalBrowserContent;
-    initSearchDropdown(); // Re-vinculamos eventos del buscador
-  }
-
-  const backBtn = document.getElementById("gb-back-btn");
-  const viewResults = document.getElementById("gb-view-results");
-  const viewDetail = document.getElementById("gb-view-detail");
-
-  const linkTriggers = document.querySelectorAll(".gb-link-trigger");
-  const sidebarBtns = document.querySelectorAll(".sidebar-btn");
-  const tabPanes = document.querySelectorAll(".tab-pane");
-  const folderLabel = document.getElementById("tab-folder-title");
-
-  // Diccionario de títulos para la pestaña superior del folder
-  const tabTitles = {
-    "que-es": "Qué es",
-    "como-funciona": "Cómo funciona",
-    "historia": "Historia",
-    "ecuacion": "Ecuación"
-  };
-
-  // Función para cambiar de pestaña interna en la vista de detalle
-  function switchTab(targetTab) {
-    sidebarBtns.forEach(btn => {
-      btn.classList.toggle("active", btn.dataset.tab === targetTab);
-    });
-
-    tabPanes.forEach(pane => {
-      pane.classList.toggle("hidden", pane.id !== `tab-content-${targetTab}`);
-    });
-
-    if (folderLabel && tabTitles[targetTab]) {
-      folderLabel.textContent = tabTitles[targetTab];
-    }
-
-    // Renderizar LaTeX cuando la solapa de Ecuación se vuelve visible
-    if (targetTab === "ecuacion" && window.MathJax) {
-      MathJax.typesetPromise();
-    }
-  }
-
-  // Clic en los enlaces de la búsqueda Google (SERP)
-  linkTriggers.forEach(trigger => {
-    trigger.addEventListener("click", (e) => {
-      e.preventDefault();
-      const target = trigger.dataset.target;
-
-      // Cambiar de vista SERP a Detalle
-      viewResults.classList.add("hidden");
-      viewDetail.classList.remove("hidden");
-      backBtn.classList.remove("hidden");
-
-      // Activar la solapa correspondiente
-      switchTab(target);
-    });
-  });
-
-  // Clics en la barra lateral del navegador
-  sidebarBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      switchTab(btn.dataset.tab);
-    });
-  });
-
-  // Botón Volver a la Búsqueda
-  backBtn.addEventListener("click", () => {
-    viewDetail.classList.add("hidden");
-    viewResults.classList.remove("hidden");
-    backBtn.classList.add("hidden");
-  });
-
+  // --- 6. SEGUNDO REPRODUCTOR DE VIDEO ---
   const video2 = document.getElementById("wmp-video-2");
   const playTrigger2 = document.getElementById("wmp-play-trigger-2");
 
@@ -309,6 +203,110 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// Guardamos la referencia global al contenedor del navegador
+const browserContent = document.querySelector(".browser-content");
+const originalBrowserContent = browserContent ? browserContent.innerHTML : "";
+
+// --- FUNCIONES DE PREVIEW Y RESTAURACIÓN DEL NAVEGADOR ---
+function triggerAltavistaAnimations() {
+  const bigBar = document.getElementById("altavista-bar-big");
+  const card1 = document.getElementById("data-card-1");
+  const card2 = document.getElementById("data-card-2");
+  const card3 = document.getElementById("data-card-3");
+
+  if (bigBar) bigBar.classList.add("hidden-bar");
+  [card1, card2, card3].forEach(c => c?.classList.add("hidden-card"));
+
+  setTimeout(() => bigBar?.classList.remove("hidden-bar"), 400);
+  setTimeout(() => card1?.classList.remove("hidden-card"), 1000);
+  setTimeout(() => card2?.classList.remove("hidden-card"), 1800);
+  setTimeout(() => card3?.classList.remove("hidden-card"), 2600);
+}
+
+function injectPreview(imagePath, name) {
+  if (!browserContent) return;
+  browserContent.innerHTML = `
+    <div class="browser-injected-view">
+      <div class="browser-back-bar">
+        <button id="browser-back-btn" class="retro-btn">◄ Volver al buscador</button>
+      </div>
+      <img src="${imagePath}" alt="${name} Preview" class="altavista-preview-img" />
+    </div>
+  `;
+
+  document.getElementById("browser-back-btn")?.addEventListener("click", restoreBrowserContent);
+}
+
+function restoreBrowserContent() {
+  if (!browserContent) return;
+  browserContent.innerHTML = originalBrowserContent;
+  initSearchDropdown(); 
+  initGoogleBrowserEvents(); 
+  initRetroLinks(); // <-- AGREGÁ ESTA LÍNEA ACÁ PARA RE-VINCULAR LOS CLICS
+}
+
+// --- LÓGICA REUSABLE DEL BROWSER DE GOOGLE ---
+function initGoogleBrowserEvents() {
+  const backBtn = document.getElementById("gb-back-btn");
+  const viewResults = document.getElementById("gb-view-results");
+  const viewDetail = document.getElementById("gb-view-detail");
+
+  const linkTriggers = document.querySelectorAll(".gb-link-trigger");
+  const sidebarBtns = document.querySelectorAll(".sidebar-btn");
+  const tabPanes = document.querySelectorAll(".tab-pane");
+  const folderLabel = document.getElementById("tab-folder-title");
+
+  const tabTitles = {
+    "que-es": "Qué es",
+    "como-funciona": "Cómo funciona",
+    "historia": "Historia",
+    "ecuacion": "Ecuación"
+  };
+
+  function switchTab(targetTab) {
+    sidebarBtns.forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.tab === targetTab);
+    });
+
+    tabPanes.forEach(pane => {
+      pane.classList.toggle("hidden", pane.id !== `tab-content-${targetTab}`);
+    });
+
+    if (folderLabel && tabTitles[targetTab]) {
+      folderLabel.textContent = tabTitles[targetTab];
+    }
+
+    if (targetTab === "ecuacion" && window.MathJax) {
+      MathJax.typesetPromise();
+    }
+  }
+
+  linkTriggers.forEach(trigger => {
+    trigger.addEventListener("click", (e) => {
+      e.preventDefault();
+      const target = trigger.dataset.target;
+
+      viewResults?.classList.add("hidden");
+      viewDetail?.classList.remove("hidden");
+      backBtn?.classList.remove("hidden");
+
+      switchTab(target);
+    });
+  });
+
+  sidebarBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      switchTab(btn.dataset.tab);
+    });
+  });
+
+  backBtn?.addEventListener("click", () => {
+    viewDetail?.classList.add("hidden");
+    viewResults?.classList.remove("hidden");
+    backBtn?.classList.add("hidden");
+  });
+}
 
 // Listener global para redimensionar la ventana del navegador
 window.addEventListener('resize', () => {
@@ -757,4 +755,69 @@ function renderArchieChart() {
 
     archieChartInstance.update();
   }, 1800);
+}
+
+function initRetroLinks() {
+  const overlay = document.getElementById("modal-overlay");
+  const modalQueEs = document.getElementById("modal-que-es");
+  const modalProblemas = document.getElementById("modal-problemas");
+  const modalLimitaciones = document.getElementById("modal-limitaciones");
+
+  // Modales AltaVista
+  const modalAltavistaQueEs = document.getElementById("modal-altavista-que-es");
+  const modalAltavistaDatos = document.getElementById("modal-altavista-datos");
+
+  // Modales Lycos
+  const modalLycosQueEs = document.getElementById("modal-lycos-que-es");
+  const modalLycosDatos = document.getElementById("modal-lycos-datos");
+
+  document.querySelectorAll(".retro-link").forEach(link => {
+    // Para evitar duplicar listeners si se llama varias veces:
+    link.replaceWith(link.cloneNode(true));
+  });
+
+  document.querySelectorAll(".retro-link").forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetInfo = link.getAttribute("data-info");
+
+      document.querySelectorAll(".modal-window, .alert-window").forEach(m => m.classList.add("hidden"));
+
+      // --- Modales de Palabras Clave ---
+      if (targetInfo === "que-es-busqueda") {
+        overlay?.classList.remove("hidden");
+        modalQueEs?.classList.remove("hidden");
+      } else if (targetInfo === "problema-busqueda") {
+        overlay?.classList.remove("hidden");
+        modalProblemas?.classList.remove("hidden");
+      } else if (targetInfo === "como-busqueda") {
+        overlay?.classList.remove("hidden");
+        modalLimitaciones?.classList.remove("hidden");
+        if (typeof resetTreeSequence === "function") resetTreeSequence();
+      }
+
+      // --- Modales y acciones de AltaVista ---
+      else if (targetInfo === "que-es-altavista") {
+        overlay?.classList.remove("hidden");
+        modalAltavistaQueEs?.classList.remove("hidden");
+      } else if (targetInfo === "datos-altavista") {
+        overlay?.classList.remove("hidden");
+        modalAltavistaDatos?.classList.remove("hidden");
+        triggerAltavistaAnimations();
+      } else if (targetInfo === "veia-altavista") {
+        injectPreview("assets/imagenes/altavista-preview.png", "AltaVista");
+      }
+
+      // --- Modales y acciones de Lycos ---
+      else if (targetInfo === "que-es-lycos") {
+        overlay?.classList.remove("hidden");
+        modalLycosQueEs?.classList.remove("hidden");
+      } else if (targetInfo === "datos-lycos") {
+        overlay?.classList.remove("hidden");
+        modalLycosDatos?.classList.remove("hidden");
+      } else if (targetInfo === "veia-lycos") {
+        injectPreview("assets/imagenes/lycos-preview.png", "Lycos");
+      }
+    });
+  });
 }
