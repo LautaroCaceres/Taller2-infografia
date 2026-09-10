@@ -3013,3 +3013,37 @@ body {
   font-size: 50px;
   transform: translate(-50%, -50%) rotate(45deg);
 }
+
+/* =========================================
+   CROSSFADE LOGO GOOGLE (HERO)
+   ========================================= */
+.google-logo-crossfade {
+  position: relative;
+}
+
+.google-logo-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  animation: googleLogoFade 14s infinite;
+}
+
+.google-logo-1 { animation-delay: 0s; }
+.google-logo-2 { animation-delay: 2s; }
+.google-logo-3 { animation-delay: 4s; }
+.google-logo-4 { animation-delay: 6s; }
+.google-logo-5 { animation-delay: 8s; }
+.google-logo-6 { animation-delay: 10s; }
+.google-logo-7 { animation-delay: 12s; }
+
+@keyframes googleLogoFade {
+  0%   { opacity: 0; }
+  3%   { opacity: 1; }
+  11%  { opacity: 1; }
+  14%  { opacity: 0; }
+  100% { opacity: 0; }
+}
