@@ -179,6 +179,29 @@ document.addEventListener("DOMContentLoaded", () => {
       overlay?.classList.add("hidden");
     });
   });
+  // --- PRIMER REPRODUCTOR DE VIDEO ---
+const video1 = document.getElementById("wmp-video");
+const playTrigger1 = document.getElementById("wmp-play-trigger");
+
+if (video1 && playTrigger1) {
+  playTrigger1.addEventListener("click", () => {
+    if (video1.paused) {
+      video1.play();
+      playTrigger1.textContent = "❚❚";
+    } else {
+      video1.pause();
+      playTrigger1.textContent = "▶";
+    }
+  });
+
+  video1.addEventListener("play", () => {
+    playTrigger1.textContent = "❚❚";
+  });
+
+  video1.addEventListener("pause", () => {
+    playTrigger1.textContent = "▶";
+  });
+}
 
   // --- 6. SEGUNDO REPRODUCTOR DE VIDEO ---
   const video2 = document.getElementById("wmp-video-2");
