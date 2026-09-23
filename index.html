@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=1920, initial-scale=1.0">
   <title>Infografía Interactiva - Evolución Digital</title>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Mono:wght@400;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Mono:wght@400;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 
   <!-- Librerías desde CDN -->
@@ -17,419 +20,497 @@
 </head>
 <body>
 
-  <!-- Barra superior fija -->
-  <header class="top-bar">
-    <div class="top-bar-content">
-      <p>Infografía interactiva - Evolución digital</p>
-    </div>
-  </header>
+ 
 
   <!-- Contenedor general del proyecto -->
   <main class="viewport-wrapper">
 
-    <!-- SECCIÓN HERO -->
-    <section id="hero" class="hero-section">
-      <div class="hero-container">
-        
-        <!-- Título principal -->
-        <h1 class="hero-title">
-          <span class="text-70">Cómo pasó</span>
-          <div class="logo-container google-logo-crossfade">
-  <img class="google-logo-item google-logo-1" src="assets/imagenes/google1.png" alt="Google 1998">
-  <img class="google-logo-item google-logo-2" src="assets/imagenes/google2.png" alt="Google 1999">
-  <img class="google-logo-item google-logo-3" src="assets/imagenes/google3.png" alt="Google 2010">
-  <img class="google-logo-item google-logo-4" src="assets/imagenes/google4.png" alt="Google 2013">
-  <img class="google-logo-item google-logo-5" src="assets/imagenes/google5.png" alt="Google 2015">
-  <img class="google-logo-item google-logo-6" src="assets/imagenes/google6.png" alt="Google actual">
-  <img class="google-logo-item google-logo-7" src="assets/imagenes/google7.png" alt="Google otro">
-</div>
-          <span class="text-70">De leer</span>
-          <span class="text-128">PALABRAS</span>
-          <span class="text-70 italic">A leer</span>
-          <span class="text-128">MENTES?</span>
-        </h1>
+   <section id="hero" class="hero-section">
 
-        <!-- Barra de búsqueda -->
-        <div class="search-bar">
-          <span class="search-icon">🔍</span>
-          <span id="typing-text"></span><span class="cursor">|</span>
-        </div>
+  <!-- Grilla animada de fondo -->
+  <div class="hero-grid-bg"></div>
 
+  <!-- Textos de búsquedas "flotando" detrás del título -->
+  <div class="bg-search-texts">
+    <span class="bg-search bg-search-1" data-text='Comprar+auto+usado+"La Plata"'></span>
+    <span class="bg-search bg-search-2" data-text="¿dónde venden tortas ricas cerca de acá?"></span>
+    <span class="bg-search bg-search-3" data-text="me conviene comprar o hacer una torta de cumpleaños"></span>
+    <span class="bg-search bg-search-4" data-text="clima la plata argentina"></span>
+    <span class="bg-search bg-search-5" data-text="Tengo $5.000 USD y vivo en La Plata, ¿qué auto con poco uso me conviene buscar en 2026?"></span>
+    <span class="bg-search bg-search-6" data-text="Como hacer una torta fácil sin horno"></span>
+  </div>
+
+  <div class="hero-container">
+
+    <h1 class="hero-title">
+      <span class="text-70">Cómo pasó</span>
+      <div class="logo-container google-logo-crossfade">
+        <img class="google-logo-item google-logo-1" src="assets/imagenes/google1.png" alt="Google 1998">
+        <img class="google-logo-item google-logo-2" src="assets/imagenes/google2.png" alt="Google 1999">
+        <img class="google-logo-item google-logo-3" src="assets/imagenes/google3.png" alt="Google 2010">
+        <img class="google-logo-item google-logo-4" src="assets/imagenes/google4.png" alt="Google 2013">
+        <img class="google-logo-item google-logo-5" src="assets/imagenes/google5.png" alt="Google 2015">
+        <img class="google-logo-item google-logo-6" src="assets/imagenes/google6.png" alt="Google actual">
+        <img class="google-logo-item google-logo-7" src="assets/imagenes/google7.png" alt="Google otro">
       </div>
+      <span class="text-70">De leer</span>
+      <span class="text-128">PALABRAS</span>
+      <span class="text-70 italic">A leer</span>
+      <span class="text-128">MENTES?</span>
+    </h1>
 
-      <!-- Elemento de la Lupa (Cursor flotante) -->
-      <div id="magnifying-glass" class="lupa-follower">
-        <div class="lupa-placeholder">🔍</div>
-      </div>
-    </section>
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <span id="typing-text"></span><span class="cursor">|</span>
+      <span class="keyboard-icon">⌨️</span>
+    </div>
+
+  </div>
+
+  <div id="magnifying-glass" class="lupa-follower">
+    <div class="lupa-placeholder">🔍</div>
+  </div>
+
+  
+</section>
+
+<!-- BARRA DE PROGRESO / NAVEGACIÓN DE HITOS -->
+<nav id="progress-nav" class="progress-nav">
+  <button class="progress-dot" data-target="#desktop-section" aria-label="Directorios y buscadores tempranos"></button>
+  <div class="progress-line"></div>
+  <button class="progress-dot" data-target="#browser-section" aria-label="Búsqueda por palabras clave"></button>
+  <div class="progress-line"></div>
+  <button class="progress-dot" data-target="#google-pagerank-section" aria-label="PageRank"></button>
+  <div class="progress-line"></div>
+  <button class="progress-dot" data-target="#ml-section" aria-label="Machine Learning"></button>
+  <div class="progress-line"></div>
+  <button class="progress-dot" data-target="#nlu-section" aria-label="NLU"></button>
+  <div class="progress-line"></div>
+  <button class="progress-dot" data-target="#chatbot-section" aria-label="Chatbots"></button>
+</nav>
 
     <!-- SECCIÓN 2: INTRODUCCIÓN / TRANSICIÓN -->
     <section id="intro" class="intro-section">
-      <div class="intro-container">
-        <h2 class="intro-title">¡Iniciá la búsqueda!</h2>
-        <p class="intro-text">
-          Descubrí cómo la evolución de la IA reescribió las reglas de los motores de búsqueda desde los años 90 hasta la era generativa.
-        </p>
-      </div>
-    </section>
 
-    <!-- SECCIÓN 3: ESCRITORIO WINDOWS RETRO -->
-    <section id="desktop-section" class="desktop-section">
-      
-      <div class="desktop-screen">
-        <!-- Íconos sueltos del escritorio si aplica -->
-      </div>
+  <div class="paper-lines-bg"></div>
 
-      <!-- --- MENÚ DE INICIO (Taskbar) --- -->
-      <div id="start-menu" class="win-menu hidden">
-        <div class="win-sidebar"><span>Windows</span>95</div>
-        <ul class="win-menu-list">
-          <li class="win-item"><span class="icon">🌐</span> Windows Update</li>
-          <li class="win-divider"></li>
-          
-          <!-- 3.1 Directorios H -->
-          <li class="win-item has-submenu" data-submenu="sub-directorios">
-            <span class="icon">📁</span> Directorios.h <span class="arrow">▶</span>
-            <ul id="sub-directorios" class="win-submenu hidden">
-              <li class="win-item show-window" data-window="win-dir-que"><span class="icon">📄</span> Que es</li>
-              <li class="win-item show-window" data-window="win-dir-como"><span class="icon">📄</span> Como funcionaba</li>
-              <li class="win-item show-window" data-window="win-dir-data"><span class="icon">📊</span> Estadística</li>
-            </ul>
-          </li>
+  <div class="sticky-note sticky-note-left">
+    <div class="sticky-tape"></div>
+    <p class="sticky-text">Era de las<br>PALABRAS<br>(1990–2000)</p>
+  </div>
 
-          <!-- 3.2 Archie -->
-          <li class="win-item has-submenu" data-submenu="sub-archie">
-            <span class="icon">📁</span> Archie (1990) <span class="arrow">▶</span>
-            <ul id="sub-archie" class="win-submenu hidden">
-              <li class="win-item show-window" data-window="win-archie-que"><span class="icon">📄</span> Que es</li>
-              <li class="win-item show-window" data-window="win-archie-como"><span class="icon">📄</span> Como funcionaba</li>
-              <li class="win-item show-window" data-window="win-archie-data"><span class="icon">📊</span> Datos</li>
-              <li class="win-item show-window" data-window="win-archie-veia"><span class="icon">🔍</span> Como se veía</li>
-              <li class="win-item show-window" data-window="win-archie-creador"><span class="icon">👤</span> Creador</li>
-            </ul>
-          </li>
+  <div class="intro-container">
+    <h2 class="intro-title">¡Iniciá la búsqueda!</h2>
+    <p class="intro-text">
+      Descubrí cómo la <strong>evolución de la ia</strong> reescribió las reglas de los motores de búsqueda desde los años 90 hasta la era generativa.
+    </p>
+  </div>
 
-          <!-- 3.3 Yahoo! -->
-          <li class="win-item has-submenu" data-submenu="sub-yahoo">
-            <span class="icon">⚙️</span> Yahoo! (1994) <span class="arrow">▶</span>
-            <ul id="sub-yahoo" class="win-submenu hidden">
-              <li class="win-item show-window" data-window="win-yahoo"><span class="icon">📄</span> Que es</li>
-              <li class="win-item show-window" data-window="win-yahoo-como"><span class="icon">📄</span> Como funcionaba</li>
-              <li class="win-item show-window" data-window="win-yahoo-data"><span class="icon">📊</span> Datos</li>
-              <li class="win-item show-window" data-window="win-yahoo-veia"><span class="icon">🔍</span> Como se veía</li>
-              <li class="win-item show-window" data-window="win-yahoo-creador"><span class="icon">👤</span> Creador</li>
-            </ul>
-          </li>
+  <div class="sticky-note sticky-note-right">
+    <div class="sticky-tape"></div>
+  </div>
 
-          <li class="win-divider"></li>
-          <li class="win-item"><span class="icon">💻</span> Shut Down...</li>
+  <div class="intro-torn-edge"></div>
+</section>
+
+  <!-- SECCIÓN 3: ESCRITORIO WINDOWS RETRO -->
+<div class="desktop-scroll-track">
+<div class="desktop-section-wrapper">
+<div class="desktop-dotted-bg"></div>
+<section id="desktop-section" class="desktop-section">
+
+  <div class="desktop-screen">
+    <!-- Íconos sueltos del escritorio si aplica -->
+  </div>
+
+  <!-- --- MENÚ DE INICIO (Taskbar) --- -->
+  <div id="start-menu" class="win-menu hidden">
+    <div class="win-sidebar"><span>Windows</span>95</div>
+    <ul class="win-menu-list">
+      <li class="win-item win-item-disabled"><span class="icon">🌐</span> Windows Update</li>
+      <li class="win-divider"></li>
+
+      <!-- 3.1 Directorios H -->
+      <li class="win-item has-submenu" data-submenu="sub-directorios">
+        <span class="icon">📁</span> Directorios.h <span class="arrow">▶</span>
+        <ul id="sub-directorios" class="win-submenu hidden">
+          <li class="win-item show-window" data-window="win-dir-que"><span class="icon">📄</span> Que es</li>
+          <li class="win-item show-window" data-window="win-dir-como"><span class="icon">📄</span> Como funciona</li>
+          <li class="win-item show-window" data-window="win-dir-data"><span class="icon">📊</span> Datos</li>
         </ul>
-      </div>
+      </li>
 
-      <!-- --- BARRA DE TAREAS INFERIOR --- -->
-      <div class="taskbar">
-        <button id="start-btn" class="start-btn">
-          <span class="win-flag">❖</span> Start
-        </button>
-        <div class="taskbar-divider"></div>
-        <div class="clock" id="win-clock">4:18 PM</div>
-      </div>
+      <!-- 3.2 Archie -->
+      <li class="win-item has-submenu" data-submenu="sub-archie">
+        <span class="icon">📁</span> Archie (1990) <span class="arrow">▶</span>
+        <ul id="sub-archie" class="win-submenu hidden">
+          <li class="win-item show-window" data-window="win-archie-que"><span class="icon">📄</span> Que es</li>
+          <li class="win-item show-window" data-window="win-archie-como"><span class="icon">📄</span> Como funciona</li>
+          <li class="win-item show-window" data-window="win-archie-data"><span class="icon">📊</span> Datos</li>
+          <li class="win-item show-window" data-window="win-archie-veia"><span class="icon">🔍</span> Vista</li>
+          <li class="win-item show-window" data-window="win-archie-creador"><span class="icon">👤</span> Creador</li>
+        </ul>
+      </li>
 
-      <!-- VENTANAS DE INFORMACIÓN -->
-      <div id="win-dir-que" class="win-window win-window-compact hidden draggable">
-        <div class="win-window-header">
-          <span class="icon">📁</span> Directorios H
-          <button class="win-close-btn">X</button>
-        </div>
-        <div class="win-window-body">
-          <p>Los humanos organizaban los sitios en categorías y jerarquías, la Web empezó a organizarse como una biblioteca.</p>
-        </div>
-      </div>
-
-      <div id="win-dir-como" class="win-window win-window-notepad hidden draggable">
-        <div class="win-window-header">
-          <span class="icon">📄</span> Untitled - Notepad
-          <button class="win-close-btn">X</button>
-        </div>
-        <div class="win-window-menu">File Edit Search Help</div>
-        <div class="win-window-body win-window-body-notepad">
-          <p>Antes de los buscadores, las personas ordenaban la Web</p>
-          <ul class="notepad-list">
-            <li>👤 EDITOR HUMANO</li>
-            <li>&nbsp;&nbsp;👇</li>
-            <li>📁 CATEGORÍA</li>
-            <li>&nbsp;&nbsp;👇</li>
-            <li>📁 SUBCATEGORÍA</li>
-            <li>&nbsp;&nbsp;👇</li>
-            <li>🌐 SITIOS WEB</li>
-          </ul>
-        </div>
-      </div>
-
-      <div id="win-dir-data" class="win-window win-window-notepad hidden draggable">
-        <div class="win-window-header">
-          <span class="icon">📊</span> Untitled - Notepad
-          <button class="win-close-btn">X</button>
-        </div>
-        <div class="win-window-menu">File Edit Search Help</div>
-        <div class="win-window-body win-window-body-notepad">
-          <p style="margin-bottom: 15px; font-weight: bold;">Cantidad de webs 1991-1994</p>
-          <div style="position: relative; height: 260px; width: 100%;">
-            <canvas id="chart-dir-webs"></canvas>
-          </div>
-        </div>
-      </div>
-
-      <div id="win-archie-que" class="win-window win-window-compact hidden draggable">
-        <div class="win-window-header">
-          <span class="icon">📁</span> Archie
-          <button class="win-close-btn">X</button>
-        </div>
-        <div class="win-window-body">
-          <p>Archie fue el primer motor de búsqueda de Internet de la historia. Nació como un proyecto académico para localizar software y documentos en una red que conectaba principalmente a universidades.</p>
-        </div>
-      </div>
-
-      <div id="win-archie-como" class="win-window win-window-notepad hidden draggable">
-        <div class="win-window-header">
-          <span class="icon">📄</span> Untitled - Notepad
-          <button class="win-close-btn">X</button>
-        </div>
-        <div class="win-window-menu">File Edit Search Help</div>
-        <div class="win-window-body win-window-body-notepad">
-          <ul class="notepad-list">
-            <li>Problema: 📄📄📄📄📄</li>
-            <li>¿Dónde está este archivo?</li>
-            <li>&nbsp;&nbsp;👇</li>
-            <li>⌨️ nombre_del_archivo</li>
-            <li>&nbsp;&nbsp;👇</li>
-            <li>🔍 COINCIDENCIA</li>
-            <li>&nbsp;&nbsp;👇</li>
-            <li>📄 resultado</li>
-          </ul>
-        </div>
-      </div>
-
-      <div id="win-archie-data" class="win-window win-window-properties hidden draggable">
-        <div class="win-window-header">
-          <span class="icon">📊</span> Archie Properties
-          <button class="win-close-btn">X</button>
-        </div>
-        <div class="win-window-tabs">
-          <div class="tab active">General</div> 
-          <div class="tab">Tools</div> 
-          <div class="tab">Sharing</div>
-        </div>
-        <div class="win-window-body">
-          <p style="margin-bottom: 5px; font-weight: bold;">Consultas diarias:</p>
-          <p style="margin: 2px 0;">• Archie (1993): 50.000</p>
-          <p style="margin: 2px 0;">• Google (2025): 16.400 M</p>
+      <!-- 3.3 Yahoo! -->
+      <li class="win-item has-submenu" data-submenu="sub-yahoo">
+        <span class="icon">⚙️</span> Yahoo! (1994) <span class="arrow">▶</span>
+        <ul id="sub-yahoo" class="win-submenu hidden">
+          <li class="win-item show-window" data-window="win-yahoo"><span class="icon">📄</span> Que es</li>
+          <li class="win-item show-window" data-window="win-yahoo-como"><span class="icon">📄</span> Como funciona</li>
           
-          <div style="position: relative; height: 180px; width: 100%; margin-top: 15px;">
-            <canvas id="chart-archie-vs-google"></canvas>
+          <li class="win-item show-window" data-window="win-yahoo-veia"><span class="icon">🔍</span> Vista</li>
+        </ul>
+      </li>
+
+      <li class="win-divider"></li>
+      <li class="win-item win-item-disabled"><span class="icon">💻</span> Shut Down...</li>
+    </ul>
+  </div>
+
+  <!-- --- BARRA DE TAREAS INFERIOR --- -->
+  <div class="taskbar">
+    <button id="start-btn" class="start-btn">
+      <span class="win-flag">❖</span> Start
+    </button>
+    <div class="taskbar-divider"></div>
+    <div class="clock" id="win-clock">4:18 PM</div>
+  </div>
+
+  <!-- ===================== VENTANAS: DIRECTORIOS H ===================== -->
+
+  <div id="win-dir-que" class="app-window hidden draggable" style="position:absolute; width:500px; left:300px; top:150px;">
+    <div class="app-window-header">
+      <span>Que es</span>
+      <button class="app-window-close">✕</button>
+    </div>
+    <div class="app-window-body">
+      <p>Los humanos organizaban los sitios en categorías y jerarquías, la Web empezó a organizarse como una biblioteca.</p>
+    </div>
+    <div class="app-window-footer footer-ok">
+      <button class="app-btn app-window-close">Ok</button>
+    </div>
+  </div>
+
+  <div id="win-dir-como" class="app-window hidden draggable" style="position:absolute; width:600px; left:400px; top:200px;">
+    <div class="app-window-header">
+      <span>Como funciona</span>
+      <button class="app-window-close">✕</button>
+    </div>
+    <div class="app-window-body" style="font-family: monospace; text-align:center;">
+      <p>Antes de los buscadores, las personas ordenaban la Web</p>
+      <ul class="notepad-list">
+        <li>👤 EDITOR HUMANO</li>
+        <li>&nbsp;&nbsp;👇</li>
+        <li>📁 CATEGORÍA</li>
+        <li>&nbsp;&nbsp;👇</li>
+        <li>📁 SUBCATEGORÍA</li>
+        <li>&nbsp;&nbsp;👇</li>
+        <li>🌐 SITIOS WEB</li>
+      </ul>
+    </div>
+    <div class="app-window-footer footer-ok">
+      <button class="app-btn app-window-close">Ok</button>
+    </div>
+  </div>
+
+  <div id="win-dir-data" class="app-window hidden draggable" style="position:absolute; width:600px; left:500px; top:250px;">
+    <div class="app-window-header">
+      <span>Datos</span>
+      <button class="app-window-close">✕</button>
+    </div>
+    <div class="app-window-body">
+      <p style="margin-bottom: 15px; font-weight: bold;">Cantidad de webs 1991-1994</p>
+      <div style="position: relative; height: 260px; width: 100%;">
+        <canvas id="chart-dir-webs"></canvas>
+      </div>
+    </div>
+    <div class="app-window-footer footer-ok">
+      <button class="app-btn app-window-close">Ok</button>
+    </div>
+  </div>
+
+  <!-- ===================== VENTANAS: ARCHIE ===================== -->
+
+  <div id="win-archie-que" class="app-window hidden draggable" style="position:absolute; width:500px; left:320px; top:160px;">
+    <div class="app-window-header">
+      <span>Que es</span>
+      <button class="app-window-close">✕</button>
+    </div>
+    <div class="app-window-body">
+      <p>Archie fue el primer motor de búsqueda de Internet de la historia. Nació como un proyecto académico para localizar software y documentos en una red que conectaba principalmente a universidades.</p>
+    </div>
+    <div class="app-window-footer footer-ok">
+      <button class="app-btn app-window-close">Ok</button>
+    </div>
+  </div>
+
+  <div id="win-archie-como" class="app-window hidden draggable" style="position:absolute; width:600px; left:420px; top:210px;">
+    <div class="app-window-header">
+      <span>Como funciona</span>
+      <button class="app-window-close">✕</button>
+    </div>
+    <div class="app-window-body" style="font-family: monospace; text-align:center;">
+      <ul class="notepad-list">
+        <li>Problema: 📄📄📄📄📄</li>
+        <li>¿Dónde está este archivo?</li>
+        <li>&nbsp;&nbsp;👇</li>
+        <li>⌨️ nombre_del_archivo</li>
+        <li>&nbsp;&nbsp;👇</li>
+        <li>🔍 COINCIDENCIA</li>
+        <li>&nbsp;&nbsp;👇</li>
+        <li>📄 resultado</li>
+      </ul>
+    </div>
+    <div class="app-window-footer footer-ok">
+      <button class="app-btn app-window-close">Ok</button>
+    </div>
+  </div>
+
+  <div id="win-archie-data" class="app-window hidden draggable" style="position:absolute; width:600px; left:520px; top:260px;">
+    <div class="app-window-header">
+      <span>Datos</span>
+      <button class="app-window-close">✕</button>
+    </div>
+    <div class="app-window-body">
+      <p style="margin-bottom: 5px; font-weight: bold;">Consultas diarias:</p>
+      <p style="margin: 2px 0;">• Archie (1993): 50.000</p>
+      <p style="margin: 2px 0;">• Google (2025): 16.400 M</p>
+      <div style="position: relative; height: 180px; width: 100%; margin-top: 15px;">
+        <canvas id="chart-archie-vs-google"></canvas>
+      </div>
+    </div>
+    <div class="app-window-footer footer-ok">
+      <button class="app-btn app-window-close">Ok</button>
+    </div>
+  </div>
+
+  <div id="win-archie-veia" class="app-window hidden draggable" style="position:absolute; width:800px; left:600px; top:100px;">
+    <div class="app-window-header">
+      <span>Vista</span>
+      <button class="app-window-close">✕</button>
+    </div>
+    <div class="app-window-body" style="padding:0; min-height:400px;">
+       <img src="assets/imagenes/archie.png" alt="Archie Query Form" class="asset-preview-img">
+    </div>
+    <div class="app-window-footer footer-ok">
+      <button class="app-btn app-window-close">Ok</button>
+    </div>
+  </div>
+
+  <div id="win-archie-creador" class="app-window hidden draggable" style="position:absolute; width:700px; left:400px; top:200px;">
+    <div class="app-window-header">
+      <span>Creador</span>
+      <button class="app-window-close">✕</button>
+    </div>
+    <div class="app-window-body body-creador">
+      <div class="creador-text">
+        <p>Alan Emtage</p>
+        <p>Bill Heelan</p>
+        <p>Peter Deutsch</p>
+      </div>
+      <div class="creador-assets">
+        <img src="assets/imagenes/archiecreador.png" alt="Archie Query Form" class="asset-preview-img">
+        <img src="assets/imagenes/facu.png" alt="Archie Query Form" class="asset-preview-img">
+      </div>
+    </div>
+    <div class="app-window-footer footer-ok">
+      <button class="app-btn app-window-close">Ok</button>
+    </div>
+  </div>
+
+  <!-- ===================== VENTANAS: YAHOO! ===================== -->
+
+  <div id="win-yahoo" class="app-window hidden draggable" style="position:absolute; width:500px; left:300px; top:150px;">
+    <div class="app-window-header">
+      <span>Que es</span>
+      <button class="app-window-close">✕</button>
+    </div>
+    <div class="app-window-body" style="font-family: monospace;">
+      <p>Comenzó como un directorio web de enlaces ordenados por categorías antes de convertirse en un buscador y portal integral de contenidos.</p>
+    </div>
+    <div class="app-window-footer footer-ok">
+      <button class="app-btn app-window-close">Ok</button>
+    </div>
+  </div>
+
+  <div id="win-yahoo-como" class="app-window hidden draggable" style="position:absolute; width:850px; left:450px; top:180px;">
+    <div class="app-window-header">
+      <span>Como funciona</span>
+      <button class="app-window-close">✕</button>
+    </div>
+
+    <div class="app-window-body">
+      <div id="yahoo-intro-text" style="font-family: monospace; font-size: 15px; line-height: 1.5; max-width: 450px;">
+        <p>Los humanos organizaban los sitios en categorías y jerarquías, la Web empezó a organizarse como una biblioteca.</p>
+      </div>
+
+      <div id="yahoo-tree-container" class="hidden" style="position: relative; width: 100%; min-height: 260px;">
+        <svg id="yahoo-tree-svg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></svg>
+
+        <div id="tree-level-1" class="hidden" style="display: flex; justify-content: center; margin-bottom: 30px; position: relative; z-index: 2;">
+          <div id="node-root" style="background: #ffd0f4; border: 2px solid #000; border-radius: 8px; padding: 6px 16px; font-weight: bold; font-family: monospace;">Yahoo!</div>
+        </div>
+
+        <div id="tree-level-2" class="hidden" style="display: flex; justify-content: space-around; margin-bottom: 30px; position: relative; z-index: 2;">
+          <div id="node-ciencia" style="background: #ffd0f4; border: 2px solid #000; border-radius: 8px; padding: 6px 14px; font-weight: bold; font-family: monospace;">Ciencia</div>
+          <div id="node-negocios" style="background: #ffffff; border: 2px solid #000; border-radius: 8px; padding: 6px 14px; font-weight: bold; font-family: monospace;">Negocios</div>
+          <div id="node-recreacion" style="background: #ffffff; border: 2px solid #000; border-radius: 8px; padding: 6px 14px; font-weight: bold; font-family: monospace;">Recreación</div>
+        </div>
+
+        <div id="tree-level-3" class="hidden" style="display: flex; justify-content: space-between; gap: 4px; position: relative; z-index: 2;">
+          <div id="node-bio" style="background: #ffffff; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Biología</div>
+          <div id="node-astro" style="background: #ffd0f4; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Astronomía</div>
+          <div id="node-emp" style="background: #ffffff; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Empresas</div>
+          <div id="node-fin" style="background: #ffffff; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Finanzas</div>
+          <div id="node-dep" style="background: #ffffff; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Deportes</div>
+          <div id="node-viajes" style="background: #ffffff; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Viajes</div>
+        </div>
+
+        <div id="yahoo-nasa-link" class="hidden" style="margin-top: 15px; padding: 8px; background: #fff; border: 1px dashed #000; font-family: monospace;">
+          <strong style="color: #000080;">Astronomía</strong> 🔗 Enlace: <a href="https://www.nasa.gov" target="_blank" style="color: #0000ed; font-weight: bold;">NASA</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-window-footer footer-nav">
+      <button id="yahoo-next-btn" class="app-btn">Next Tip</button>
+      <button class="app-btn app-window-close">Close</button>
+    </div>
+  </div>
+
+ 
+
+  <div id="win-yahoo-veia" class="app-window hidden draggable" style="position:absolute; width:800px; left:600px; top:100px;">
+    <div class="app-window-header">
+      <span>Vista</span>
+      <button class="app-window-close">✕</button>
+    </div>
+    <div class="app-window-body" style="padding:0; min-height:400px;">
+      <img src="assets/imagenes/yahoo.png" alt="Archie Query Form" class="asset-preview-img">
+    </div>
+    <div class="app-window-footer footer-ok">
+      <button class="app-btn app-window-close">Ok</button>
+    </div>
+  </div>
+
+  <!-- Overlay de fondo al aparecer el cuadro de comparación -->
+  <div id="desktop-overlay" class="desktop-overlay hidden"></div>
+
+  <!-- CUADRO DE COMPARACIÓN (aparece centrado al hacer scroll) -->
+  <div id="win-comparacion" class="app-window win-comparacion-container hidden desktop-overlay-card">
+    <div class="app-window-header">
+      <span>Comparación</span>
+      <button class="app-window-close win-close">✕</button>
+    </div>
+
+    <div class="app-window-body">
+      <div class="win-comp-grid">
+        <div class="win-inner-box">
+          <div class="win-inner-header">
+            <span>ARCHIE</span>
           </div>
-        </div>
-        <div class="win-window-footer">
-          <button class="win-close-btn-footer">OK</button>
-          <button class="win-btn-disabled">Cancel</button>
-          <button class="win-btn-disabled">Apply</button>
-        </div>
-      </div>
-
-      <div id="win-archie-veia" class="win-window win-window-browser hidden draggable">
-        <div class="win-window-header">
-          <span class="icon">🔍</span> Archie Query Form
-          <button class="win-close-btn">X</button>
-        </div>
-        <div class="win-window-menu">File Edit View Help</div>
-        <div class="win-window-body win-window-body-veia">
-          <div class="asset-placeholder">[ Captura: Archie Query Form ]</div>
-        </div>
-        <div class="win-window-status">1 object(s) selected</div>
-      </div>
-
-      <div id="win-archie-creador" class="win-window win-window-notepad hidden draggable">
-        <div class="win-window-header">
-          <span class="icon">👤</span> Untitled - Notepad
-          <button class="win-close-btn">X</button>
-        </div>
-        <div class="win-window-menu">File Edit Search Help</div>
-        <div class="win-window-body win-window-body-notepad body-creador">
-          <div class="creador-text">
-            <p>Alan Emtage</p>
-            <p>Bill Heelan</p>
-            <p>Peter Deutsch</p>
-          </div>
-          <div class="creador-assets">
-            <div class="asset-placeholder img-creador">[ Imagen Alan Emtage ]</div>
-            <div class="asset-placeholder logo-mcgill">[ Logo McGill University ]</div>
-          </div>
-        </div>
-      </div>
-
-      <div id="win-yahoo" class="win-window win-window-compact hidden draggable">
-        <div class="win-window-header">
-          <span class="icon">📁</span> Yahoo
-          <button class="win-close-btn">X</button>
-        </div>
-        <div class="win-window-body" style="padding: 20px; font-family: monospace; font-size: 15px; line-height: 1.5; background: #c0c0c0;">
-          <p>Comenzó como un directorio web de enlaces ordenados por categorías antes de convertirse en un buscador y portal integral de contenidos.</p>
-        </div>
-      </div>
-
-      <div id="win-yahoo-como" class="win-window win-window-welcome hidden draggable">
-        <div class="win-window-header">
-          <span class="icon">⚙️</span> Welcome
-          <button class="win-close-btn">X</button>
-        </div>
-        
-        <div class="win-window-body win-window-body-welcome">
-          <div class="welcome-main" style="overflow-y: auto; background: #fff; padding: 25px; border: 2px solid #7d7d7d; min-height: 320px;">
-            <h2 class="welcome-title" style="font-family: 'Times New Roman', serif; font-size: 28px; margin-bottom: 20px;">Welcome to Yahoo!</h2>
-
-            <div id="yahoo-intro-text" style="font-family: monospace; font-size: 15px; line-height: 1.5; max-width: 450px;">
-              <p>Los humanos organizaban los sitios en categorías y jerarquías, la Web empezó a organizarse como una biblioteca.</p>
+          <div class="win-inner-content">
+            <div class="step-item">
+              <span class="step-icon">🔍</span>
+              <span class="step-text">Búsqueda por coincidencia</span>
             </div>
-
-            <div id="yahoo-tree-container" class="hidden" style="position: relative; width: 100%; min-height: 260px;">
-              <svg id="yahoo-tree-svg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;"></svg>
-
-              <div id="tree-level-1" class="hidden" style="display: flex; justify-content: center; margin-bottom: 30px; position: relative; z-index: 2;">
-                <div id="node-root" style="background: #ffd0f4; border: 2px solid #000; border-radius: 8px; padding: 6px 16px; font-weight: bold; font-family: monospace;">Yahoo!</div>
-              </div>
-
-              <div id="tree-level-2" class="hidden" style="display: flex; justify-content: space-around; margin-bottom: 30px; position: relative; z-index: 2;">
-                <div id="node-ciencia" style="background: #ffd0f4; border: 2px solid #000; border-radius: 8px; padding: 6px 14px; font-weight: bold; font-family: monospace;">Ciencia</div>
-                <div id="node-negocios" style="background: #ffffff; border: 2px solid #000; border-radius: 8px; padding: 6px 14px; font-weight: bold; font-family: monospace;">Negocios</div>
-                <div id="node-recreacion" style="background: #ffffff; border: 2px solid #000; border-radius: 8px; padding: 6px 14px; font-weight: bold; font-family: monospace;">Recreación</div>
-              </div>
-
-              <div id="tree-level-3" class="hidden" style="display: flex; justify-content: space-between; gap: 4px; position: relative; z-index: 2;">
-                <div id="node-bio" style="background: #ffffff; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Biología</div>
-                <div id="node-astro" style="background: #ffd0f4; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Astronomía</div>
-                <div id="node-emp" style="background: #ffffff; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Empresas</div>
-                <div id="node-fin" style="background: #ffffff; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Finanzas</div>
-                <div id="node-dep" style="background: #ffffff; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Deportes</div>
-                <div id="node-viajes" style="background: #ffffff; border: 2px solid #000; border-radius: 6px; padding: 4px 6px; font-size: 12px; font-family: monospace;">Viajes</div>
-              </div>
-
-              <div id="yahoo-nasa-link" class="hidden" style="margin-top: 15px; padding: 8px; background: #fff; border: 1px dashed #000; font-family: monospace;">
-                <strong style="color: #000080;">Astronomía</strong> 🔗 Enlace: <a href="https://www.nasa.gov" target="_blank" style="color: #0000ed; font-weight: bold;">NASA</a>
-              </div>
+            <div class="step-arrow">▼</div>
+            <div class="step-item">
+              <span class="step-icon">📄</span>
+              <span class="step-text">Archivo encontrado</span>
             </div>
           </div>
+        </div>
 
-          <div class="welcome-sidebar">
-            <button id="yahoo-next-btn" class="win-btn-standard">Next Tip</button>
-            <button class="win-btn-standard win-close-btn-footer">Close</button>
+        <div class="win-inner-box">
+          <div class="win-inner-header">
+            <span>Yahoo!</span>
           </div>
-        </div>
-
-        <div class="win-window-footer-welcome">
-          <label><input type="checkbox" checked> Show this Welcome Screen next time you start Windows</label>
-        </div>
-      </div>
-
-      <div id="win-yahoo-veia" class="win-window win-window-browser hidden draggable">
-        <div class="win-window-header">
-          <span class="icon">🔍</span> Yahoo
-          <button class="win-close-btn">X</button>
-        </div>
-        <div class="win-window-menu">File Edit View Help</div>
-        <div class="win-window-body win-window-body-veia">
-          <div class="asset-placeholder">[ Captura: Yahoo - A Guide to WWW ]</div>
-        </div>
-        <div class="win-window-status">1 object(s) selected</div>
-      </div>
-
-      <div id="win-yahoo-creador" class="win-window win-window-notepad hidden draggable">
-        <div class="win-window-header">
-          <span class="icon">👤</span> Untitled - Notepad
-          <button class="win-close-btn">X</button>
-        </div>
-        <div class="win-window-menu">File Edit Search Help</div>
-        <div class="win-window-body win-window-body-notepad body-creador">
-          <div class="creador-text creador-text-yahoo">
-            <p>Jerry Yang</p>
-            <p>David Filo</p>
-          </div>
-          <div class="creador-assets">
-            <div class="asset-placeholder logo-stanford">[ Logo Stanford University ]</div>
-            <div class="asset-placeholder img-creador-yahoo">[ Imagen Jerry & David ]</div>
+          <div class="win-inner-content">
+            <div class="step-item">
+              <span class="step-icon">📁</span>
+              <span class="step-text">Búsqueda por categorías</span>
+            </div>
+            <div class="step-arrow">▼</div>
+            <div class="categories-list">
+              <span class="cat-item">ARTE</span>
+              <span class="cat-item">FOTOGRAFIA</span>
+              <span class="cat-item">SITIOS</span>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-    </section>
+</section>
+</div>
+</div>
+ <div class="sky-wrapper">
 
+   <div class="sky-clouds">
+  <svg class="cloud-svg cloud-1" viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="70" cy="90" rx="55" ry="35" fill="#eaf4f5"/>
+    <ellipse cx="130" cy="80" rx="60" ry="40" fill="#eaf4f5"/>
+    <ellipse cx="180" cy="95" rx="45" ry="30" fill="#eaf4f5"/>
+    <ellipse cx="110" cy="100" rx="70" ry="30" fill="#eaf4f5"/>
+  </svg>
+  <svg class="cloud-svg cloud-2" viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="70" cy="90" rx="55" ry="35" fill="#eaf4f5"/>
+    <ellipse cx="130" cy="80" rx="60" ry="40" fill="#eaf4f5"/>
+    <ellipse cx="180" cy="95" rx="45" ry="30" fill="#eaf4f5"/>
+    <ellipse cx="110" cy="100" rx="70" ry="30" fill="#eaf4f5"/>
+  </svg>
+  <svg class="cloud-svg cloud-3" viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="70" cy="90" rx="55" ry="35" fill="#eaf4f5"/>
+    <ellipse cx="130" cy="80" rx="60" ry="40" fill="#eaf4f5"/>
+    <ellipse cx="180" cy="95" rx="45" ry="30" fill="#eaf4f5"/>
+    <ellipse cx="110" cy="100" rx="70" ry="30" fill="#eaf4f5"/>
+  </svg>
+  <svg class="cloud-svg cloud-4" viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="70" cy="90" rx="55" ry="35" fill="#eaf4f5"/>
+    <ellipse cx="130" cy="80" rx="60" ry="40" fill="#eaf4f5"/>
+    <ellipse cx="180" cy="95" rx="45" ry="30" fill="#eaf4f5"/>
+    <ellipse cx="110" cy="100" rx="70" ry="30" fill="#eaf4f5"/>
+  </svg>
+  <svg class="cloud-svg cloud-5" viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="70" cy="90" rx="55" ry="35" fill="#eaf4f5"/>
+    <ellipse cx="130" cy="80" rx="60" ry="40" fill="#eaf4f5"/>
+    <ellipse cx="180" cy="95" rx="45" ry="30" fill="#eaf4f5"/>
+    <ellipse cx="110" cy="100" rx="70" ry="30" fill="#eaf4f5"/>
+  </svg>
+  <svg class="cloud-svg cloud-6" viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="70" cy="90" rx="55" ry="35" fill="#eaf4f5"/>
+    <ellipse cx="130" cy="80" rx="60" ry="40" fill="#eaf4f5"/>
+    <ellipse cx="180" cy="95" rx="45" ry="30" fill="#eaf4f5"/>
+    <ellipse cx="110" cy="100" rx="70" ry="30" fill="#eaf4f5"/>
+  </svg>
+  <svg class="cloud-svg cloud-7" viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="70" cy="90" rx="55" ry="35" fill="#eaf4f5"/>
+    <ellipse cx="130" cy="80" rx="60" ry="40" fill="#eaf4f5"/>
+    <ellipse cx="180" cy="95" rx="45" ry="30" fill="#eaf4f5"/>
+    <ellipse cx="110" cy="100" rx="70" ry="30" fill="#eaf4f5"/>
+  </svg>
+  <svg class="cloud-svg cloud-8" viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="70" cy="90" rx="55" ry="35" fill="#eaf4f5"/>
+    <ellipse cx="130" cy="80" rx="60" ry="40" fill="#eaf4f5"/>
+    <ellipse cx="180" cy="95" rx="45" ry="30" fill="#eaf4f5"/>
+    <ellipse cx="110" cy="100" rx="70" ry="30" fill="#eaf4f5"/>
+  </svg>
+</div>
     <!-- SECCIÓN COMPARACIÓN -->
     <section id="comparacion-section" class="comparacion-section">
 
-      <div id="win-comparacion" class="win-window win-comparacion-container">
-        
-        <div class="win-window-header">
-          <div class="win-title-left">
-            <span class="win-icon">🖥️</span>
-            <span class="win-title-text">Comparación</span>
-          </div>
-          <div class="win-controls">
-            <button class="win-btn-control">_</button>
-            <button class="win-btn-control">🗖</button>
-            <button class="win-btn-control win-close">X</button>
-          </div>
-        </div>
-
-        <div class="win-window-body">
-          <div class="win-comp-heading">
-            <span class="win-comp-icon">🖥️</span>
-            <h2>Comparación</h2>
-          </div>
-
-          <hr class="win-divider-line">
-
-          <div class="win-comp-grid">
-            <div class="win-inner-box">
-              <div class="win-inner-header">
-                <span>ARCHIE</span>
-                <button class="win-inner-btn">🗖</button>
-              </div>
-              <div class="win-inner-content">
-                <div class="step-item">
-                  <span class="step-icon">🔍</span>
-                  <span class="step-text">Búsqueda por coincidencia</span>
-                </div>
-                <div class="step-arrow">▼</div>
-                <div class="step-item">
-                  <span class="step-icon">📄</span>
-                  <span class="step-text">Archivo encontrado</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="win-inner-box">
-              <div class="win-inner-header">
-                <span>Yahoo!</span>
-                <button class="win-inner-btn">🗖</button>
-              </div>
-              <div class="win-inner-content">
-                <div class="step-item">
-                  <span class="step-icon">📁</span>
-                  <span class="step-text">Búsqueda por categorías</span>
-                </div>
-                <div class="step-arrow">▼</div>
-                <div class="categories-list">
-                  <span class="cat-item">ARTE</span>
-                  <span class="cat-item">FOTOGRAFIA</span>
-                  <span class="cat-item">SITIOS</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      
 
       <!-- BANNER MODERNO 1 -->
       <div class="modern-card scroll-reveal" id="modern-banner">
+        <div class="modern-card-dots">
+  <span class="dot dot-teal"></span>
+  <span class="dot dot-yellow"></span>
+  <span class="dot dot-red"></span>
+</div>
         <div class="modern-card-content">
           <p class="modern-card-text">
             Internet crecía más rápido de lo que cualquier humano podía catalogar. Era hora de un cambio.
@@ -437,69 +518,42 @@
         </div>
       </div>
 
-      <!-- REPRODUCTOR MEDIA PLAYER -->
-      <div id="win-media-player" class="win-wmp-container">
-        <div class="wmp-header">
-          <div class="wmp-title-left">
-            <span class="wmp-icon">▶</span>
-            <span class="wmp-title-text">Windows Media Player</span>
-          </div>
-          <div class="wmp-controls">
-            <button class="wmp-btn">_</button>
-            <button class="wmp-btn">🗖</button>
-            <button class="wmp-btn wmp-close">X</button>
-          </div>
-        </div>
+      <div id="win-media-player" class="wmp-card">
+  <div class="wmp-card-header">
+    <span class="dot dot-teal"></span>
+    <span class="dot dot-yellow"></span>
+    <span class="dot dot-red"></span>
+  </div>
 
-        <div class="wmp-menu-bar">
-          <span>File</span>
-          <span>View</span>
-          <span>Play</span>
-          <span>Tools</span>
-          <span>Help</span>
-        </div>
+  <div class="wmp-video-frame">
+    <video id="wmp-video" controls poster="assets/imagenes/wmp-placeholder.jpg">
+      <source src="assets/videos/video1.mp4" type="video/mp4">
+      Tu navegador no soporta el formato de video.
+    </video>
+  </div>
 
-        <div class="wmp-video-container">
-          <video id="wmp-video" controls poster="assets/imagenes/wmp-placeholder.jpg">
-            <source src="assets/videos/video1.mp4" type="video/mp4">
-            Tu navegador no soporta el formato de video.
-          </video>
-        </div>
-
-        <div class="wmp-controls-bar">
-          <button class="wmp-play-btn" id="wmp-play-trigger">▶</button>
-          
-          <div class="wmp-seek-container">
-            <div class="wmp-seek-bar">
-              <div class="wmp-seek-handle"></div>
-            </div>
-          </div>
-
-          <div class="wmp-volume-container">
-            <span class="wmp-vol-icon">🔊</span>
-            <div class="wmp-vol-bar">
-              <div class="wmp-vol-handle"></div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="wmp-transport-bar">
+    <div class="wmp-transport-icons">
+      <button class="wmp-icon-btn" id="wmp-rewind-trigger">◀◀</button>
+      <button class="wmp-icon-btn wmp-play-icon" id="wmp-play-trigger">▶</button>
+      <button class="wmp-icon-btn" id="wmp-forward-trigger">▶▶</button>
+    </div>
+    <div class="wmp-seek-bar">
+      <div class="wmp-seek-handle" id="wmp-seek-handle"></div>
+    </div>
+  </div>
+</div>
 
     </section>
 
     <!-- SECCIÓN NAVEGADOR RETRO -->
     <section id="browser-section" class="browser-section">
       <div class="old-browser-window">
-        <div class="browser-header">
-          <div class="browser-title">
-            <span class="browser-icon">🌐</span>
-            <span>Microsoft Internet Explorer</span>
-          </div>
-          <div class="win-controls">
-            <button class="win-btn">_</button>
-            <button class="win-btn">🗖</button>
-            <button class="win-btn win-close">X</button>
-          </div>
-        </div>
+       <div class="browser-header">
+  <div class="browser-title">
+    <span>Búsqueda por palabras claves (1995)</span>
+  </div>
+</div>
 
         <div class="browser-address-bar">
           <span class="address-label">Address</span>
@@ -539,27 +593,27 @@
             <div class="category-card card-cyan">
               <h3>Búsqueda por palabras clave</h3>
               <ul>
-                <li><a href="#" class="retro-link" data-info="que-es-busqueda">qué es?</a></li>
-                <li><a href="#" class="retro-link" data-info="como-busqueda">cómo funcionaba?</a></li>
-                <li><a href="#" class="retro-link" data-info="problema-busqueda">qué problema tenía?</a></li>
+                <li><a href="#" class="retro-link" data-info="que-es-busqueda">Cómo funcionaba?</a></li>
+                <li><a href="#" class="retro-link" data-info="como-busqueda">Limitaciones</a></li>
+                <li><a href="#" class="retro-link" data-info="problema-busqueda">Problemas</a></li>
               </ul>
             </div>
 
             <div class="category-card card-teal">
               <h3>Altavista</h3>
               <ul>
-                <li><a href="#" class="retro-link" data-info="que-es-altavista">qué es</a></li>
-                <li><a href="#" class="retro-link" data-info="datos-altavista">datos</a></li>
-                <li><a href="#" class="retro-link" data-info="veia-altavista">cómo se veía</a></li>
+                <li><a href="#" class="retro-link" data-info="que-es-altavista">Qué es</a></li>
+                <li><a href="#" class="retro-link" data-info="datos-altavista">Datos</a></li>
+                <li><a href="#" class="retro-link" data-info="veia-altavista">Cómo se veía</a></li>
               </ul>
             </div>
 
             <div class="category-card card-dark-teal">
               <h3>Lycos</h3>
               <ul>
-                <li><a href="#" class="retro-link" data-info="que-es-lycos">qué es</a></li>
-                <li><a href="#" class="retro-link" data-info="datos-lycos">datos</a></li>
-                <li><a href="#" class="retro-link" data-info="veia-lycos">cómo se veía</a></li>
+                <li><a href="#" class="retro-link" data-info="que-es-lycos">Qué es</a></li>
+                <li><a href="#" class="retro-link" data-info="datos-lycos">Datos</a></li>
+                <li><a href="#" class="retro-link" data-info="veia-lycos">Cómo se veía</a></li>
               </ul>
             </div>
           </div>
@@ -569,12 +623,18 @@
 
     <!-- BANNER 2 (Debajo del Navegador Retro) -->
     <div class="modern-card scroll-reveal is-visible" id="modern-banner-2" style="margin: 40px auto; max-width: 900px;">
+      <div class="modern-card-dots">
+  <span class="dot dot-teal"></span>
+  <span class="dot dot-yellow"></span>
+  <span class="dot dot-red"></span>
+</div>
       <div class="modern-card-content">
         <p class="modern-card-text">
           Contar palabras no bastaba para saber qué era realmente relevante. Google cambió las reglas.
         </p>
       </div>
     </div>
+     </div>
 
     <!-- MODALES Y POP-UPS INTERACTIVOS -->
     <div id="modal-overlay" class="modal-overlay hidden">
@@ -770,7 +830,7 @@
           <button class="win-btn win-close close-modal-btn">X</button>
         </div>
         <div class="retro-window-body">
-          <p>Lycos fue uno de los primeros motores de búsqueda de la Web, lanzado en 1994. Se destacó por usar "arañas" (spiders) que recorrían la red indexando páginas de forma automática.</p>
+          <p> Nació en 1994 como un proyecto de investigación de la Universidad Carnegie Mellon en Estados Unidos. Fue uno de los buscadores y portales web más populares y visitados de internet a finales de los años 90, antes del dominio absoluto de Google</p>
         </div>
       </div>
 
@@ -798,6 +858,38 @@
       </div>
 
     </div>
+
+
+<div class="xp-hills-wrapper">
+
+  <!-- Capa de fondo: cielo + colinas + pasto -->
+  <div class="xp-hills-bg">
+  <svg class="xp-hills-svg" viewBox="0 0 1920 1400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="grassLines" width="60" height="40" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="20" x2="60" y2="20" stroke="#ffffff" stroke-opacity="0.08" stroke-width="2" stroke-dasharray="6 6"/>
+      </pattern>
+    </defs>
+
+    <!-- Cielo -->
+    <rect x="0" y="0" width="1920" height="1400" fill="#D9EBE6"/>
+
+    <!-- Colina lejana -->
+    <path d="M 1100,420 C 1300,360 1500,380 1700,430 C 1820,460 1920,455 1920,455 L 1920,600 L 1100,600 Z" fill="#4d6b3f"/>
+
+    <!-- Colina principal -->
+    <path d="M 0,480 C 300,380 600,400 900,460 C 1200,520 1500,470 1920,440 L 1920,600 L 0,600 Z" fill="#c3d888"/>
+
+    <!-- Franja de transición -->
+    <rect x="0" y="590" width="1920" height="20" fill="#a8c46e"/>
+
+    <!-- Pasto, con textura de líneas incluida -->
+    <rect x="0" y="600" width="1920" height="800" fill="#4a6b3a"/>
+    <rect x="0" y="600" width="1920" height="800" fill="url(#grassLines)"/>
+  </svg>
+</div>
+
+  
 
     <!-- SECCIÓN GOOGLE / PAGERANK -->
 <section id="google-pagerank-section" class="google-section">
@@ -1014,6 +1106,17 @@
 
     </div>
 
+     <!-- Panel inferior tipo gabinete retro -->
+    <div class="retro-pc-controls">
+      <div class="retro-pc-buttons">
+        <span class="retro-pc-btn"></span>
+        <span class="retro-pc-btn"></span>
+        <span class="retro-pc-btn"></span>
+        <span class="retro-pc-btn"></span>
+      </div>
+      <div class="retro-pc-power">⏻</div>
+    </div>
+
   </div>
 
 </section>
@@ -1022,6 +1125,11 @@
 
   <!-- Banner intermedio (Transición hacia el video) -->
   <div class="modern-card scroll-reveal" id="modern-banner-video-2">
+    <div class="modern-card-dots">
+  <span class="dot dot-teal"></span>
+  <span class="dot dot-yellow"></span>
+  <span class="dot dot-red"></span>
+</div>
     <div class="modern-card-content">
       <p class="modern-card-text">
         El impacto de PageRank cambió la Web para siempre y sentó las bases de la búsqueda moderna.
@@ -1029,62 +1137,64 @@
     </div>
   </div>
 
-  <!-- REPRODUCTOR MEDIA PLAYER 2 -->
-  <div id="win-media-player-2" class="win-wmp-container">
-    <div class="wmp-header">
-      <div class="wmp-title-left">
-        <span class="wmp-icon">▶</span>
-        <span class="wmp-title-text">Windows Media Player</span>
-      </div>
-      <div class="wmp-controls">
-        <button class="wmp-btn">_</button>
-        <button class="wmp-btn">🗖</button>
-        <button class="wmp-btn wmp-close">X</button>
-      </div>
-    </div>
+  
 
-    <div class="wmp-menu-bar">
-      <span>File</span>
-      <span>View</span>
-      <span>Play</span>
-      <span>Tools</span>
-      <span>Help</span>
-    </div>
-
-    <!-- Contenedor del segundo video -->
-    <div class="wmp-video-container">
-      <video id="wmp-video-2" controls poster="assets/imagenes/wmp-placeholder-2.png">
-        <source src="assets/videos/video2.mp4" type="video/mp4">
-        Tu navegador no soporta el formato de video.
-      </video>
-    </div>
-
-    <div class="wmp-controls-bar">
-      <button class="wmp-play-btn" id="wmp-play-trigger-2">▶</button>
-      
-      <div class="wmp-seek-container">
-        <div class="wmp-seek-bar">
-          <div class="wmp-seek-handle"></div>
-        </div>
-      </div>
-
-      <div class="wmp-volume-container">
-        <span class="wmp-vol-icon">🔊</span>
-        <div class="wmp-vol-bar">
-          <div class="wmp-vol-handle"></div>
-        </div>
-      </div>
-    </div>
+<div id="win-media-player-2" class="wmp-card">
+  <div class="wmp-card-header">
+    <span class="dot dot-teal"></span>
+    <span class="dot dot-yellow"></span>
+    <span class="dot dot-red"></span>
   </div>
 
-</section>
-<div class="modern-card scroll-reveal" id="modern-banner-3" style="margin: 40px auto; max-width: 900px;">
-  <div class="modern-card-content">
-    <p class="modern-card-text">
-      Llegan los años 2000: la Web sigue creciendo y el Machine Learning empieza a transformar la forma en la que las máquinas entienden lo que buscamos.
-    </p>
+  <div class="wmp-video-frame">
+    <video id="wmp-video-2" controls poster="assets/imagenes/wmp-placeholder-2.png">
+      <source src="assets/videos/video2.mp4" type="video/mp4">
+      Tu navegador no soporta el formato de video.
+    </video>
+  </div>
+
+  <div class="wmp-transport-bar">
+    <div class="wmp-transport-icons">
+      <button class="wmp-icon-btn" id="wmp-rewind-trigger-2">◀◀</button>
+      <button class="wmp-icon-btn wmp-play-icon" id="wmp-play-trigger-2">▶</button>
+      <button class="wmp-icon-btn" id="wmp-forward-trigger-2">▶▶</button>
+    </div>
+    <div class="wmp-seek-bar">
+      <div class="wmp-seek-handle" id="wmp-seek-handle-2"></div>
+    </div>
   </div>
 </div>
+
+</div>
+
+</section>
+<section id="ml-transition" class="intro-section intro-section-dark">
+
+  <div class="intro-torn-edge intro-torn-edge-top"></div>
+
+  <div class="paper-lines-bg"></div>
+
+  <div class="sticky-note sticky-note-left sticky-note-dark-left">
+    <div class="sticky-tape"></div>
+    <p class="sticky-text sticky-text-light">Era de las<br>MENTES<br>(2001–hoy)</p>
+  </div>
+
+  <div class="intro-container">
+    <h2 class="intro-title intro-title-dark">IA en los navegadores</h2>
+    <p class="intro-text intro-text-dark">
+      Llegan los 2000: la Web sigue creciendo y el Machine Learning empieza a transformar lo que las máquinas entienden.
+    </p>
+  </div>
+
+  <div class="sticky-note sticky-note-right sticky-note-dark-right">
+    <div class="sticky-tape"></div>
+  </div>
+
+  <div class="intro-torn-edge intro-torn-edge-bottom"></div>
+
+</section>
+
+
 
 <!-- SECCIÓN MACHINE LEARNING - JUEGO INTERACTIVO -->
 <section id="ml-section" class="ml-section">
@@ -1097,7 +1207,7 @@
     <p class="ml-description reveal-ml">
       Conjunto de inteligencia artificial que aprende patrones con datos de entrenamiento.
     </p>
-
+<div class="ml-observe-box">
     <p class="ml-observe-text reveal-ml">
       Observe que hay <span class="ml-highlight">tres tipos</span>, según la forma de las orejas
     </p>
@@ -1122,6 +1232,7 @@
         </div>
       </div>
     </div>
+</div>
 
     <h3 class="ml-clasificalos-title reveal-ml">Clasificalos</h3>
 
@@ -1169,8 +1280,15 @@
   </div>
 </section>
 
+<div class="nlu-wrapper">
+
 <!-- BANNER 4 (Transición hacia RankBrain) -->
 <div class="modern-card scroll-reveal" id="modern-banner-rankbrain" style="margin: 40px auto; max-width: 900px;">
+  <div class="modern-card-dots">
+  <span class="dot dot-teal"></span>
+  <span class="dot dot-yellow"></span>
+  <span class="dot dot-red"></span>
+</div>
   <div class="modern-card-content">
     <p class="modern-card-text">
       En 2015, Google dio un paso más allá: nace RankBrain, el primer sistema de Machine Learning integrado al algoritmo de búsqueda.
@@ -1185,7 +1303,7 @@
     <h2 class="nlu-main-title reveal-ml">Natural Language Understanding (NLU)</h2>
 
     <!-- TARJETA COMPARACIÓN -->
-    <div class="dash-card dash-card-wide dash-card-ai-response reveal-ml">
+    <div class="dash-card dash-card-wide  reveal-ml">
       <div class="dash-card-header">
         <span class="dash-gear">⚙️</span>
         <span class="dash-card-title">Comparación NLU con la metodología de búsqueda hasta el momento</span>
@@ -1336,9 +1454,16 @@
 
   
 </section>
+</div>
 
+<div class="chatbot-wrapper">
 <!-- BANNER 5 (Transición hacia Chatbots / IA Generativa) -->
 <div class="modern-card scroll-reveal" id="modern-banner-chatbots" style="margin: 40px auto; max-width: 900px;">
+  <div class="modern-card-dots">
+  <span class="dot dot-teal"></span>
+  <span class="dot dot-yellow"></span>
+  <span class="dot dot-red"></span>
+</div>
   <div class="modern-card-content">
     <p class="modern-card-text">
       Con el lenguaje ya comprendido, llegó el siguiente paso: chatbots como ChatGPT, capaces de generar respuestas y mantener conversaciones naturales.
@@ -1351,21 +1476,17 @@
 
   <!-- BIENVENIDA -->
   <div class="cb-welcome-box reveal-ml">
-    <h2 class="cb-welcome-title">Bienvenidos Chatbots</h2>
+  <h2 class="cb-welcome-title">Bienvenidos Chatbots</h2>
 
-    <div class="cb-welcome-media">
-      <video class="cb-robot-video" autoplay muted loop playsinline>
-        <source src="assets/videos/robot-saludo.mp4" type="video/mp4">
-      </video>
-
-      <div class="cb-logo-crossfade">
-        <img class="cb-logo cb-logo-1" src="assets/imagenes/logo-chatgpt.png" alt="ChatGPT">
-        <img class="cb-logo cb-logo-2" src="assets/imagenes/logo-gemini.png" alt="Gemini">
-        <img class="cb-logo cb-logo-3" src="assets/imagenes/logo-claude.png" alt="Claude">
-        <img class="cb-logo cb-logo-4" src="assets/imagenes/logo-copilot.png" alt="Copilot">
-      </div>
+  <div class="cb-welcome-media">
+    <div class="cb-logo-crossfade">
+      <img class="cb-logo cb-logo-1" src="assets/imagenes/logo-chatgpt.png" alt="ChatGPT">
+      <img class="cb-logo cb-logo-2" src="assets/imagenes/logo-gemini.png" alt="Gemini">
+      <img class="cb-logo cb-logo-3" src="assets/imagenes/logo-claude.png" alt="Claude">
+      <img class="cb-logo cb-logo-4" src="assets/imagenes/logo-copilot.png" alt="Copilot">
     </div>
   </div>
+</div>
 
   <!-- CONVERSACIÓN SIMULADA (EJEMPLO - REEMPLAZAR TEXTOS) -->
   <div class="cb-chat-container">
@@ -1569,7 +1690,7 @@
     </div>
   </div>
 </div>
-
+</div>
 <!-- SECCIÓN DE CIERRE - REFLEXIÓN FINAL -->
 <section id="cierre-section" class="cierre-section">
 
