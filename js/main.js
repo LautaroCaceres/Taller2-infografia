@@ -1281,11 +1281,7 @@ function initProgressNav() {
   // Secciones consideradas "oscuras" (para invertir el dropshadow)
   const darkSectionIds = ["ml-section", "nlu-section", "chatbot-section", "ml-transition"];
 
-  dots.forEach((dot, i) => {
-    dot.addEventListener("click", () => {
-      targets[i].scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  });
+ 
 
   function updateNav() {
     const scrollY = window.scrollY || window.pageYOffset;
